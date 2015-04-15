@@ -39,6 +39,7 @@
    #:user-contribs
    #:list-category-members
    #:get-page-to-edit
+   #:get-page-links
    ;; EDIT
    #:set-page-content
    #:append-text-to-page

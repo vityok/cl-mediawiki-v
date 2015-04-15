@@ -70,7 +70,7 @@ Example:
 	   (meta userinfo))
     :req ()
     :props (uiprop)
-    :processor 
+    :processor
     (lambda (resp)
       (get-value resp :QUERY :USERINFO))
     :doc
@@ -99,7 +99,7 @@ Examples:
 	   (meta siteinfo))
     :req ()
     :props (siprop sifilterw sishowalldb sinumberingroup)
-    :processor 
+    :processor
     (lambda (resp)
       (get-value resp :QUERY))
     :doc "
@@ -249,6 +249,40 @@ Parameters:
 
 ;; --------------------------------------------------------
 
+(define-proxy get-page-links
+    :core ((action query)
+	   (prop links))
+    :req (titles)
+    :based-on (version smaxage maxage requestid pageids revids prop
+		       meta generator redirects indexpageids)
+    :props (plnamespace pllimit plcontinue pltitles pldir)
+    :processor
+    (lambda (resp)
+      (values-list (list
+		    (get-value resp :query :pages)
+		    (get-value resp :continue))))
+    :doc
+    "Returns all links from the given pages.
+
+    https://www.mediawiki.org/wiki/API:Properties#links_.2F_pl
+
+Parameters:
+
+  plnamespace    - Show links in these namespaces only.
+                   Values (separate with |): 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 100, 101, 446, 447, 828, 829
+  pllimit        - How many links to return.
+                   No more than 500 (5000 for bots) allowed.
+                   Default: 10
+  plcontinue     - When more results are available, use this to continue.
+  pltitles       - Only list links to these titles. Useful for checking whether a certain page links to a certain title.
+                   Separate values with |. Maximum number of values is 50 (500 for bots).
+  pldir          - The direction in which to list.
+                   One value: ascending, descending
+                   Default: ascending
+")
+
+;; --------------------------------------------------------
+
 (defclass token-bag ()
   ((page-attributes
     :accessor page-attributes
@@ -375,7 +409,7 @@ Parameters:
   rctype         - Which types of changes to show.
                    Values (separate with '|'): edit, new, log
 
- Returns: 
+ Returns:
 ")
 
 ;; --------------------------------------------------------
