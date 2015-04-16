@@ -26,27 +26,31 @@ Use `with-mediawiki` macro to initialize the wiki client API instance:
 
 Currently we provide following functions:
 
-* Query
-** `login`
-** `siteinfo`
-** `userinfo`
-** `get-page-content`
-** `get-action-tokens`
-** `recent-changes`
-** `user-contribs`
-** `list-category-members`
-** `get-page-to-edit`
-** `get-page-links`
-* Edit
-** `set-page-content`
-** `append-text-to-page`
-** `prepend-text-to-page`
-** `add-new-page-section`
-** `create-page`
-** `get-page-info`
-** `pages-that-embed`
-* Util
-** `user-anon-p`
-** `has-messages-p`
+*Query*
+
+* `login`
+* `siteinfo`
+* `userinfo`
+* `get-page-content`
+* `get-action-tokens`
+* `recent-changes`
+* `user-contribs`
+* `list-category-members`
+* `get-page-to-edit`
+* `get-page-links`
+
+*Edit*
+* `set-page-content`
+* `append-text-to-page`
+* `prepend-text-to-page`
+* `add-new-page-section`
+* `create-page`
+* `get-page-info`
+* `pages-that-embed`
+
+*Util*
+
+* `user-anon-p`
+* `has-messages-p`
 
 Some of them are tested and used more often and are considered operational. See the supplied utils for usage examples.
