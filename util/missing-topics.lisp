@@ -10,38 +10,62 @@
 ;; well. Storing them on the disk prevents memory from being
 ;; exhausted.
 
-(ql:quickload :cl-ppcre)
-(ql:quickload :log5)
+;; Main entry functions:
+;;
+;; GENERATE-ARTICLES-QUEUE - based on the list of categories listed in
+;; file specified by *CATEGORIES-FILE-NAME* generate a list of all
+;; article titles that these categories contain
+;;
+;; PROCESS-ARTICLES-QUEUE - given the article titles queue, process it
+;; and generate a dump of missing topics
+;;
+;; AGGREGATE-MISSING-TITLES - given the dump of missing topics
+;; calculate the number of times a title is being missed.
+;;
+;; Main input data:
+;;
+;; - List of categories to process specified in the file with
+;; *CATEGORIES-FILE-NAME* name
+
 (ql:quickload :alexandria)
 (ql:quickload :cl-tokyo-cabinet)
-
-
-(log5:defcategory :debug)
-(log5:start-sender 'warnings-and-worse
- 		   (log5:stream-sender :location *standard-output*)
- 		   :category-spec '(log5:dribble+)
- 		   :output-spec '(log5:time log5:message log5:context))
-
 (ql:quickload :cl-mediawiki)
 
 ;; --------------------------------------------------------
 
-
 (defparameter *categories-file-name* #P"categories.txt"
- "Contains the list of directories.")
-(defparameter *articles-file-name* #P"articles.txt"
+  "Contains the list of directories.")
+
+(defparameter *all-titles-dump* "ukwiki-20150404-all-titles.txt"
+  "A file with `List of all page' titles downloaded and ungzipped from the
+  Wikipedia database dumps:
+  https://dumps.wikimedia.org/backup-index.html")
+
+(defparameter *api-url* "http://uk.wikipedia.org/w"
+  "Root Wiki API URL used to query the server.")
+
+(defparameter *articles-file-name* #P"articles-visited.txt"
   "Contains the list of visited articles.")
-(defparameter *queue-file-name* #P"queue.txt"
+
+(defparameter *queue-file-name* #P"articles-queue.txt"
   "List of articles in the processing queue.")
-(defparameter *missing-titles-file-name* #P"missing-titles.txt"
-  "List of missing titles.")
-(defparameter *all-titles-dump* "ukwiki-20150404-all-titles.txt")
-(defparameter *article-titles-db-file* "titles.db"
-  "File where the article titles dictionary DB is stored.")
+
+(defparameter *missing-titles-file-name* #P"missing-titles-dump.txt"
+  "Dump of missing titles.")
+
+(defparameter *article-titles-db-file* "titles-dictionary.db"
+  "File where the article titles dictionary DB is stored. See: *all-titles-dump*")
+
+(defparameter *aggregation-threshold* 10
+  "Minimal number of times an article must be missing to be included in the resulting table.")
+
+(defparameter *missing-titles-map* "missing-titles-map.db"
+  "Used as an out-of-memory map to calculate the number of times a
+  title is being mentioned in the missing titles dump.")
+
 (defvar *article-titles-db* nil
   "DB handle of the dictionary.")
 
-(defvar *categories-list* '())
 (defvar *visited-articles-list* '())
 
 ;; --------------------------------------------------------
@@ -79,55 +103,6 @@ handle to the DB."
 
 ;; --------------------------------------------------------
 
-(defun get-namespace-id (ns)
-  "Given canonical namespace name NS query namespaces list from API
-and find the one with the given name. Returns ID of the found
-namespace."
-  (cl-mediawiki:with-mediawiki ("http://uk.wikipedia.org/w")
-    (let ((nslist
-	   (get-value (cl-mediawiki:siteinfo :siprop :namespaces)
-			   :namespaces)))
-      (get-value
-       (find-if
-	#'(lambda (x)
-	    (string-equal ns
-			  (get-value x #'cdr :canonical)))
-	nslist)
-       #'cdr :id))))
-
-;; --------------------------------------------------------
-
-(defun get-subcats-titles (cat &key (ns 14))
-  (cl-mediawiki:with-mediawiki ((make-instance 'cl-mediawiki:mediawiki
-				       :url "http://uk.wikipedia.org/w"
-				       :request-delay 10))
-    (multiple-value-bind (js cont)
-	(cl-mediawiki:list-category-members cat :cmnamespace ns)
-      (let ((res (map 'list
-		      #'(lambda (x) (get-value x :title))
-		      js)))
-	(loop (when (null cont) (return))
-	  (multiple-value-bind (njs ncont)
-	      (cl-mediawiki:list-category-members cat
-					  :cmnamespace ns
-					  :cmcontinue cont
-					  :cmlimit 500)
-	    (setf cont ncont)
-	    (format t "~&continue: ~A~%" cont)
-	    (format t "~&new items: ~A~%" (map 'list
-			       #'(lambda (x) (get-value x :title))
-			       njs))
-	    (format t "~&current res: ~A~%" res)
-	    (setf res
-		  (append res
-			  (map 'list
-			       #'(lambda (x) (get-value x :title))
-			       njs)))))
-	res))))
-;; (get-subcats-titles "Категорія:Математика")
-
-;; --------------------------------------------------------
-
 (defun dump-queue (queue)
   (with-open-file (fout *queue-file-name*
 			:direction :output
@@ -149,33 +124,7 @@ namespace."
 
 ;; --------------------------------------------------------
 
-(defun walk-tree (&optional
-		  (root-category *default-root-category*)
-		  (queue (get-subcats-titles root-category)))
-  (dump-queue queue)
-  (setf *black-list* (load-list *black-list-file-name*))
-  (loop for i = (pop queue)
-     while i
-     do (progn
-	  (format t "~&queue contains ~A items~%" (length queue))
-	  (format t "~&list contains ~A items~%" (length *categories-list*))
-	  (unless (or (find i *black-list* :test #'string-equal)
-		      (find i *categories-list* :test #'string-equal))
-	    (format t "~&[[~A]] is a new item~%" i)
-	    (push i *categories-list*)
-	    (with-open-file (fout *categories-file-name*
-				  :direction :output
-				  :if-exists :append
-				  :if-does-not-exist :create)
-	      (format fout "~A~%" i))
-	    (setf queue
-		  (append queue
-			  (get-subcats-titles i)))
-	    (dump-queue queue)))))
-
-;; --------------------------------------------------------
-
-(defun continue-walk-tree ()
+(defun process-articles-queue ()
   "Given the article titles queue, process it and generate the list of
 missing topics."
   (let ((queue (load-list *queue-file-name*))
@@ -186,7 +135,7 @@ missing topics."
 
     (format t "laded Queue[~a] and the Dictionary~%" (length queue))
     (cl-mediawiki:with-mediawiki ((make-instance 'cl-mediawiki:mediawiki
-						 :url "http://uk.wikipedia.org/w"
+						 :url *api-url*
 						 :request-delay 10))
       (loop
 	 if (and (< (length batch) batch-size)
@@ -224,16 +173,16 @@ missing topics."
 
 ;; --------------------------------------------------------
 
-(defun start-walk-tree ()
+(defun generate-articles-queue ()
+  "Walks through the list of the categories and dumps all pages that
+these categories contain."
   ;; initialize the dictionary of all titles
-  (close-dict (open-dict *article-titles-db-file* *all-titles-dump*))
-  (setf *categories-list* (load-list *categories-file-name*))
-
-  (let ((titles-queue '()))
+  (let ((categories-list (load-list *categories-file-name*))
+	(titles-queue '()))
     (cl-mediawiki:with-mediawiki ((make-instance 'cl-mediawiki:mediawiki
-						 :url "http://uk.wikipedia.org/w"
+						 :url *api-url*
 						 :request-delay 10))
-      (dolist (cat *categories-list*)
+      (dolist (cat categories-list)
 	;; query the list of articles in the directory cat and add it
 	;; to queue of articles to process
 	(let ((njs
@@ -256,10 +205,10 @@ missing topics."
 
 (defun aggregate-missing-titles ()
   "Calculate the number of times a title is being missed."
-    
-  (unless (probe-file "topics-hash.db")
+
+  (unless (probe-file *missing-titles-map*)
     (let ((db (make-instance 'tc:tc-bdb)))
-      (tc:dbm-open db "topics-hash.db" :write :create)
+      (tc:dbm-open db *missing-titles-map* :write :create)
       (with-open-file (in *missing-titles-file-name* :direction :input)
 	(loop :for line = (read-line in nil)
 	   :while line
@@ -275,21 +224,21 @@ missing topics."
   (let ((db (make-instance 'tc:tc-bdb))
 	(missing-titles '())
 	(ordered-titles '())
-	(threshold 10))
-    
-    (tc:dbm-open db "topics-hash.db" :read)
+	(*aggregation-threshold* 10))
+
+    (tc:dbm-open db *missing-titles-map* :read)
     (tc:with-iterator (it db)
       (tc:iter-first it)
       (loop for i = (tc:iter-next it)
 	 while i
-	 if (> (parse-integer (tc:iter-get it)) threshold)
+	 if (> (parse-integer (tc:iter-get it)) *aggregation-threshold*)
 	 do (push (list (tc:iter-key it)
 			(parse-integer (tc:iter-get it)))
 		  missing-titles)))
     (tc:dbm-close db)
     (setf ordered-titles (sort missing-titles #'> :key #'second))
-    
-    (format t "missing titles over the threshold: ~a~% " 
+
+    (format t "missing titles over the threshold: ~a~% "
 	    (length missing-titles))
     (with-open-file (out "report.txt"
 			 :direction :output
@@ -300,54 +249,5 @@ missing topics."
 	   (format out "|-~%!~a~%| [[~a]]~%" (second line)
 		   (substitute #\Space #\_ (first line) :test #'char=)))
       (format out "|}"))))
-
-;; --------------------------------------------------------
-
-(defun get-cat-name (cat)
-  (subseq cat (length "Категорія:")))
-
-;; --------------------------------------------------------
-
-(defun gen-page ()
-  (let ((categories-list (load-list
-			  *categories-file-name*)) ; all categories we
-					; know about
-	(categories-dict (make-hash-table)) ; categories in the hash
-					; table for their leading
-					; character
-	(categories-keys '())	  ; essentially this is section titles
-	)
-    (dolist (i categories-list)
-      (let ((first-char (elt (get-cat-name i) 0)))
-	(push i (gethash first-char categories-dict))
-	))
-    (setf categories-keys (alexandria:hash-table-keys categories-dict))
-    (setf categories-keys (sort categories-keys #'char-lessp))
-    (with-open-file (out #P"page.wiki"
-			 :direction :output
-			 :if-exists :supersede
-			 :if-does-not-exist :create)
-      (format out "Наведений нижче список містить [[Вікіпедія:Категорії|категорії]] на тему [[Математика]].")
-      (format out "  Кількість категорій в списку: ~A.~%" (length categories-list))
-      (format out "~%{{АБВ}}~%~%")
-      (format out "== Список ==")
-      (dolist (k categories-keys)
-	(let* ((v (gethash k categories-dict))
-	       (sorted-values (reverse v)))
-	  ;;(sort sorted-values #'string>)
-	  (format t "~A: ~A~%" k (length v))
-	  (format out "~&~%=== ~A ===~%" k)
-	  (format out "~&~{[[:~A|~A]]~^&nbsp;— ~}~%"
-		  (loop for n in sorted-values
-		     appending (list n) into pairs
-		     appending (list (get-cat-name n)) into pairs
-		     finally (return pairs)))))
-      (format out "~%== Дивіться також ==
-{{Портал математика}}
-* [[Вікіпедія:Проект:Математика|Проект математика на Вікіпедії]]
-
-[[Категорія:Математика]]
-[[Категорія:Математичні списки|*]]
-"))))
 
 ;; EOF
