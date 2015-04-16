@@ -40,6 +40,7 @@ Currently we provide following functions:
 * `get-page-links`
 
 *Edit*
+
 * `set-page-content`
 * `append-text-to-page`
 * `prepend-text-to-page`
