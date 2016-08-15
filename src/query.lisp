@@ -147,7 +147,7 @@ Examples:
   (lambda (resp)
     (values-list (list
 		  (get-value resp :query :categorymembers)
-		  (get-value resp :query-continue :categorymembers :cmcontinue))))
+		  (get-value resp :continue :cmcontinue))))
   :doc
     "List all pages in a given category.
 

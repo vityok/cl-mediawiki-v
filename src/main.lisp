@@ -16,10 +16,13 @@
 ;; TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 ;; SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-;; (log5:start-sender 'warnings-and-worse  
-;; 		   (log5:stream-sender :location *error-output*)  
-;; 		   :category-spec '(log5:warn)  
+;; (log5:start-sender 'warnings-and-worse
+;; 		   (log5:stream-sender :location *error-output*)
+;; 		   :category-spec '(log5:warn)
 ;; 		   :output-spec '(log5:time log5:message log5:context))
+
+;; Check documentation for the MediaWiki API at:
+;; https://www.mediawiki.org/wiki/API
 
 (in-package :cl-mediawiki)
 
@@ -233,7 +236,7 @@ Keys are either keywords or function designators."
   ;; todo: probably REDUCE is a better approach
   (let ((ret js))
     (loop for key in keys
-       do 
+       do
        (setf ret (if (functionp key)
 		     (apply key (list ret))
 		     (cdr (assoc key ret)))))
