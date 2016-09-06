@@ -7,10 +7,16 @@
 (ql:quickload :drakma)
 (ql:quickload :cl-json)
 (ql:quickload :external-program)
+(ql:quickload :cl-string-match)
+(ql:quickload :split-sequence)
 
 ;; --------------------------------------------------------
 
 (defparameter *api-root* "http://wikimedia.org/api/rest_v1")
+(defparameter *discussion-prefix* "Обговорення:"
+  "A prefix used to name discussion articles/pages.")
+(defparameter *views-file* "article-views.txt"
+  "File where raw numbers are stored")
 
 ;; --------------------------------------------------------
 
@@ -62,7 +68,8 @@
 (defun get-article-page-views (article &key
 					 (project "uk.wikipedia")
 					 (start)
-					 (end))
+					 (end)
+					 (attempts 3))
 
   (let ((url (format nil
 		     "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/~a/all-access/user/~a/daily/~a/~a"
@@ -73,19 +80,35 @@
 	(metrics-tmp "metrics_tmp.json"))
     (format t "url: ~a~%" url)
 
-    (external-program:run "/usr/bin/curl"
-			  (list url "-o" metrics-tmp))
+    (flet ((attempt ()
+	     (external-program:run "/usr/bin/curl"
+				   (list url "-o" metrics-tmp))
 
-    ;; (drakma:http-request url :want-stream t)
-    (with-open-file (stream metrics-tmp
-			    :direction :input)
-      ;; (setf (flexi-streams:flexi-stream-external-format stream) :utf-8)
-      (let ((items (cdar (cl-json:decode-json stream))))
-	(loop :for item :in items
-	   :sum (cdr (find :views item :key #'car)))))))
+	     ;; (drakma:http-request url :want-stream t)
+	     (with-open-file (stream metrics-tmp
+				     :direction :input)
+	       ;; (setf (flexi-streams:flexi-stream-external-format stream) :utf-8)
+	       (let ((json (cl-json:decode-json stream)))
 
+		 (unless (string= (cdr (assoc :type json))
+				  "https://restbase.org/errors/query_error")
+		   (let ((items (cdar json)))
+		     (loop :for item :in items
+			:sum (cdr (find :views item :key #'car)))))))))
 
-(defun run ()
+      (loop for i from 0 to attempts
+	 for views = (attempt)
+	 when views return views
+	 do (progn
+	      (format t "doing another attempt~%")
+	      (sleep 15))))))
+
+;; --------------------------------------------------------
+
+(defun run-page-views (&key
+			 (start "2016070100")
+			 (end "2016073100"))
+
   "Runs article names from one file - `INPUT-FILE', and outputs aticle
 name and total number of views in a tab-separated file `OUTPUT-FILE'."
 
@@ -102,24 +125,47 @@ name and total number of views in a tab-separated file `OUTPUT-FILE'."
 
   ;; And the result is:
 
-  ;; sqlite> select * from visits order by clicks limit 10;
+  ;; sqlite> SELECT * FROM visits ORDER BY clicks DESC LIMIT 100;
 
   ;; http://stackoverflow.com/questions/26065872/how-to-import-a-tsv-file-with-sqlite3
 
 
   (let ((input-file "category-contents.txt")
-	(output-file "article-views.txt")
-	(start "2016070100")
-	(end "2016073100"))
+	(output-file *views-file*)
+	(article-no 1))
+
     (with-open-file (in input-file :direction :input)
       (with-open-file (out output-file :direction :output :if-exists :supersede)
 	(loop for article = (read-line in nil)
 	   while article do
-	     (progn
-	       (format out "~a	~a~%"
-		       article
-		       (get-article-page-views article :start start :end end))
-	       (force-output out)
-	       (sleep 15)))))))
+	     (when (sm:prefixed-with article *discussion-prefix*)
+	       (format t "~a " article-no)
+	       (let* ((article-name (subseq article (length *discussion-prefix*)))
+		      (article-views (get-article-page-views article-name :start start :end end)))
+
+		 (format out "~a	~a~%"
+			 article-name
+			 article-views)
+		 (force-output out)
+		 (incf article-no)
+		 (sleep 15))))))))
+
+;; --------------------------------------------------------
+
+(defun report-page-views (&key (threshold 100))
+  "Create a wiki table listing top articles."
+
+  (with-open-file (in *views-file*
+		      :direction :input)
+    (let* ((all-articles
+	    (loop for line = (read-line in nil)
+	       while line
+	       collect (split-sequence:split-sequence #\Tab line)))
+
+	   (sorted-articles (sort all-articles #'> :key #'second))
+	   (top-articles (subseq sorted-articles 0 threshold)))
+
+      (loop for (article-name article-views) in top-articles
+	 do (format t "| ~a | ~a |~%" article-name article-views )))))
 
 ;; EOF
