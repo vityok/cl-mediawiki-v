@@ -152,20 +152,27 @@ name and total number of views in a tab-separated file `OUTPUT-FILE'."
 
 ;; --------------------------------------------------------
 
-(defun report-page-views (&key (threshold 100))
+(defun report-page-views (&key (limit 100))
   "Create a wiki table listing top articles."
 
   (with-open-file (in *views-file*
 		      :direction :input)
-    (let* ((all-articles
+    (let* ( ;; SELECT
+	   (all-articles
 	    (loop for line = (read-line in nil)
 	       while line
-	       collect (split-sequence:split-sequence #\Tab line)))
+	       for (name visits-str) = (split-sequence:split-sequence #\Tab line)
+	       collect `(,name ,(parse-integer visits-str))))
 
+	   ;; ORDER
 	   (sorted-articles (sort all-articles #'> :key #'second))
-	   (top-articles (subseq sorted-articles 0 threshold)))
+	   ;; LIMIT
+	   (top-articles (subseq sorted-articles 0 limit)))
 
+      ;; REPORT
+      (format t "{|~%! Стаття || Кількість переглядів~%|-~%")
       (loop for (article-name article-views) in top-articles
-	 do (format t "| ~a | ~a |~%" article-name article-views )))))
+	 do (format t "| [[~a]]~1,64T || ~a ~%|-~%" article-name article-views))
+      (format t "|}"))))
 
 ;; EOF
