@@ -106,8 +106,8 @@
 ;; --------------------------------------------------------
 
 (defun run-page-views (&key
-			 (start "2016070100")
-			 (end "2016073100"))
+			 (start "2016090100")
+			 (end "2016093000"))
 
   "Runs article names from one file - `INPUT-FILE', and outputs aticle
 name and total number of views in a tab-separated file `OUTPUT-FILE'."
@@ -164,15 +164,25 @@ name and total number of views in a tab-separated file `OUTPUT-FILE'."
 	       for (name visits-str) = (split-sequence:split-sequence #\Tab line)
 	       collect `(,name ,(parse-integer visits-str))))
 
-	   ;; ORDER
+	   ;; ORDER: sort breaks all-articles
 	   (sorted-articles (sort all-articles #'> :key #'second))
 	   ;; LIMIT
-	   (top-articles (subseq sorted-articles 0 limit)))
+	   (top-articles  (subseq sorted-articles 0 limit))
+
+	   ;; TOTALS
+	   (total-views (reduce #'+ sorted-articles :key #'second :initial-value 0))
+	   (top-views (reduce #'+ top-articles :key #'second :initial-value 0)))
 
       ;; REPORT
-      (format t "{|~%! Стаття || Кількість переглядів~%|-~%")
+      (format t "На момент аналізу проект мав ~a статей, які були переглянуті ~,,' ,:D раз. Перелічені нижче Топ-100 статей були переглянуті в сумі ~,,' ,:D раз, що складає ~a% від переглядів всіх статей проекту.~%~%"
+	      (length sorted-articles)
+	      total-views
+	      top-views
+	      (round (* (/ top-views total-views) 100)))
+      (format t "{|~%! Рейтинг || Стаття || Кількість переглядів~%|-~%")
       (loop for (article-name article-views) in top-articles
-	 do (format t "| [[~a]]~1,64T || ~a ~%|-~%" article-name article-views))
+	   for num from 1 upto 100
+	 do (format t "| ~a || [[~a]]~1,64T || ~a ~%|-~%" num article-name article-views))
       (format t "|}"))))
 
 ;; EOF
