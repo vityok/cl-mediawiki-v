@@ -9,6 +9,7 @@
 (ql:quickload :external-program)
 (ql:quickload :cl-string-match)
 (ql:quickload :split-sequence)
+(ql:quickload :alexandria)
 
 ;; --------------------------------------------------------
 
@@ -89,19 +90,22 @@
 				     :direction :input)
 	       ;; (setf (flexi-streams:flexi-stream-external-format stream) :utf-8)
 	       (let ((json (cl-json:decode-json stream)))
+		 (when (and (listp json)
+			    (listp (assoc :type json))
+			    (listp (cdar json)))
+		   (unless 
+		       (string= (cdr (assoc :type json))
+				"https://restbase.org/errors/query_error")
+		     (let ((items (cdar json)))
+		       (loop :for item :in items
+			  :sum (cdr (find :views item :key #'car))))))))))
 
-		 (unless (string= (cdr (assoc :type json))
-				  "https://restbase.org/errors/query_error")
-		   (let ((items (cdar json)))
-		     (loop :for item :in items
-			:sum (cdr (find :views item :key #'car)))))))))
-
-      (loop for i from 0 to attempts
-	 for views = (attempt)
-	 when views return views
-	 do (progn
-	      (format t "doing another attempt~%")
-	      (sleep 15))))))
+      (loop :for i :from 0 :to attempts
+	 :for views = (attempt)
+	 :when views :return views
+	 :do (progn
+	       (format t "doing another attempt~%")
+	       (sleep 15))))))
 
 ;; --------------------------------------------------------
 
@@ -159,10 +163,12 @@ name and total number of views in a tab-separated file `OUTPUT-FILE'."
 		      :direction :input)
     (let* ( ;; SELECT
 	   (all-articles
-	    (loop for line = (read-line in nil)
-	       while line
-	       for (name visits-str) = (split-sequence:split-sequence #\Tab line)
-	       collect `(,name ,(parse-integer visits-str))))
+	    (loop :for line = (read-line in nil)
+	       :while line
+	       :for (name visits-str) = (split-sequence:split-sequence #\Tab line)
+	       :for visits = (parse-integer visits-str :junk-allowed T)
+	       :when visits
+	       :collect `(,name ,visits)))
 
 	   ;; ORDER: sort breaks all-articles
 	   (sorted-articles (sort all-articles #'> :key #'second))
