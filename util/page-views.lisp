@@ -66,52 +66,63 @@
 
 ;; http://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/de.wikipedia/all-access/user/Johann_Wolfgang_von_Goethe/daily/2015101300/2015102700
 
+(defun get-query-url (project article start end)
+  (format nil
+	  "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/~a/all-access/user/~a/daily/~a/~a"
+	  project
+	  (drakma:url-encode (substitute #\_ #\Space article) :utf-8)
+	  start
+	  end))
+
+;; --------------------------------------------------------
+
+(defun attempt-article-page-views (project article start end)
+  (let ((url (get-query-url project article start end))
+	(metrics-tmp "metrics_tmp.json"))
+    (format t "url: ~a~%" url)
+
+    (external-program:run "/usr/bin/curl"
+			  (list url "-o" metrics-tmp))
+
+    ;; (drakma:http-request url :want-stream t)
+    (with-open-file (stream metrics-tmp
+			    :direction :input)
+      ;; (setf (flexi-streams:flexi-stream-external-format stream) :utf-8)
+      (let ((json (cl-json:decode-json stream)))
+	(when (and (listp json)
+		   (listp (assoc :type json))
+		   (listp (cdar json)))
+	  (unless 
+	      (string= (cdr (assoc :type json))
+		       "https://restbase.org/errors/query_error")
+	    (let ((items (cdar json)))
+	      (loop :for item :in items
+		 :sum (cdr (find :views item :key #'car))))))))))
+
+;; --------------------------------------------------------
+
 (defun get-article-page-views (article &key
 					 (project "uk.wikipedia")
 					 (start)
 					 (end)
 					 (attempts 3))
-
-  (let ((url (format nil
-		     "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/~a/all-access/user/~a/daily/~a/~a"
-		     project
-		     (drakma:url-encode (substitute #\_ #\Space article) :utf-8)
-		     start
-		     end))
-	(metrics-tmp "metrics_tmp.json"))
-    (format t "url: ~a~%" url)
-
-    (flet ((attempt ()
-	     (external-program:run "/usr/bin/curl"
-				   (list url "-o" metrics-tmp))
-
-	     ;; (drakma:http-request url :want-stream t)
-	     (with-open-file (stream metrics-tmp
-				     :direction :input)
-	       ;; (setf (flexi-streams:flexi-stream-external-format stream) :utf-8)
-	       (let ((json (cl-json:decode-json stream)))
-		 (when (and (listp json)
-			    (listp (assoc :type json))
-			    (listp (cdar json)))
-		   (unless 
-		       (string= (cdr (assoc :type json))
-				"https://restbase.org/errors/query_error")
-		     (let ((items (cdar json)))
-		       (loop :for item :in items
-			  :sum (cdr (find :views item :key #'car))))))))))
-
-      (loop :for i :from 0 :to attempts
-	 :for views = (attempt)
-	 :when views :return views
-	 :do (progn
-	       (format t "doing another attempt~%")
-	       (sleep 15))))))
+ 
+  (loop :for i :from 0 :to attempts
+     :for views = (attempt-article-page-views project article start end)
+     :when views :return views
+     :do 
+     (progn
+       (format t "doing another attempt~%")
+       (sleep 15))
+     :finally
+     (progn
+       (format t "failed to get information for: [[~a]]~%" article))))
 
 ;; --------------------------------------------------------
 
 (defun run-page-views (&key
-			 (start "2016090100")
-			 (end "2016093000"))
+			 (start "2016120100")
+			 (end "2017010100"))
 
   "Runs article names from one file - `INPUT-FILE', and outputs aticle
 name and total number of views in a tab-separated file `OUTPUT-FILE'."
