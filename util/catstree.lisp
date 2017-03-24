@@ -3,19 +3,15 @@
 
 ;; http://en.wikipedia.org/wiki/List_of_mathematics_categories
 
-;; see
+(in-package :cl-mediawiki-util)
 
-(ql:quickload :cl-ppcre)
-(ql:quickload :log5)
-(ql:quickload :alexandria)
+;; --------------------------------------------------------
 
 (log5:defcategory :debug)
 (log5:start-sender 'warnings-and-worse
  		   (log5:stream-sender :location *standard-output*)
  		   :category-spec '(log5:dribble+)
  		   :output-spec '(log5:time log5:message log5:context))
-
-(ql:quickload :cl-mediawiki)
 
 ;; --------------------------------------------------------
 
@@ -148,7 +144,7 @@ namespace."
 
 ;; --------------------------------------------------------
 
-(defun start-walk-tree ()
+(defun start-walking-categories-tree ()
   (setf *categories-list* '())
   (walk-tree))
 
@@ -159,7 +155,7 @@ namespace."
 
 ;; --------------------------------------------------------
 
-(defun gen-page ()
+(defun gen-catstree-page ()
   (let ((categories-list (load-list
 			  *categories-file-name*)) ; all categories we
 					; know about

@@ -4,12 +4,7 @@
 ;;
 ;; See further documentation for the RUN function
 
-(ql:quickload :drakma)
-(ql:quickload :cl-json)
-(ql:quickload :external-program)
-(ql:quickload :cl-string-match)
-(ql:quickload :split-sequence)
-(ql:quickload :alexandria)
+(in-package :cl-mediawiki-util)
 
 ;; --------------------------------------------------------
 
@@ -92,7 +87,7 @@
 	(when (and (listp json)
 		   (listp (assoc :type json))
 		   (listp (cdar json)))
-	  (unless 
+	  (unless
 	      (string= (cdr (assoc :type json))
 		       "https://restbase.org/errors/query_error")
 	    (let ((items (cdar json)))
@@ -106,11 +101,11 @@
 					 (start)
 					 (end)
 					 (attempts 3))
- 
+
   (loop :for i :from 0 :to attempts
      :for views = (attempt-article-page-views project article start end)
      :when views :return views
-     :do 
+     :do
      (progn
        (format t "doing another attempt~%")
        (sleep 15))
@@ -122,7 +117,8 @@
 
 (defun run-page-views (&key
 			 (start "2016120100")
-			 (end "2017010100"))
+			 (end "2017010100")
+                         (articles-file *default-file*))
 
   "Runs article names from one file - `INPUT-FILE', and outputs aticle
 name and total number of views in a tab-separated file `OUTPUT-FILE'."
@@ -144,12 +140,12 @@ name and total number of views in a tab-separated file `OUTPUT-FILE'."
 
   ;; http://stackoverflow.com/questions/26065872/how-to-import-a-tsv-file-with-sqlite3
 
+  ;; Another is to call REPORT-PAGE-VIEWS function
 
-  (let ((input-file "category-contents.txt")
-	(output-file *views-file*)
+  (let ((output-file *views-file*)
 	(article-no 1))
 
-    (with-open-file (in input-file :direction :input)
+    (with-open-file (in articles-file :direction :input)
       (with-open-file (out output-file :direction :output :if-exists :supersede)
 	(loop for article = (read-line in nil)
 	   while article do
@@ -184,7 +180,11 @@ name and total number of views in a tab-separated file `OUTPUT-FILE'."
 	   ;; ORDER: sort breaks all-articles
 	   (sorted-articles (sort all-articles #'> :key #'second))
 	   ;; LIMIT
-	   (top-articles  (subseq sorted-articles 0 limit))
+	   (top-articles  (subseq sorted-articles 0
+                                  ;; in case if there are less
+                                  ;; articles than the limit
+                                  (min limit
+                                       (length sorted-articles))))
 
 	   ;; TOTALS
 	   (total-views (reduce #'+ sorted-articles :key #'second :initial-value 0))
@@ -198,7 +198,7 @@ name and total number of views in a tab-separated file `OUTPUT-FILE'."
 	      (round (* (/ top-views total-views) 100)))
       (format t "{|~%! Рейтинг || Стаття || Кількість переглядів~%|-~%")
       (loop for (article-name article-views) in top-articles
-	   for num from 1 upto 100
+	   for num from 1 upto (length top-articles)
 	 do (format t "| ~a || [[~a]]~1,64T || ~a ~%|-~%" num article-name article-views))
       (format t "|}"))))
 

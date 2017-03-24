@@ -27,9 +27,7 @@
 ;; - List of categories to process specified in the file with
 ;; *CATEGORIES-FILE-NAME* name
 
-(ql:quickload :alexandria)
-(ql:quickload :cl-tokyo-cabinet)
-(ql:quickload :cl-mediawiki)
+(in-package :cl-mediawiki-util)
 
 ;; --------------------------------------------------------
 

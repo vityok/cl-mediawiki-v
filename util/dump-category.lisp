@@ -1,7 +1,7 @@
 ;;; Dumps category contents and optionally conducts namespace
 ;;; translation of the listed articles
 
-(ql:quickload :cl-mediawiki)
+(in-package :cl-mediawiki-util)
 
 ;; --------------------------------------------------------
 
