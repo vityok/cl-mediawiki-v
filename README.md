@@ -1,6 +1,6 @@
 `cl-mediawiki-v` is a client-side API to access Wiki servers built on MediaWiki engine. Basically it lets to develop bots for Wikipedia/Wikimedia projects.
 
-This is a fork of the [cl-mediawiki](https://github.com/AccelerationNet/cl-mediawiki) library developed by AccelerationNet. This fork, unlike original, uses Json as the data exchange format with the server.
+This is a fork of the [cl-mediawiki](https://github.com/AccelerationNet/cl-mediawiki) library developed by AccelerationNet. This fork, unlike the original, uses JSON as the data exchange format with the server.
 
 The `util` directory has some basic tools developed with this library:
 
@@ -11,6 +11,13 @@ The `util` directory has some basic tools developed with this library:
   of articles in these directories and produces a list of missing
   (red) links. Then it sorts them based on the popularity and prints a
   wiki table. Something like a missing topics tool.
+
+* `page-views.lisp` together with `dump-category.lisp` can be used to
+  create a 'Top 100' list by the number of user views in a given
+  category (like articles belonging to a certain Wiki project).
+
+Utils in this category are collected together in the
+`cl-mediawiki-util` package (nicknamed `mw-util`).
 
 ## Usage
 
@@ -24,7 +31,7 @@ Use `with-mediawiki` macro to initialize the wiki client API instance:
       ;; put your code here
     )
 
-Currently we provide following functions:
+Currently following functions are provided (please check corresponding sources for up-to-date information):
 
 *Query*
 

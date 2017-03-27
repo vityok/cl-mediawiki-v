@@ -19,7 +19,7 @@
 
 
 (defpackage :cl-mediawiki-util
-  (:use :common-lisp )
+  (:use :common-lisp :iterate)
   (:nicknames :mw-util)
   (:export
    #:gen-catstree-page
@@ -27,5 +27,6 @@
    #:dump-category-to-file
 
    #:run-page-views
-   #:report-page-views
-   ))
+   #:report-page-views))
+
+;; EOF

@@ -41,6 +41,7 @@
                  :drakma :cl-ppcre :cl-json
                  :log5 :alexandria :cl-tokyo-cabinet
                  :external-program :cl-string-match
-                 :split-sequence))
+                 :split-sequence :parse-float
+                 :iterate))
 
 ;; EOF
