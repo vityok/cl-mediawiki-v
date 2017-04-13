@@ -245,7 +245,16 @@ Call `REPORT-PAGE-VIEWS' to get the summary table."
 	      total-views
 	      top-views
 	      (round (* (/ top-views total-views) 100)))
-      (format t "{|~%! Рейтинг || Стаття || Кількість переглядів || min || max || Медіана~%|-~%")
+      (format t "{|
+! rowspan=2 | Рейтинг
+! rowspan=2 | Стаття
+! colspan=4 | Кількість переглядів
+|-
+! Всього
+! мін
+! макс
+! Медіана
+|-~%")
       (loop for (article-name sum-views min-views max-views med-views) in top-articles
          for num from 1 upto (length top-articles)
 	 do (format t "| ~a || [[~a]]~1,64T || ~a || ~a || ~a || ~a~%|-~%"
