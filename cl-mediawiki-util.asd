@@ -44,4 +44,6 @@
                  :split-sequence :parse-float
                  :iterate))
 
+;; To start using mediawiki utils:
+;; (ql:quickload :cl-mediawiki-util) (in-package :cl-mediawiki-util)
 ;; EOF

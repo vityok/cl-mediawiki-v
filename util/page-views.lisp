@@ -3,6 +3,9 @@
 ;; See API documentation at: https://wikitech.wikimedia.org/wiki/Analytics/PageviewAPI
 ;;
 ;; See further documentation for the RUN-PAGE-VIEWS function
+;;
+;; TODO: Current approach doesn't take into account Redirects, only
+;; direct hits at the article are included in the rating
 
 (in-package :cl-mediawiki-util)
 
@@ -166,43 +169,27 @@ In order to obtain articles for a given category use
 
 Call `REPORT-PAGE-VIEWS' to get the summary table."
 
-  ;; One way to post-process data is to use SQLite:
-
-  ;; 1) Create a table and set TAB as a separator:
-
-  ;; sqlite> create table visits (name text, clicks int);
-  ;; sqlite> .mode tabs
-
-  ;; 2) Import data:
-
-  ;; sqlite> .import article-views.txt visits
-
-  ;; And the result is:
-
-  ;; sqlite> SELECT * FROM visits ORDER BY clicks DESC LIMIT 100;
-
-  ;; http://stackoverflow.com/questions/26065872/how-to-import-a-tsv-file-with-sqlite3
-
-  ;; Another is to call REPORT-PAGE-VIEWS function
-
   (let ((output-file *views-file*)
 	(article-no 1))
 
+    (format t "Downloading page views data for start:~a end:~a file:~a~%" start end articles-file)
     (with-open-file (in articles-file :direction :input)
       (with-open-file (out output-file :direction :output :if-exists :supersede)
 	(loop for article = (read-line in nil)
 	   while article do
-	     (when (sm:prefixed-with article *discussion-prefix*)
-	       (format t "~a " article-no)
-	       (let* ((article-name (subseq article (length *discussion-prefix*)))
-		      (article-views (get-article-page-views article-name :start start :end end)))
+	     
+             (format t "~a " article-no)
+             (let* ((article-name (if (sm:prefixed-with article *discussion-prefix*)
+                                      (subseq article (length *discussion-prefix*))
+                                      article))
+                    (article-views (get-article-page-views article-name :start start :end end)))
 
-		 (format out "~a~{	~a~}~%"
-			 article-name
-			 article-views)
-		 (force-output out)
-		 (incf article-no)
-		 (sleep 15))))))))
+               (format out "~a~{	~a~}~%"
+                       article-name
+                       article-views)
+               (force-output out)
+               (incf article-no)
+               (sleep 15)))))))
 
 ;; --------------------------------------------------------
 

@@ -30,6 +30,8 @@
 ;; --------------------------------------------------------
 
 (defun load-list (fn)
+  "Load a simple newline-separated list from the file with the given
+filename."
   (with-open-file (in fn :direction :input)
     (loop for line = (read-line in nil)
        while line
@@ -72,30 +74,30 @@ namespace."
 
 (defun get-subcats-titles (cat &key (ns 14))
   (cl-mediawiki:with-mediawiki ((make-instance 'cl-mediawiki:mediawiki
-				       :url "http://uk.wikipedia.org/w"
-				       :request-delay 10))
+                                               :url "http://uk.wikipedia.org/w"
+                                               :request-delay 10))
     (multiple-value-bind (js cont)
 	(cl-mediawiki:list-category-members cat :cmnamespace ns)
       (let ((res (map 'list
 		      #'(lambda (x) (get-value x :title))
 		      js)))
 	(loop (when (null cont) (return))
-	  (multiple-value-bind (njs ncont)
-	      (cl-mediawiki:list-category-members cat
-					  :cmnamespace ns
-					  :cmcontinue cont
-					  :cmlimit 500)
-	    (setf cont ncont)
-	    (format t "~&continue: ~A~%" cont)
-	    (format t "~&new items: ~A~%" (map 'list
-			       #'(lambda (x) (get-value x :title))
-			       njs))
-	    (format t "~&current res: ~A~%" res)
-	    (setf res
-		  (append res
-			  (map 'list
-			       #'(lambda (x) (get-value x :title))
-			       njs)))))
+           (multiple-value-bind (njs ncont)
+               (cl-mediawiki:list-category-members cat
+                                                   :cmnamespace ns
+                                                   :cmcontinue cont
+                                                   :cmlimit 500)
+             (setf cont ncont)
+             (format t "~&WALKER: continue: ~A~%" cont)
+             (format t "~&WALKER: new items: ~A~%" (map 'list
+                                                        #'(lambda (x) (get-value x :title))
+                                                        njs))
+             (format t "~&WALKER: current res: ~A~%" res)
+             (setf res
+                   (append res
+                           (map 'list
+                                #'(lambda (x) (get-value x :title))
+                                njs)))))
 	res))))
 ;; (get-subcats-titles "Категорія:Математика")
 
@@ -111,25 +113,30 @@ namespace."
 
 ;; --------------------------------------------------------
 
-(defun walk-tree (&optional
-		  (root-category *default-root-category*)
-		  (queue (get-subcats-titles root-category)))
+(defun walk-tree (&key
+                    (root-category *default-root-category*)
+                    (queue (get-subcats-titles root-category))
+                    (existing-values :append))
+  (format t "~&WALKER: root-category: ~a, queue contains ~a items~%"
+          root-category (length queue))
   (dump-queue queue)
   (setf *black-list* (load-list *black-list-file-name*))
   (loop for i = (pop queue)
      while i
      do (progn
-	  (format t "~&queue contains ~A items~%" (length queue))
-	  (format t "~&list contains ~A items~%" (length *categories-list*))
+	  (format t "~&WALKER: queue contains ~A items~%" (length queue))
+	  (format t "~&WALKER: list contains ~A items~%" (length *categories-list*))
 	  (unless (or (find i *black-list* :test #'string-equal)
 		      (find i *categories-list* :test #'string-equal))
-	    (format t "~&[[~A]] is a new item~%" i)
+	    (format t "~&WALKER: [[~A]] is a new item~%" i)
 	    (push i *categories-list*)
 	    (with-open-file (fout *categories-file-name*
 				  :direction :output
-				  :if-exists :append
+				  :if-exists existing-values
 				  :if-does-not-exist :create)
-	      (format fout "~A~%" i))
+	      (format fout "~A~%" i)
+              ;; don't erase previous item
+              (setf existing-values :append))
 	    (setf queue
 		  (append queue
 			  (get-subcats-titles i)))
@@ -140,13 +147,25 @@ namespace."
 (defun continue-walk-tree ()
   (let ((queue (load-list *queue-file-name*)))
     (setf *categories-list* (load-list *categories-file-name*))
-    (walk-tree nil queue)))
+    (walk-tree :root-category nil :queue queue)))
 
 ;; --------------------------------------------------------
 
-(defun start-walking-categories-tree ()
-  (setf *categories-list* '())
-  (walk-tree))
+(defun start-walking-categories-tree (root-category)
+  "Entry point into walking the categories tree.
+
+Given the `ROOT-CATEGORY' starts traversal of the underlying
+categories with the `WALK-TREE' function.
+
+This function is created to guarantee that all intermediate variables
+and settings are reset to their default values so that the traversal
+would have a clean start."
+
+  (let ((*categories-list* '())
+        (*black-list* '())
+        (*default-root-category* root-category))
+
+    (walk-tree :existing-values :supersede)))
 
 ;; --------------------------------------------------------
 

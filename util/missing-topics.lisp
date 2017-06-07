@@ -248,4 +248,35 @@ these categories contain."
 		   (substitute #\Space #\_ (first line) :test #'char=)))
       (format out "|}"))))
 
+;; --------------------------------------------------------
+
+(defun project-missing-articles (&key
+                                   (enlisted-fn "category-contents.txt")
+                                   (candidates-fn "firearm-stubs.txt")
+                                   (raw T))
+  "This function might be useful for looking up articles missing from
+a given Wiki project.
+
+The `enlisted-fn' contains a simple list of articles that are already
+enlisted to the project.
+
+The `candidates-fn' lists articles that should also belong to that
+project.
+
+This function will subtract one from another and produce a list of
+articles that should belong, but do not yet belong to the project."
+
+  (let* ((enlisted (load-list enlisted-fn))
+         (candidates (load-list candidates-fn))
+         (missing (remove-duplicates
+                   (remove-if #'(lambda (c)
+                                  (position c enlisted :test #'string=))
+                              candidates)
+                   :test #'string=)))
+    (if raw
+        missing
+        (map 'list #'(lambda (m)
+                       (concatenate 'string "[[Обговорення:" m "]]{{Edit|Обговорення:" m "}}"))
+             missing))))
+
 ;; EOF

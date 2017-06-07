@@ -21,13 +21,16 @@
 
 ;; --------------------------------------------------------
 
-(defmacro define-proxy (name &key core req based-on props doc (processor 'identity) (method :GET))
+(defmacro define-proxy (name &key core req based-on props doc
+                               (processor 'identity)
+                               (method :GET))
   "Defines a function with NAME with REQ required parameters. The
 symbols in the BASED-ON and PROPS lists are concatenated with pairs
 from the CORE list and passed to the MAKE-PARAMETERS function."
 
   (let ((par-sym (gensym)))
-    `(defun ,name (,@req &key ,@props ,@based-on) ,(if doc doc "no documentation given")
+    `(defun ,name (,@req &key ,@props ,@based-on)
+       ,(if doc doc "no documentation given")
        (let ((,par-sym (make-parameters
 			(list ,@(mapcar #'(lambda (x) (if (listp x)
 							  `(list ',(car x) ',(cadr x))))
@@ -36,7 +39,7 @@ from the CORE list and passed to the MAKE-PARAMETERS function."
 							  `(list ',(car x) ,(car x))
 							  `(list ',x ,x)))
 					(concatenate 'list req props based-on ))))))
-	 ;(print ,par-sym)
+                                        ;(print ,par-sym)
 	 (funcall #',processor
 		  (parse-api-response (make-api-request ,par-sym :method ,method)))))))
 
@@ -210,6 +213,63 @@ Parameters:
  Examples: (get-page-content \"Physics\")
 
  Returns: a string with the given page content ")
+
+;; --------------------------------------------------------
+
+(define-proxy get-page-categories
+    :core ((action query)
+	   (prop categories)
+	   )
+    :req (titles)
+    :props (rvsection)
+    :processor
+    (lambda (resp)
+      (values-list (list
+		    (get-value resp :query :pages #'first #'cdr :revisions #'first :*)
+		    (get-value resp :query :pages #'first #'cdr :revisions #'first :timestamp)
+		    )))
+    :doc
+    "List all categories the pages belong to.
+
+    https://www.mediawiki.org/wiki/API:Categories
+    https://en.wikipedia.org/w/api.php?action=help&modules=query%2Bcategories
+
+Parameters:
+
+clprop
+    Which additional properties to get for each category:
+
+    sortkey
+        Adds the sortkey (hexadecimal string) and sortkey prefix (human-readable part) for the category.
+    timestamp
+        Adds timestamp of when the category was added.
+    hidden
+        Tags categories that are hidden with __HIDDENCAT__.
+
+    Values (separate with | or alternative): sortkey, timestamp, hidden
+
+clshow
+    Which kind of categories to show.
+    Values (separate with | or alternative): hidden, !hidden
+
+cllimit
+    How many categories to return.
+    No more than 500 (5,000 for bots) allowed.
+    Type: integer or max
+    Default: 10
+
+clcontinue
+    When more results are available, use this to continue.
+
+clcategories
+    Only list these categories. Useful for checking whether a certain page is in a certain category.
+    Separate values with | or alternative. Maximum number of values is 50 (500 for bots).
+
+cldir
+    The direction in which to list.
+    One of the following values: ascending, descending
+    Default: ascending "
+    )
 
 ;; --------------------------------------------------------
 
