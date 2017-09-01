@@ -7,6 +7,32 @@
 ;; TODO: Current approach doesn't take into account Redirects, only
 ;; direct hits at the article are included in the rating
 
+;; Original Web UI uses the following request to the Wikipedia server
+;; to obtain the list of redirects for a given article:
+
+;; /**
+;;   * Get all redirects of a page
+;;   * @param  {String} pageName - name of page we want to get data about
+;;   * @return {Deferred} - Promise resolving with redirect data
+;;   */
+;;  getRedirects(pageName) {
+;;    const dfd = $.Deferred();
+;;
+;;    const promise = $.ajax({
+;;      url: `https://${this.project}.org/w/api.php`,
+;;      jsonp: 'callback',
+;;      dataType: 'jsonp',
+;;      data: {
+;;        action: 'query',
+;;        format: 'json',
+;;        formatversion: 2,
+;;        prop: 'redirects',
+;;        rdprop: 'title|fragment',
+;;        rdlimit: 500,
+;;        titles: pageName
+;;      }
+;; });
+
 (in-package :cl-mediawiki-util)
 
 ;; --------------------------------------------------------
@@ -177,7 +203,7 @@ Call `REPORT-PAGE-VIEWS' to get the summary table."
       (with-open-file (out output-file :direction :output :if-exists :supersede)
 	(loop for article = (read-line in nil)
 	   while article do
-	     
+
              (format t "~a " article-no)
              (let* ((article-name (if (sm:prefixed-with article *discussion-prefix*)
                                       (subseq article (length *discussion-prefix*))
