@@ -219,59 +219,113 @@ Call `REPORT-PAGE-VIEWS' to get the summary table."
 
 ;; --------------------------------------------------------
 
-(defun report-page-views (&key (limit 100))
+(defparameter *page-classes-presentation*
+  '(("невідомого рівня" "N/A")
+    ("Списки" "'''С'''")
+    ("IV рівня" "'''IV'''")
+    ("III рівня" "'''III'''")
+    ("II рівня" "'''II'''")
+    ("I рівня" "'''I'''")
+    ("Добрі статті" "[[File:Dobra6.png|15px|alt=Добра стаття]]")
+    ("Вибрані списки" "[[File:Feat lists.svg|15px|alt=Вибраний список]]")
+    ("Вибрані статті" "[[File:FA gold ukr.png|15px|alt=Вибрана стаття]]"))
+  "Patterns to be used to detect page classes in order from the
+lowest-quality class to the highest-quality class.
+
+First are the 'no' or 'low' quality, and the last comes the 'best'
+quality assessment classes.
+
+Second item in the list is Wiki markup used to represent this class.")
+
+;; --------------------------------------------------------
+
+(defun get-page-class-presentation (title)
+  "Query class of the page with the given title and return its Wiki markup representation.
+"
+  ;; todo: page categories API query is capable of handling multiple
+  ;; titles at a time, but this requires additional handling and
+  ;; sorting out of the query results. Would be nice to have it
+  ;; integrated
+  (let ((raw-categories (wiki:get-value
+                         (wiki:get-page-categories title)
+                         #'cdar :categories)))
+    ;; todo: very likely this code blob can be rewritten into a more
+    ;; robust and concise style. It extracts category titles from
+    ;; the Cons tree returned by the query function and then tries
+    ;; to find page class Id in the title.
+    (loop :for raw-category :in raw-categories
+       :for category-title = (cdr (find :title raw-category :key #'car))
+       :thereis
+       (loop :for present :in *page-classes-presentation*
+          :when (sm:string-contains-brute (car present) category-title)
+          :return (second present)))))
+
+;; --------------------------------------------------------
+
+(defun report-page-views (&key (limit 100) (show-class NIL))
   "Create a wiki table listing top articles based on data produced by
 `RUN-PAGE-VIEWS'."
 
   (with-open-file (in *views-file*
 		      :direction :input)
-    (let* ( ;; SELECT
-	   (all-articles
-	    (iter
-              (for line = (read-line in nil))
-              (while line)
-              (for (name sum-str min-str max-str med-str) = (split-sequence:split-sequence #\Tab line))
-              (when sum-str
-                (for sum-val = (parse-integer sum-str))
-                (for min-val = (parse-integer min-str))
-                (for max-val = (parse-integer max-str))
-                (for med-val = (parse-float:parse-float med-str))
-                (when sum-val
-                  (collect `(,name ,sum-val ,min-val ,max-val ,med-val))))))
+    (with-output-to-string (out)
+      (wiki:with-mediawiki ((make-instance 'cl-mediawiki:mediawiki
+                                           :url *api-url*
+                                           :request-delay 10))
 
-	   ;; ORDER: sort breaks all-articles
-	   (sorted-articles (sort all-articles #'> :key #'second))
-	   ;; LIMIT
-	   (top-articles  (subseq sorted-articles 0
-                                  ;; in case if there are less
-                                  ;; articles than the limit
-                                  (min limit
-                                       (length sorted-articles))))
+        (let* ( ;; SELECT
+               (all-articles
+                (iter
+                  (for line = (read-line in nil))
+                  (while line)
+                  (for (name sum-str min-str max-str med-str) = (split-sequence:split-sequence #\Tab line))
+                  (when sum-str
+                    (for sum-val = (parse-integer sum-str))
+                    (for min-val = (parse-integer min-str))
+                    (for max-val = (parse-integer max-str))
+                    (for med-val = (parse-float:parse-float med-str))
+                    (when sum-val
+                      (collect `(,name ,sum-val ,min-val ,max-val ,med-val))))))
 
-	   ;; TOTALS
-	   (total-views (reduce #'+ sorted-articles :key #'second :initial-value 0))
-	   (top-views (reduce #'+ top-articles :key #'second :initial-value 0)))
+               ;; ORDER: sort breaks all-articles
+               (sorted-articles (sort all-articles #'> :key #'second))
+               ;; LIMIT
+               (top-articles  (subseq sorted-articles 0
+                                      ;; in case if there are less
+                                      ;; articles than the limit
+                                      (min limit
+                                           (length sorted-articles))))
 
-      ;; REPORT
-      (format t "На момент аналізу проект мав ~a статей, які були переглянуті {{formatnum:~D}} раз. Перелічені нижче Топ-100 статей були переглянуті в сумі {{formatnum:~D}} раз, що складає ~a% від переглядів всіх статей проекту.~%~%"
-	      (length sorted-articles)
-	      total-views
-	      top-views
-	      (round (* (/ top-views total-views) 100)))
-      (format t "{|
+               ;; TOTALS
+               (total-views (reduce #'+ sorted-articles :key #'second :initial-value 0))
+               (top-views (reduce #'+ top-articles :key #'second :initial-value 0)))
+
+          ;; REPORT
+          (format out "На момент аналізу проект мав ~a статей, які були переглянуті {{formatnum:~D}} раз. Перелічені нижче Топ-100 статей були переглянуті в сумі {{formatnum:~D}} раз, що складає ~a% від переглядів всіх статей проекту.~%~%"
+                  (length sorted-articles)
+                  total-views
+                  top-views
+                  (round (* (/ top-views total-views) 100)))
+          (format out "{|
 ! rowspan=2 | Рейтинг
+! rowspan=2 | Рівень
 ! rowspan=2 | Стаття
 ! colspan=4 | Кількість переглядів
 |-
 ! Всього
-! мін
-! макс
+! Мін
+! Макс
 ! Медіана
 |-~%")
-      (loop for (article-name sum-views min-views max-views med-views) in top-articles
-         for num from 1 upto (length top-articles)
-	 do (format t "| ~a || [[~a]]~1,64T || ~a || ~a || ~a || ~a~%|-~%"
-                    num article-name sum-views min-views max-views (round med-views)))
-      (format t "|}"))))
+          (loop for (article-name sum-views min-views max-views med-views) in top-articles
+             for num from 1 upto (length top-articles)
+             do (format out "| ~a || ~a || [[~a]]~1,64T || ~a || ~a || ~a || ~a~%|-~%"
+                        num
+                        (if show-class
+                            (get-page-class-presentation (concatenate 'string *discussion-prefix* article-name))
+                            "")
+                        article-name sum-views min-views max-views (round med-views)))
+          (format out "|}")))
+      out)))
 
 ;; EOF

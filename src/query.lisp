@@ -218,16 +218,14 @@ Parameters:
 
 (define-proxy get-page-categories
     :core ((action query)
-	   (prop categories)
-	   )
+	   (prop categories))
     :req (titles)
     :props (rvsection)
     :processor
     (lambda (resp)
       (values-list (list
-		    (get-value resp :query :pages #'first #'cdr :revisions #'first :*)
-		    (get-value resp :query :pages #'first #'cdr :revisions #'first :timestamp)
-		    )))
+		    (get-value resp :query :pages)
+		    (get-value resp :continue :clcontinue))))
     :doc
     "List all categories the pages belong to.
 
@@ -270,6 +268,7 @@ cldir
     One of the following values: ascending, descending
     Default: ascending "
     )
+(export 'get-page-categories)
 
 ;; --------------------------------------------------------
 

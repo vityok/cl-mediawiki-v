@@ -1,6 +1,5 @@
 Various utilities to work with Wikipedia
 
-
 * `dump-category.lisp` Dumps category contents using MediaWiki API
 
 * `missing-topics.lisp` Given a list of categories query all articles

@@ -2,6 +2,8 @@
 ;; output a list of all subcategories
 
 ;; http://en.wikipedia.org/wiki/List_of_mathematics_categories
+;;
+;; Entry point: START-WALKING-CATEGORIES-TREE
 
 (in-package :cl-mediawiki-util)
 
