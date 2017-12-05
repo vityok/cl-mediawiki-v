@@ -38,10 +38,18 @@
 ;; --------------------------------------------------------
 
 (defparameter *api-root* "http://wikimedia.org/api/rest_v1")
+
 (defparameter *discussion-prefix* "Обговорення:"
   "A prefix used to name discussion articles/pages.")
+
+(defparameter *category-prefix* "Категорія:")
+
 (defparameter *views-file* "article-views.txt"
   "File where raw numbers are stored")
+
+(defparameter *page-views-query-interval* 5
+  "Time in seconds to wait between consequtive requests to the server
+  while in the `RUN-PAGE-VIEWS'.")
 
 ;; --------------------------------------------------------
 
@@ -119,47 +127,61 @@ the URL for querying daily views."
 
 (defun attempt-article-page-views (project article start end)
   "Actually sends HTTP request, parses JSON response and calculates
-the total views, minimum, maximum and median views per day in a list."
+the total views, minimum, maximum and median views per day in a list.
 
-  (let ((url (get-query-url project article start end))
-	(metrics-tmp "metrics_tmp.json"))
+Returns NIL when failed to retrieve data for any reason."
+
+  (let* ((url (get-query-url project article start end))
+         (metrics-tmp (format nil "metrics_tmp_~a.json" (random most-positive-fixnum)))
+
+         (result))
+
     (format t "url: ~a~%" url)
 
-    (external-program:run "/usr/bin/curl"
-			  (list url "-o" metrics-tmp))
+    ;; TODO: there has been a problem accessing this server with
+    ;; DRAKMA, investigate why
 
     ;; (drakma:http-request url :want-stream t)
-    (with-open-file (stream metrics-tmp
-			    :direction :input)
-      ;; (setf (flexi-streams:flexi-stream-external-format stream) :utf-8)
-      (let ((json (cl-json:decode-json stream)))
-	(when (listp json)
-	  (cond
-            ((string= (cdr (assoc :type json))
-                      "https://restbase.org/errors/query_error")
-             (error "Query error, check the metrics_tmp.json file for clues"))
+    (multiple-value-bind (status code)
+        (external-program:run "/usr/bin/curl"
+                              (list url "-o" metrics-tmp))
 
-            ((string= (cdr (assoc :type json))
-                      "https://restbase.org/errors/not_found")
-             ;; very likely this article didn't exist yet in the
-             ;; specified time period, just report as no views at all
-             (list 0
-                   0
-                   0
-                   0.0))
+      (when (and (eql status :exited)
+                 (= code 0))
+        (with-open-file (stream metrics-tmp
+                                :direction :input)
+          ;; (setf (flexi-streams:flexi-stream-external-format stream) :utf-8)
+          (let ((json (cl-json:decode-json stream)))
+            (when (listp json)
+              (setf result
+                    (cond
+                      ((or (string= (cdr (assoc :type json))
+                                    "https://restbase.org/errors/query_error")
+                           (string= (cdr (assoc :type json))
+                                    "https://mediawiki.org/wiki/HyperSwitch/errors/not_found"))
+                       (format t "Query error for article {~a}" article)
+                       nil)
 
-            (t
-             ;; article data is present, do the math
-             (let* ((items (cdar json))
-                    (daily-views (map 'list
-                                      #'(lambda (item)
-                                          (cdr (find :views item :key #'car)))
-                                      items)))
-               ;; collect and then calculate sum and median
-               (list (reduce #'+ daily-views)
-                     (apply #'min daily-views)
-                     (apply #'max daily-views)
-                     (float (alexandria:median daily-views)))))))))))
+                      ((string= (cdr (assoc :type json))
+                                "https://restbase.org/errors/not_found")
+                       ;; very likely this article didn't exist yet in the
+                       ;; specified time period, just report as no views at all
+                       (list 0 0 0 0.0))
+
+                      (t
+                       ;; article data is present, do the math
+                       (let* ((items (cdar json))
+                              (daily-views (map 'list
+                                                #'(lambda (item)
+                                                    (cdr (find :views item :key #'car)))
+                                                items)))
+                         ;; collect and then calculate sum and median
+                         (list (reduce #'+ daily-views)
+                               (apply #'min daily-views)
+                               (apply #'max daily-views)
+                               (float (alexandria:median daily-views))))))))))))
+    (uiop:delete-file-if-exists metrics-tmp)
+    result))
 
 ;; --------------------------------------------------------
 
@@ -178,44 +200,50 @@ the total views, minimum, maximum and median views per day in a list."
        (sleep 15))
      :finally
      (progn
-       (format t "failed to get information for: [[~a]]~%" article))))
+       (format t "failed to get information for: [[~a]]~%" article)
+       (list 0 0 0 0.0))))
 
 ;; --------------------------------------------------------
 
 (defun run-page-views (&key
 			 (start (get-prev-month-start))
 			 (end (get-prev-month-end))
-                         (articles-file *default-file*))
+                         (articles-file *default-file*)
+                         (views-file *views-file*))
 
   "Runs article names from one file - `INPUT-FILE', and outputs aticle
-name and total number of views in a tab-separated file `OUTPUT-FILE'.
+name and total number of views in a tab-separated file `VIEWS-FILE'.
 
 In order to obtain articles for a given category use
 `DUMP-CATEGORY-TO-FILE' function.
 
 Call `REPORT-PAGE-VIEWS' to get the summary table."
 
-  (let ((output-file *views-file*)
-	(article-no 1))
+  (format t "Downloading page views data for start:~a end:~a file:~a~%" start end articles-file)
+  (with-open-file (in articles-file
+                      :direction :input)
+    (with-open-file (out views-file
+                         :direction :output
+                         :if-exists :supersede)
+      (iter
+        (with article-no = 1)
+        (for article = (read-line in nil))
+        (while article)
+        (format t "~a " article-no)
 
-    (format t "Downloading page views data for start:~a end:~a file:~a~%" start end articles-file)
-    (with-open-file (in articles-file :direction :input)
-      (with-open-file (out output-file :direction :output :if-exists :supersede)
-	(loop for article = (read-line in nil)
-	   while article do
+        ;; categories can be present, but ignore them
+        (unless (sm:prefixed-with article *category-prefix*)
+          (let* ((article-name (if (sm:prefixed-with article *discussion-prefix*)
+                                   (subseq article (length *discussion-prefix*))
+                                   article))
+                 (article-views (get-article-page-views article-name :start start :end end)))
 
-             (format t "~a " article-no)
-             (let* ((article-name (if (sm:prefixed-with article *discussion-prefix*)
-                                      (subseq article (length *discussion-prefix*))
-                                      article))
-                    (article-views (get-article-page-views article-name :start start :end end)))
-
-               (format out "~a~{	~a~}~%"
-                       article-name
-                       article-views)
-               (force-output out)
-               (incf article-no)
-               (sleep 15)))))))
+            (format out "~a~{	~a~}~%"
+                    article-name
+                    article-views)
+            (force-output out)
+            (incf article-no)
+            (sleep *page-views-query-interval*)))))))
 
 ;; --------------------------------------------------------
 
@@ -240,8 +268,9 @@ Second item in the list is Wiki markup used to represent this class.")
 ;; --------------------------------------------------------
 
 (defun get-page-class-presentation (title)
-  "Query class of the page with the given title and return its Wiki markup representation.
-"
+  "Query class (quality assessment level) of the page with the given
+TITLE and return its Wiki markup representation."
+
   ;; todo: page categories API query is capable of handling multiple
   ;; titles at a time, but this requires additional handling and
   ;; sorting out of the query results. Would be nice to have it
@@ -262,51 +291,87 @@ Second item in the list is Wiki markup used to represent this class.")
 
 ;; --------------------------------------------------------
 
-(defun report-page-views (&key (limit 100) (show-class NIL))
+(defparameter *months*
+  '((1 "січня")
+    (2 "лютого")
+    (3 "березня")
+    (4 "квітня")
+    (5 "травня")
+    (6 "червня")
+    (7 "липня")
+    (8 "серпня")
+    (9 "вересня")
+    (10 "жовтня")
+    (11 "листопада")
+    (12 "грудня")))
+
+;; --------------------------------------------------------
+
+(defun format-timestamp (ts)
+  (multiple-value-bind (second minute hour date month year day daylight-p zone)
+      (decode-universal-time ts)
+    (declare (ignore second minute hour day daylight-p zone))
+    (format nil "~a ~a ~a"
+            date
+            (second (find month *months* :key #'car :test #'=))
+            year)))
+
+;; --------------------------------------------------------
+
+(defun report-page-views (&key (limit 100)
+                            (show-class NIL)
+                            (views-file *views-file*)
+                            (out *standard-output*)
+                            (time-stamp (get-universal-time)))
   "Create a wiki table listing top articles based on data produced by
-`RUN-PAGE-VIEWS'."
+`RUN-PAGE-VIEWS'.
 
-  (with-open-file (in *views-file*
+VIEWS-FILE: file where RUN-PAGE-VIEWS output is stored.
+
+OUT: stream to ouput results to."
+
+  ;; TODO: use cl-locale to handle strings for text generation
+
+  (with-open-file (in views-file
 		      :direction :input)
-    (with-output-to-string (out)
-      (wiki:with-mediawiki ((make-instance 'cl-mediawiki:mediawiki
-                                           :url *api-url*
-                                           :request-delay 10))
+    (wiki:with-mediawiki ((make-instance 'cl-mediawiki:mediawiki
+                                         :url *api-url*
+                                         :request-delay 10))
+      (let* ( ;; SELECT
+             (all-articles
+              (iter
+                (for line = (read-line in nil))
+                (while line)
+                (for (name sum-str min-str max-str med-str) = (split-sequence:split-sequence #\Tab line))
+                (when sum-str
+                  (for sum-val = (parse-integer sum-str))
+                  (for min-val = (parse-integer min-str))
+                  (for max-val = (parse-integer max-str))
+                  (for med-val = (parse-float:parse-float med-str))
+                  (when sum-val
+                    (collect `(,name ,sum-val ,min-val ,max-val ,med-val))))))
 
-        (let* ( ;; SELECT
-               (all-articles
-                (iter
-                  (for line = (read-line in nil))
-                  (while line)
-                  (for (name sum-str min-str max-str med-str) = (split-sequence:split-sequence #\Tab line))
-                  (when sum-str
-                    (for sum-val = (parse-integer sum-str))
-                    (for min-val = (parse-integer min-str))
-                    (for max-val = (parse-integer max-str))
-                    (for med-val = (parse-float:parse-float med-str))
-                    (when sum-val
-                      (collect `(,name ,sum-val ,min-val ,max-val ,med-val))))))
+             ;; ORDER: sort breaks all-articles
+             (sorted-articles (sort all-articles #'> :key #'second))
+             ;; LIMIT
+             (top-articles  (subseq sorted-articles 0
+                                    ;; in case if there are less
+                                    ;; articles than the limit
+                                    (min limit
+                                         (length sorted-articles))))
 
-               ;; ORDER: sort breaks all-articles
-               (sorted-articles (sort all-articles #'> :key #'second))
-               ;; LIMIT
-               (top-articles  (subseq sorted-articles 0
-                                      ;; in case if there are less
-                                      ;; articles than the limit
-                                      (min limit
-                                           (length sorted-articles))))
+             ;; TOTALS
+             (total-views (reduce #'+ sorted-articles :key #'second :initial-value 0))
+             (top-views (reduce #'+ top-articles :key #'second :initial-value 0)))
 
-               ;; TOTALS
-               (total-views (reduce #'+ sorted-articles :key #'second :initial-value 0))
-               (top-views (reduce #'+ top-articles :key #'second :initial-value 0)))
-
-          ;; REPORT
-          (format out "На момент аналізу проект мав ~a статей, які були переглянуті {{formatnum:~D}} раз. Перелічені нижче Топ-100 статей були переглянуті в сумі {{formatnum:~D}} раз, що складає ~a% від переглядів всіх статей проекту.~%~%"
-                  (length sorted-articles)
-                  total-views
-                  top-views
-                  (round (* (/ top-views total-views) 100)))
-          (format out "{|
+        ;; REPORT
+        (format out "Станом на ~a проект мав ~a статей, які були переглянуті {{formatnum:~D}} раз. Перелічені нижче Топ-100 статей були переглянуті в сумі {{formatnum:~D}} раз, що складає ~a% від переглядів всіх статей проекту.~%~%"
+                (format-timestamp time-stamp)
+                (length sorted-articles)
+                total-views
+                top-views
+                (round (* (/ top-views total-views) 100)))
+        (format out "{|
 ! rowspan=2 | Рейтинг
 ! rowspan=2 | Рівень
 ! rowspan=2 | Стаття
@@ -317,15 +382,14 @@ Second item in the list is Wiki markup used to represent this class.")
 ! Макс
 ! Медіана
 |-~%")
-          (loop for (article-name sum-views min-views max-views med-views) in top-articles
-             for num from 1 upto (length top-articles)
-             do (format out "| ~a || ~a || [[~a]]~1,64T || ~a || ~a || ~a || ~a~%|-~%"
-                        num
-                        (if show-class
-                            (get-page-class-presentation (concatenate 'string *discussion-prefix* article-name))
-                            "")
-                        article-name sum-views min-views max-views (round med-views)))
-          (format out "|}")))
-      out)))
+        (loop :for (article-name sum-views min-views max-views med-views) in top-articles
+           :for num :from 1 :upto (length top-articles)
+           :do (format out "| ~a || ~a || [[~a]]~1,64T || ~a || ~a || ~a || ~a~%|-~%"
+                       num
+                       (if show-class
+                           (get-page-class-presentation (concatenate 'string *discussion-prefix* article-name))
+                           "")
+                       article-name sum-views min-views max-views (round med-views)))
+        (format out "|}")))))
 
 ;; EOF

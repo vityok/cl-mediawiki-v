@@ -11,3 +11,7 @@ Various utilities to work with Wikipedia
 * `page-views.lisp` Uses the [Wikimedia
   PageviewsAPI](https://wikitech.wikimedia.org/wiki/Analytics/PageviewAPI)
   to obtain information on the number of visitors to a page
+
+* `project-stats.lisp` Given a Wiki project name generates Top-100
+  table and a summary. It is basically a combination of dump category
+  contents and the page views functions.

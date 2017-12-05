@@ -29,21 +29,23 @@
 ;; --------------------------------------------------------
 
 (defsystem :cl-mediawiki-util
-    :description "Utilities implemented using mediawiki's api/cl-mediawiki."
-    :components ((:module :util
-                          :serial T
-                          :components ((:file "package")
-                                       (:file "catstree")
-                                       (:file "dump-category" )
-                                       (:file "missing-topics" )
-                                       (:file "page-views"))))
-    :depends-on (:cl-mediawiki
-                 :drakma :cl-ppcre :cl-json
-                 :log5 :alexandria :cl-tokyo-cabinet
-                 :external-program :cl-string-match
-                 :split-sequence :parse-float
-                 :iterate))
+  :description "Utilities implemented using mediawiki's api/cl-mediawiki."
+  :components ((:module :util
+                        :serial T
+                        :components ((:file "package")
+                                     (:file "catstree")
+                                     (:file "dump-category" )
+                                     (:file "missing-topics" )
+                                     (:file "page-views")
+                                     (:file "project-stats"))))
+  :depends-on (:cl-mediawiki
+               :drakma :cl-ppcre :cl-json
+               :log5 :alexandria :cl-tokyo-cabinet
+               :external-program :cl-string-match
+               :split-sequence :parse-float
+               :iterate :bordeaux-threads))
 
 ;; To start using mediawiki utils:
 ;; (ql:quickload :cl-mediawiki-util) (in-package :cl-mediawiki-util)
+
 ;; EOF
