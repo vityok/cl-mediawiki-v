@@ -136,7 +136,7 @@ Returns NIL when failed to retrieve data for any reason."
 
          (result))
 
-    (format t "url: ~a~%" url)
+    (log5:log-for trace "url: ~a" url)
 
     ;; TODO: there has been a problem accessing this server with
     ;; DRAKMA, investigate why
@@ -159,7 +159,7 @@ Returns NIL when failed to retrieve data for any reason."
                                     "https://restbase.org/errors/query_error")
                            (string= (cdr (assoc :type json))
                                     "https://mediawiki.org/wiki/HyperSwitch/errors/not_found"))
-                       (format t "Query error for article {~a}" article)
+                       (log5:log-for trace "Query error for article {~a}" article)
                        nil)
 
                       ((string= (cdr (assoc :type json))
@@ -189,18 +189,18 @@ Returns NIL when failed to retrieve data for any reason."
 					 (project "uk.wikipedia")
 					 (start)
 					 (end)
-					 (attempts 3))
+					 (attempts 5))
 
   (loop :for i :from 0 :to attempts
      :for views = (attempt-article-page-views project article start end)
      :when views :return views
      :do
      (progn
-       (format t "doing another attempt~%")
+       (log5:log-for trace "doing another attempt")
        (sleep 15))
      :finally
      (progn
-       (format t "failed to get information for: [[~a]]~%" article)
+       (log5:log-for error "failed to get information for: [[~a]]~%" article)
        (list 0 0 0 0.0))))
 
 ;; --------------------------------------------------------
@@ -219,7 +219,7 @@ In order to obtain articles for a given category use
 
 Call `REPORT-PAGE-VIEWS' to get the summary table."
 
-  (format t "Downloading page views data for start:~a end:~a file:~a~%" start end articles-file)
+  (log5:log-for trace "Downloading page views data for start:~a end:~a file:~a" start end articles-file)
   (with-open-file (in articles-file
                       :direction :input)
     (with-open-file (out views-file
@@ -229,7 +229,7 @@ Call `REPORT-PAGE-VIEWS' to get the summary table."
         (with article-no = 1)
         (for article = (read-line in nil))
         (while article)
-        (format t "~a " article-no)
+        (log5:log-for trace "~a " article-no)
 
         ;; categories can be present, but ignore them
         (unless (sm:prefixed-with article *category-prefix*)

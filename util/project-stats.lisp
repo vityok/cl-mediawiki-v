@@ -25,6 +25,9 @@ generates all dates in the summary.
 
 PROJECT-NAME name of the Wiki project.
 "
+  ;; todo: make it possible to resume stats collection in case if it
+  ;; has been abruptly shut down (software crash, network glitches,
+  ;; etc.)
 
   (let* ((now (get-universal-time))
          (project-key (drakma:url-encode (substitute #\_ #\Space project-name)
@@ -35,9 +38,9 @@ PROJECT-NAME name of the Wiki project.
          (report-file (format nil "ps-report-file-~a.txt" project-key)))
 
     (dump-category-to-file project-category :file category-contents)
-    (format t "dumped category contents, now downloading page views~%")
+    (log5:log-for trace "dumped category contents, now downloading page views")
     (run-page-views :articles-file category-contents :views-file views-file)
-    (format t "downloaded page views, now generating top100 and getting their quality~%")
+    (log5:log-for trace "downloaded page views, now generating top100 and getting their quality")
     (with-open-file (out report-file
                          :direction :output
                          :if-exists :append
@@ -46,14 +49,17 @@ PROJECT-NAME name of the Wiki project.
                          :views-file views-file
                          :time-stamp now
                          :out out))
-    (format t "final report for project '~a' is available at: ~a~%"
-            project-name report-file)))
+    (log5:log-for trace "final report for project '~a' is available at: ~a"
+                  project-name report-file)))
 
 ;; --------------------------------------------------------
 
 (defun generate-wiki-project-stats-bg (project-name)
   "Runs GENERATE-WIKI-PROJECT-STATS in background.
 Makes it possible to process multiple projects at once."
+
+  ;; todo: log progress in the file to separate concurrently running
+  ;; threads
   (bt:make-thread
    (lambda ()
      (generate-wiki-project-stats project-name))

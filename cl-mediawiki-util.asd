@@ -43,7 +43,7 @@
                :log5 :alexandria :cl-tokyo-cabinet
                :external-program :cl-string-match
                :split-sequence :parse-float
-               :iterate :bordeaux-threads))
+               :iterate :bordeaux-threads :uiop))
 
 ;; To start using mediawiki utils:
 ;; (ql:quickload :cl-mediawiki-util) (in-package :cl-mediawiki-util)
