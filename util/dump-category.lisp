@@ -23,23 +23,28 @@ output stream."
 				       :url *api-url*
 				       :request-delay 10))
     (multiple-value-bind (list cmcontinue)
-	(wiki:list-category-members cmtitle
-				    :cmprop 'title
-				    :cmlimit cmlimit
-                                    :cmnamespace cmnamespace)
+	(wiki:retry-query
+         (wiki:list-category-members cmtitle
+                                     :cmprop 'title
+                                     :cmlimit cmlimit
+                                     :cmnamespace cmnamespace)
+         :attempts *request-attempts*)
       (dolist (row list)
 	(format out-stream "~a~%" (cdr (find :title row :key #'car))))
 
-      (loop :while cmcontinue
-	 :do (multiple-value-bind (ll cc)
-		 (wiki:list-category-members cmtitle
-					     :cmprop 'title
-					     :cmlimit cmlimit
-                                             :cmnamespace cmnamespace
-					     :cmcontinue cmcontinue)
-	       (dolist (row ll)
-		 (format out-stream "~a~%" (cdr (find :title row :key #'car))))
-	       (setf cmcontinue cc))))))
+      (iter
+        (while (not (null cmcontinue)))
+        (multiple-value-bind (ll cc)
+            (wiki:retry-query
+             (wiki:list-category-members cmtitle
+                                         :cmprop 'title
+                                         :cmlimit cmlimit
+                                         :cmnamespace cmnamespace
+                                         :cmcontinue cmcontinue)
+             :attempts *request-attempts*)
+          (dolist (row ll)
+            (format out-stream "~a~%" (cdr (find :title row :key #'car))))
+          (setf cmcontinue cc))))))
 
 ;; --------------------------------------------------------
 

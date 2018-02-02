@@ -29,4 +29,27 @@
    #:run-page-views
    #:report-page-views))
 
+;; --------------------------------------------------------
+
+(in-package :cl-mediawiki-util)
+
+(defparameter *request-attempts* 5
+  "Sometimes due to network or server glitches HTTP requests can
+fail. This parameter regulates number of times request will be retried
+before giving up.")
+
+;; --------------------------------------------------------
+
+(log5:defcategory :debug)
+(log5:start-sender 'dribble-and-worse
+ 		   (log5:stream-sender :location *standard-output*)
+ 		   :category-spec '(log5:dribble+)
+ 		   :output-spec '(log5:time log5:message log5:context))
+
+(log5:start-sender 'error-and-worse
+                   (log5:stream-sender 
+                    :location "errors.log")
+                   :category-spec '(error)
+                   :output-spec '(log5:time log5:message))
+
 ;; EOF

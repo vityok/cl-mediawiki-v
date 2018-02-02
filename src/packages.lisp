@@ -1,5 +1,6 @@
 ;; -*- lisp -*-
 ;; Copyright (c) 2008 Accelerated Data Works, Russ Tyndall
+;; Copyright (c) 2017 bitbucket.org/vityok
 
 ;; Permission is hereby granted, free of charge, to any person
 ;; obtaining a copy of this software and associated documentation files
@@ -18,9 +19,9 @@
 ;; SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-(defpackage :net.acceleration.cl-mediawiki
+(defpackage :cl-mediawiki
   (:use :common-lisp )
-  (:nicknames :cl-mediawiki :wiki)
+  (:nicknames :wiki)
   (:export
    ;; MAIN
    #:mediawiki
@@ -50,4 +51,5 @@
    #:pages-that-embed
    ;; UTIL
    #:user-anon-p
-   #:has-messages-p))
+   #:has-messages-p
+   #:retry-query))

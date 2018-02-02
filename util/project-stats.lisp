@@ -30,27 +30,36 @@ PROJECT-NAME name of the Wiki project.
   ;; etc.)
 
   (let* ((now (get-universal-time))
-         (project-key (drakma:url-encode (substitute #\_ #\Space project-name)
-                                         :utf-8))
+         (project-key (substitute-if #\_
+                                     #'(lambda (c)
+                                         (or (char= c #\Space)
+                                             (char= c #\') (char= c #\")
+                                             (char= c #\:)))
+                                     project-name))
          (project-category (format nil "Категорія:Статті проекту ~a" project-name))
          (category-contents (format nil "ps-category-contents-~a.txt" project-key))
          (views-file (format nil "ps-views-file-~a.txt" project-key))
          (report-file (format nil "ps-report-file-~a.txt" project-key)))
 
-    (dump-category-to-file project-category :file category-contents)
-    (log5:log-for trace "dumped category contents, now downloading page views")
-    (run-page-views :articles-file category-contents :views-file views-file)
-    (log5:log-for trace "downloaded page views, now generating top100 and getting their quality")
-    (with-open-file (out report-file
-                         :direction :output
-                         :if-exists :append
-                         :if-does-not-exist :create)
-      (report-page-views :show-class T
-                         :views-file views-file
-                         :time-stamp now
-                         :out out))
-    (log5:log-for trace "final report for project '~a' is available at: ~a"
-                  project-name report-file)))
+    (unless (probe-file category-contents)
+      (dump-category-to-file project-category :file category-contents)
+      (log5:log-for trace "dumped category contents, now downloading page views"))
+    (unless (probe-file views-file)
+      (run-page-views :articles-file category-contents :views-file views-file)
+      (log5:log-for trace "downloaded page views, now generating top100 and getting their quality"))
+    (unless (probe-file report-file)
+      (with-open-file (out report-file
+                           :direction :output
+                           :if-exists :append
+                           :if-does-not-exist :create)
+        (report-page-views :show-class T
+                           :views-file views-file
+                           :time-stamp now
+                           :out out
+                           :project-name project-name))
+      (log5:log-for trace "final report for project '~a' is available at: ~a"
+                    project-name report-file))
+    (log5:log-for trace "done")))
 
 ;; --------------------------------------------------------
 

@@ -48,4 +48,17 @@
 ;; To start using mediawiki utils:
 ;; (ql:quickload :cl-mediawiki-util) (in-package :cl-mediawiki-util)
 
+;; Example usage:
+#|
+(ql:quickload :cl-mediawiki-util)
+(in-package :cl-mediawiki-util)
+(generate-wiki-project-stats "Комп'ютерні науки")
+(generate-wiki-project-stats "Військова техніка")
+(generate-wiki-project-stats "Математика")
+(generate-wiki-project-stats "Фізика")
+
+#+sbcl
+(sb-ext:quit)
+|#
+
 ;; EOF

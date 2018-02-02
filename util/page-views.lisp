@@ -47,7 +47,7 @@
 (defparameter *views-file* "article-views.txt"
   "File where raw numbers are stored")
 
-(defparameter *page-views-query-interval* 5
+(defparameter *page-views-query-interval* 1
   "Time in seconds to wait between consequtive requests to the server
   while in the `RUN-PAGE-VIEWS'.")
 
@@ -57,7 +57,9 @@
   (multiple-value-bind (second minute hour date month year day daylight-p zone)
       (get-decoded-time)
     (declare (ignore second minute hour date day daylight-p zone))
-    (format nil "~d~2,'0D0100" year (- month 1))))
+    (if (= month 1) ;; january
+        (format nil "~d~2,'0D0100" (- year 1) 12)
+        (format nil "~d~2,'0D0100" year (- month 1)))))
 
 (defun get-prev-month-end ()
   (multiple-value-bind (second minute hour date month year day daylight-p zone)
@@ -189,7 +191,7 @@ Returns NIL when failed to retrieve data for any reason."
 					 (project "uk.wikipedia")
 					 (start)
 					 (end)
-					 (attempts 5))
+					 (attempts *request-attempts*))
 
   (loop :for i :from 0 :to attempts
      :for views = (attempt-article-page-views project article start end)
@@ -275,9 +277,15 @@ TITLE and return its Wiki markup representation."
   ;; titles at a time, but this requires additional handling and
   ;; sorting out of the query results. Would be nice to have it
   ;; integrated
-  (let ((raw-categories (wiki:get-value
-                         (wiki:get-page-categories title)
-                         #'cdar :categories)))
+  (log5:log-for trace "getting quality assessment for {~a}" title)
+  
+  (let ((raw-categories
+         (wiki:retry-query
+          (wiki:get-value
+           (wiki:get-page-categories title)
+           #'cdar :categories)
+          :attempts *request-attempts*)))
+    
     ;; todo: very likely this code blob can be rewritten into a more
     ;; robust and concise style. It extracts category titles from
     ;; the Cons tree returned by the query function and then tries
@@ -322,7 +330,8 @@ TITLE and return its Wiki markup representation."
                             (show-class NIL)
                             (views-file *views-file*)
                             (out *standard-output*)
-                            (time-stamp (get-universal-time)))
+                            (time-stamp (get-universal-time))
+                            (project-name ""))
   "Create a wiki table listing top articles based on data produced by
 `RUN-PAGE-VIEWS'.
 
@@ -365,8 +374,9 @@ OUT: stream to ouput results to."
              (top-views (reduce #'+ top-articles :key #'second :initial-value 0)))
 
         ;; REPORT
-        (format out "Станом на ~a проект мав ~a статей, які були переглянуті {{formatnum:~D}} раз. Перелічені нижче Топ-100 статей були переглянуті в сумі {{formatnum:~D}} раз, що складає ~a% від переглядів всіх статей проекту.~%~%"
+        (format out "Станом на ~a проект ~a мав ~a статей, які були переглянуті {{formatnum:~D}} раз протягом попереднього місяця. Перелічені нижче Топ-100 статей були переглянуті в сумі {{formatnum:~D}} раз, що складає ~a% від переглядів всіх статей проекту.~%~%"
                 (format-timestamp time-stamp)
+                project-name
                 (length sorted-articles)
                 total-views
                 top-views

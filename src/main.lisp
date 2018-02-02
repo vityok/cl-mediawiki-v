@@ -26,6 +26,8 @@
 
 (in-package :cl-mediawiki)
 
+;; --------------------------------------------------------
+
 ;; Cirqumvent restrictions put by strict Common Lisp implementations.
 ;; see <http://www.sbcl.org/manual/Defining-Constants.html>
 (defmacro define-constant (name value &optional doc)
@@ -176,8 +178,9 @@ corresponding values."
 				  :parameters api-params
 				  :cookie-jar (cookie-jar *mediawiki*)
 				  :user-agent "A simple query bot based on cl-media-wiki-v client API"))
-	 (declare (ignore stream must-close status-word))
-	 (log5:log-for trace "uri: ~A" uri)
+         
+	 (declare (ignore stream must-close status-word uri))
+	 (log5:log-for trace "full-url: ~A" full-url)
 	 ;; check whether maxlag signals to pause
 	 (when (and (= status-code +retry-after-http-status+)
 		    (drakma:header-value :retry-after headers))

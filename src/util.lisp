@@ -1,4 +1,5 @@
 ;; Copyright (c) 2008 Accelerated Data Works, Russ Tyndall
+;; Copyright (c) 2017 bitbucket.org/vityok
 
 ;; Permission is hereby granted, free of charge, to any person
 ;; obtaining a copy of this software and associated documentation files
@@ -58,4 +59,24 @@ Parameters:
   (string= "" (get-value
 	       (if ui ui (userinfo))
 	       :hasmsg)))
+
+;; --------------------------------------------------------
+
+(defmacro retry-query (form &key (attempts 5))
+  "Wraps a query to the wiki server and retries it number of ATTEMPTS
+until it follows through."
+  (let ((attempt (gensym "attmpt"))
+        (msg (gensym "msg"))
+        (result (gensym "rslt")))
+
+    `(dotimes (,attempt (+ ,attempts 1))
+       (when (= ,attempt ,attempts)
+         (log5:log-for error "failed to perform query after ~a attempts" ,attempts)
+         (return))
+       (handler-case (multiple-value-list ,form)
+         (condition (,msg) (log5:log-for error "request failed: ~a" ,msg))
+         (:no-error (,result) (return (values-list ,result)))))))
+
+;; (retry-query (format nil "abc") :attempts 5)
+
 ;; EOF

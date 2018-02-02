@@ -9,14 +9,6 @@
 
 ;; --------------------------------------------------------
 
-(log5:defcategory :debug)
-(log5:start-sender 'warnings-and-worse
- 		   (log5:stream-sender :location *standard-output*)
- 		   :category-spec '(log5:dribble+)
- 		   :output-spec '(log5:time log5:message log5:context))
-
-;; --------------------------------------------------------
-
 (defparameter *default-root-category* "Категорія:Математика"
   "Starting directory for the walk.")
 (defparameter *categories-file-name* #P"categories.txt"
