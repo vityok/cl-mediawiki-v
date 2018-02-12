@@ -1,4 +1,4 @@
-`cl-mediawiki-v` is a client-side API to access Wiki servers built on MediaWiki engine. Basically it lets to develop bots for Wikipedia/Wikimedia projects.
+`cl-mediawiki-v` is a client-side Common Lisp API to access Wiki servers built on MediaWiki engine. Basically it lets to develop bots for Wikipedia/Wikimedia projects.
 
 This is a fork of the [cl-mediawiki](https://github.com/AccelerationNet/cl-mediawiki) library developed by AccelerationNet. This fork, unlike the original, uses JSON as the data exchange format with the server.
 
@@ -18,6 +18,8 @@ The `util` directory has some basic tools developed with this library:
 
 Utils in this category are collected together in the
 `cl-mediawiki-util` package (nicknamed `mw-util`).
+
+Also check `examples` folder for the use-cases (some of them might be useful).
 
 ## Usage
 

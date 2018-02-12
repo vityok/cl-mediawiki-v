@@ -84,7 +84,7 @@ handle them all in parallel."
     ;; here we rely on the thread-safety of the simple-cqueue
     (dolist (proj projects)
       (queues:qpush jobs-queue proj))
-    ;; create worker threads
+    ;; create pool of worker threads
     (let ((workers
            (iter
              (for worker from 0 below workers-count)
