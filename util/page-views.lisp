@@ -192,18 +192,20 @@ Returns NIL when failed to retrieve data for any reason."
 					 (start)
 					 (end)
 					 (attempts *request-attempts*))
+  "Returns a list: (total views, minimal daily news, maximum daily
+news, median daily views) for a given article."
 
-  (loop :for i :from 0 :to attempts
-     :for views = (attempt-article-page-views project article start end)
-     :when views :return views
-     :do
-     (progn
-       (log5:log-for trace "doing another attempt")
-       (sleep 15))
-     :finally
-     (progn
-       (log5:log-for error "failed to get information for: [[~a]]~%" article)
-       (list 0 0 0 0.0))))
+  (dotimes (attempt attempts)
+    (let ((views
+           (ignore-errors 
+             (attempt-article-page-views project article start end))))
+      (when views
+        (return-from get-article-page-views views))
+      (log5:log-for trace "doing another attempt")
+      (sleep 15)))
+
+  (log5:log-for error "failed to get information for: [[~a]]~%" article)
+  (list 0 0 0 0.0))
 
 ;; --------------------------------------------------------
 
@@ -278,14 +280,14 @@ TITLE and return its Wiki markup representation."
   ;; sorting out of the query results. Would be nice to have it
   ;; integrated
   (log5:log-for trace "getting quality assessment for {~a}" title)
-  
+
   (let ((raw-categories
          (wiki:retry-query
           (wiki:get-value
            (wiki:get-page-categories title)
            #'cdar :categories)
           :attempts *request-attempts*)))
-    
+
     ;; todo: very likely this code blob can be rewritten into a more
     ;; robust and concise style. It extracts category titles from
     ;; the Cons tree returned by the query function and then tries
@@ -380,7 +382,10 @@ OUT: stream to ouput results to."
                 (length sorted-articles)
                 total-views
                 top-views
-                (round (* (/ top-views total-views) 100)))
+                (round (* (if (> total-views 0)
+                              (/ top-views total-views)
+                              0)
+                          100)))
         (format out "{|
 ! rowspan=2 | Рейтинг
 ! rowspan=2 | Рівень

@@ -74,4 +74,32 @@ Makes it possible to process multiple projects at once."
      (generate-wiki-project-stats project-name))
    :name (format nil "Stats for Wiki project {~a}" project-name)))
 
+;; --------------------------------------------------------
+
+(defun generate-wiki-project-stats-batch (projects &key (workers-count 3))
+  "Given a list of projects dispatch WORKERS-COUNT worker threads to
+handle them all in parallel."
+
+  (let ((jobs-queue (queues:make-queue :simple-cqueue)))
+    ;; here we rely on the thread-safety of the simple-cqueue
+    (dolist (proj projects)
+      (queues:qpush jobs-queue proj))
+    ;; create worker threads
+    (let ((workers
+           (iter
+             (for worker from 0 below workers-count)
+             (collect
+                 (bt:make-thread
+                  (lambda ()
+                    (iter
+                      (for project-name = (queues:qpop jobs-queue nil))
+                      (while project-name)
+                      (format t "Worker {~a} collecting info for: {~a}~%" worker project-name)
+                      (generate-wiki-project-stats project-name))
+                    (format t "Worker {~a} done~%" worker))
+                  :name (format nil "Worker {~a}" worker))))))
+      ;; wait for workers to end their jobs
+      (dolist (worker workers)
+        (bt:join-thread worker)))))
+
 ;; EOF
