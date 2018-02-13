@@ -118,12 +118,18 @@
   "URL-encode article name and combine it with the pattern to produce
 the URL for querying daily views."
 
-  (format nil
-	  "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/~a/all-access/user/~a/daily/~a/~a"
-	  project
-	  (drakma:url-encode (substitute #\_ #\Space article) :utf-8)
-	  start
-	  end))
+  ;; URL/URI is constructed in two steps to avoid the flaw in the
+  ;; PURI:URI code (initialize-instance :after uri):
+  ;; https://github.com/archimag/puri-unicode/commit/212df232823ddcb8a217a3adf09af3cff9704cd6
+  (let ((url (puri:uri "https://wikimedia.org")))
+    (setf (puri:uri-path url)
+          (format nil
+                  "/api/rest_v1/metrics/pageviews/per-article/~a/all-access/user/~a/daily/~a/~a"
+                  project
+                  (drakma:url-encode (substitute #\_ #\Space article) :utf-8)
+                  start
+                  end))
+    url))
 
 ;; --------------------------------------------------------
 
@@ -134,26 +140,21 @@ the total views, minimum, maximum and median views per day in a list.
 Returns NIL when failed to retrieve data for any reason."
 
   (let* ((url (get-query-url project article start end))
-         (metrics-tmp (format nil "metrics_tmp_~a.json" (random most-positive-fixnum)))
-
-         (result))
+         (result nil))
 
     (log5:log-for trace "url: ~a" url)
 
-    ;; TODO: there has been a problem accessing this server with
-    ;; DRAKMA, investigate why
+    ;; TODO: is it possible to reuse the open socket for querying the
+    ;; server? but keep in mind that the implementation must be
+    ;; thread-safe
 
-    ;; (drakma:http-request url :want-stream t)
-    (multiple-value-bind (status code)
-        (external-program:run "/usr/bin/curl"
-                              (list url "-o" metrics-tmp))
-
-      (when (and (eql status :exited)
-                 (= code 0))
-        (with-open-file (stream metrics-tmp
-                                :direction :input)
-          ;; (setf (flexi-streams:flexi-stream-external-format stream) :utf-8)
-          (let ((json (cl-json:decode-json stream)))
+    (multiple-value-bind (data-stream status-code headers uri)
+        (drakma:http-request url
+                             :external-format-out :UTF-8
+                             :external-format-in :UTF-8
+                             :want-stream T)
+      (if (= status-code 200)
+          (let ((json (cl-json:decode-json data-stream)))
             (when (listp json)
               (setf result
                     (cond
@@ -181,24 +182,24 @@ Returns NIL when failed to retrieve data for any reason."
                          (list (reduce #'+ daily-views)
                                (apply #'min daily-views)
                                (apply #'max daily-views)
-                               (float (alexandria:median daily-views))))))))))))
-    (uiop:delete-file-if-exists metrics-tmp)
+                               (float (alexandria:median daily-views)))))))))
+          (progn
+            (format t "status code: ~a;~%headers: ~a~%uri: ~a~%" status-code headers uri))))
     result))
 
 ;; --------------------------------------------------------
 
 (defun get-article-page-views (article &key
 					 (project "uk.wikipedia")
-					 (start)
-					 (end)
+                                         (start (get-prev-month-start))
+                                         (end (get-prev-month-end))
 					 (attempts *request-attempts*))
   "Returns a list: (total views, minimal daily news, maximum daily
 news, median daily views) for a given article."
 
   (dotimes (attempt attempts)
     (let ((views
-           (ignore-errors 
-             (attempt-article-page-views project article start end))))
+           (attempt-article-page-views project article start end)))
       (when views
         (return-from get-article-page-views views))
       (log5:log-for trace "doing another attempt")
