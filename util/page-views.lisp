@@ -140,7 +140,8 @@ the total views, minimum, maximum and median views per day in a list.
 Returns NIL when failed to retrieve data for any reason."
 
   (let* ((url (get-query-url project article start end))
-         (result nil))
+         (result nil)
+         (default-result (list 0 0 0 0.0)))
 
     (log5:log-for trace "url: ~a" url)
 
@@ -148,43 +149,51 @@ Returns NIL when failed to retrieve data for any reason."
     ;; server? but keep in mind that the implementation must be
     ;; thread-safe
 
-    (multiple-value-bind (data-stream status-code headers uri)
-        (drakma:http-request url
-                             :external-format-out :UTF-8
-                             :external-format-in :UTF-8
-                             :want-stream T)
-      (if (= status-code 200)
-          (let ((json (cl-json:decode-json data-stream)))
-            (when (listp json)
-              (setf result
-                    (cond
-                      ((or (string= (cdr (assoc :type json))
-                                    "https://restbase.org/errors/query_error")
-                           (string= (cdr (assoc :type json))
-                                    "https://mediawiki.org/wiki/HyperSwitch/errors/not_found"))
-                       (log5:log-for trace "Query error for article {~a}" article)
-                       nil)
+    (handler-case
+        (multiple-value-bind (data-stream status-code headers uri)
+            (drakma:http-request url
+                                 :external-format-out :UTF-8
+                                 :external-format-in :UTF-8
+                                 :want-stream T)
+          (cond                         ; DISPATCH STATUS CODES
+            ((= status-code 200)        ; HTTP OK
+             (let ((json (cl-json:decode-json data-stream)))
+               (when (listp json)
+                 (setf result
+                       (cond
+                         ((or (string= (cdr (assoc :type json))
+                                       "https://restbase.org/errors/query_error")
+                              (string= (cdr (assoc :type json))
+                                       "https://mediawiki.org/wiki/HyperSwitch/errors/not_found"))
+                          (log5:log-for trace "Query error for article {~a}" article)
+                          nil)
 
-                      ((string= (cdr (assoc :type json))
-                                "https://restbase.org/errors/not_found")
-                       ;; very likely this article didn't exist yet in the
-                       ;; specified time period, just report as no views at all
-                       (list 0 0 0 0.0))
+                         ((string= (cdr (assoc :type json))
+                                   "https://restbase.org/errors/not_found")
+                          ;; very likely this article didn't exist yet in the
+                          ;; specified time period, just report as no views at all
+                          default-result)
 
-                      (t
-                       ;; article data is present, do the math
-                       (let* ((items (cdar json))
-                              (daily-views (map 'list
-                                                #'(lambda (item)
-                                                    (cdr (find :views item :key #'car)))
-                                                items)))
-                         ;; collect and then calculate sum and median
-                         (list (reduce #'+ daily-views)
-                               (apply #'min daily-views)
-                               (apply #'max daily-views)
-                               (float (alexandria:median daily-views)))))))))
-          (progn
-            (format t "status code: ~a;~%headers: ~a~%uri: ~a~%" status-code headers uri))))
+                         (t
+                          ;; article data is present, do the math
+                          (let* ((items (cdar json))
+                                 (daily-views (map 'list
+                                                   #'(lambda (item)
+                                                       (cdr (find :views item :key #'car)))
+                                                   items)))
+                            ;; collect and then calculate sum and median
+                            (list (reduce #'+ daily-views)
+                                  (apply #'min daily-views)
+                                  (apply #'max daily-views)
+                                  (float (alexandria:median daily-views))))))))))
+            ((= status-code 404)        ; HTTP NOT FOUND
+             (log5:log-for error "information for [[~a]] is missing and unlikely to appear. move on" article)
+             (setf result default-result))
+
+            (t
+             (format t "status code: ~a;~%headers: ~a~%uri: ~a~%" status-code headers uri))))
+      (condition (msg)
+        (log5:log-for error "failed request for [[~a]]: ~a~%" article msg)))
     result))
 
 ;; --------------------------------------------------------
@@ -406,6 +415,13 @@ OUT: stream to ouput results to."
                            (get-page-class-presentation (concatenate 'string *discussion-prefix* article-name))
                            "")
                        article-name sum-views min-views max-views (round med-views)))
-        (format out "|}")))))
+        (format out "|}")
+
+        ;; summary information to track project's progress
+        (format out "|-~%| ~a~%| ~a~%| {{formatnum:~D}}~%| {{formatnum:~D}}~%"
+                (format-timestamp time-stamp)
+                (length sorted-articles)
+                total-views
+                top-views)))))
 
 ;; EOF
