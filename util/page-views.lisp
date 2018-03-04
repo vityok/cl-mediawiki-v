@@ -139,61 +139,67 @@ the total views, minimum, maximum and median views per day in a list.
 
 Returns NIL when failed to retrieve data for any reason."
 
-  (let* ((url (get-query-url project article start end))
+  (let* ((url (format nil "~a" (get-query-url project article start end)))
+	 (metrics-tmp (format nil "metrics_tmp_~a.json" (random most-positive-fixnum)))
          (result nil)
          (default-result (list 0 0 0 0.0)))
 
-    (log5:log-for trace "url: ~a" url)
+    (log-for trace "url: ~a" url)
 
     ;; TODO: is it possible to reuse the open socket for querying the
     ;; server? but keep in mind that the implementation must be
     ;; thread-safe
 
     (handler-case
-        (multiple-value-bind (data-stream status-code headers uri)
-            (drakma:http-request url
-                                 :external-format-out :UTF-8
-                                 :external-format-in :UTF-8
-                                 :want-stream T)
-          (cond                         ; DISPATCH STATUS CODES
-            ((= status-code 200)        ; HTTP OK
-             (let ((json (cl-json:decode-json data-stream)))
-               (when (listp json)
-                 (setf result
-                       (cond
-                         ((or (string= (cdr (assoc :type json))
-                                       "https://restbase.org/errors/query_error")
-                              (string= (cdr (assoc :type json))
-                                       "https://mediawiki.org/wiki/HyperSwitch/errors/not_found"))
-                          (log5:log-for trace "Query error for article {~a}" article)
-                          nil)
+	;; (multiple-value-bind (data-stream status-code headers uri)
+	;; (drakma:http-request url :external-format-out :UTF-8 :external-format-in :UTF-8 :want-stream T)
 
-                         ((string= (cdr (assoc :type json))
-                                   "https://restbase.org/errors/not_found")
-                          ;; very likely this article didn't exist yet in the
-                          ;; specified time period, just report as no views at all
-                          default-result)
+	(multiple-value-bind (status code)
+	    (external-program:run "/usr/bin/curl"
+				  (list url "-o" metrics-tmp))
+	  (when (and (eql status :exited))
+	    (cond			; DISPATCH STATUS CODES
+	      ((= code 0)		; HTTP OK
+	       (with-open-file (data-stream metrics-tmp
+					    :direction :input)
+		 (let ((json (cl-json:decode-json data-stream)))
+		   (when (listp json)
+		     (setf result
+			   (cond
+			     ((or (string= (cdr (assoc :type json))
+					   "https://restbase.org/errors/query_error")
+				  (string= (cdr (assoc :type json))
+					   "https://mediawiki.org/wiki/HyperSwitch/errors/not_found"))
+			      (log-for trace "Query error for article {~a}" article)
+			      default-result)
 
-                         (t
-                          ;; article data is present, do the math
-                          (let* ((items (cdar json))
-                                 (daily-views (map 'list
-                                                   #'(lambda (item)
-                                                       (cdr (find :views item :key #'car)))
-                                                   items)))
-                            ;; collect and then calculate sum and median
-                            (list (reduce #'+ daily-views)
-                                  (apply #'min daily-views)
-                                  (apply #'max daily-views)
-                                  (float (alexandria:median daily-views))))))))))
-            ((= status-code 404)        ; HTTP NOT FOUND
-             (log5:log-for error "information for [[~a]] is missing and unlikely to appear. move on" article)
-             (setf result default-result))
+			     ((string= (cdr (assoc :type json))
+				       "https://restbase.org/errors/not_found")
+			      ;; very likely this article didn't exist yet in the
+			      ;; specified time period, just report as no views at all
+			      default-result)
 
-            (t
-             (format t "status code: ~a;~%headers: ~a~%uri: ~a~%" status-code headers uri))))
+			     (t
+			      ;; article data is present, do the math
+			      (let* ((items (cdar json))
+				     (daily-views (map 'list
+						       #'(lambda (item)
+							   (cdr (find :views item :key #'car)))
+						       items)))
+				;; collect and then calculate sum and median
+				(list (reduce #'+ daily-views)
+				      (apply #'min daily-views)
+				      (apply #'max daily-views)
+				      (float (alexandria:median daily-views)))))))))))
+	      ((= code 22)		; HTTP NOT FOUND
+	       (log-for error "information for [[~a]] is missing and unlikely to appear. move on" article)
+	       (setf result default-result))
+
+	      (t
+	       (format t "status code: ~a;~%uri: ~a~%" code url))))
+	  (uiop:delete-file-if-exists metrics-tmp))
       (condition (msg)
-        (log5:log-for error "failed request for [[~a]]: ~a~%" article msg)))
+        (log-for error "failed request for [[~a]]: ~a~%" article msg)))
     result))
 
 ;; --------------------------------------------------------
@@ -211,10 +217,10 @@ news, median daily views) for a given article."
            (attempt-article-page-views project article start end)))
       (when views
         (return-from get-article-page-views views))
-      (log5:log-for trace "doing another attempt")
+      (log-for trace "doing another attempt")
       (sleep 15)))
 
-  (log5:log-for error "failed to get information for: [[~a]]~%" article)
+  (log-for error "failed to get information for: [[~a]]~%" article)
   (list 0 0 0 0.0))
 
 ;; --------------------------------------------------------
@@ -233,7 +239,7 @@ In order to obtain articles for a given category use
 
 Call `REPORT-PAGE-VIEWS' to get the summary table."
 
-  (log5:log-for trace "Downloading page views data for start:~a end:~a file:~a" start end articles-file)
+  (log-for trace "Downloading page views data for start:~a end:~a file:~a" start end articles-file)
   (with-open-file (in articles-file
                       :direction :input)
     (with-open-file (out views-file
@@ -243,7 +249,7 @@ Call `REPORT-PAGE-VIEWS' to get the summary table."
         (with article-no = 1)
         (for article = (read-line in nil))
         (while article)
-        (log5:log-for trace "~a " article-no)
+        (log-for trace "~a " article-no)
 
         ;; categories can be present, but ignore them
         (unless (sm:prefixed-with article *category-prefix*)
@@ -289,7 +295,7 @@ TITLE and return its Wiki markup representation."
   ;; titles at a time, but this requires additional handling and
   ;; sorting out of the query results. Would be nice to have it
   ;; integrated
-  (log5:log-for trace "getting quality assessment for {~a}" title)
+  (log-for trace "getting quality assessment for {~a}" title)
 
   (let ((raw-categories
          (wiki:retry-query
@@ -416,9 +422,18 @@ OUT: stream to ouput results to."
                            "")
                        article-name sum-views min-views max-views (round med-views)))
         (format out "|}")
+#|
+== Статистика ==
 
+{|
+! 
+! Статей
+! Кількість переглядів
+! Топ-100
+|-
+|#
         ;; summary information to track project's progress
-        (format out "|-~%| ~a~%| ~a~%| {{formatnum:~D}}~%| {{formatnum:~D}}~%"
+        (format out "~%~%|-~%| ~a~%| ~a~%| {{formatnum:~D}}~%| {{formatnum:~D}}~%"
                 (format-timestamp time-stamp)
                 (length sorted-articles)
                 total-views

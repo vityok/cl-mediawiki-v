@@ -43,10 +43,10 @@ PROJECT-NAME name of the Wiki project.
 
     (unless (probe-file category-contents)
       (dump-category-to-file project-category :file category-contents)
-      (log5:log-for trace "dumped category contents, now downloading page views"))
+      (log-for trace "dumped category contents, now downloading page views"))
     (unless (probe-file views-file)
       (run-page-views :articles-file category-contents :views-file views-file)
-      (log5:log-for trace "downloaded page views, now generating top100 and getting their quality"))
+      (log-for trace "downloaded page views, now generating top100 and getting their quality"))
     (unless (probe-file report-file)
       (with-open-file (out report-file
                            :direction :output
@@ -57,9 +57,9 @@ PROJECT-NAME name of the Wiki project.
                            :time-stamp now
                            :out out
                            :project-name project-name))
-      (log5:log-for trace "final report for project '~a' is available at: ~a"
+      (log-for trace "final report for project '~a' is available at: ~a"
                     project-name report-file))
-    (log5:log-for trace "done")))
+    (log-for trace "done")))
 
 ;; --------------------------------------------------------
 

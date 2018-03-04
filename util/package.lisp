@@ -47,9 +47,19 @@ before giving up.")
  		   :output-spec '(log5:time log5:message log5:context))
 
 (log5:start-sender 'error-and-worse
-                   (log5:stream-sender 
-                    :location "errors.log")
+                   (log5:stream-sender :location "errors.log")
                    :category-spec '(error)
                    :output-spec '(log5:time log5:message))
+
+;; --------------------------------------------------------
+
+(defparameter *log-lock* (bt:make-lock "log-lock"))
+
+(defmacro log-for (category-spec message &rest args)
+  "This is thread-safety wrapper around LOG5:LOG-FOR macro. Its only
+purpose is to wrap logging output into a global thread-safe block."
+
+  `(bt:with-lock-held (*log-lock*)
+     (log5:log-for ,category-spec ,message ,@args)))
 
 ;; EOF
