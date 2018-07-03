@@ -16,6 +16,8 @@
 ;; Для запуску роботи (цього файлу), слід скористатись командою:
 
 ;; sbcl --load 'project-stats-task.lisp' | tee stdout.log
+;;
+;; lx86cl --load 'project-stats-task.lisp' | tee stdout.log
 
 (ql:quickload :cl-mediawiki-util)
 (in-package :cl-mediawiki-util)
