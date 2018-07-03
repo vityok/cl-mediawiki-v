@@ -249,7 +249,7 @@ Call `REPORT-PAGE-VIEWS' to get the summary table."
         (with article-no = 1)
         (for article = (read-line in nil))
         (while article)
-        (log-for trace "~a " article-no)
+        ;; (log-for trace "~a " article-no)
 
         ;; categories can be present, but ignore them
         (unless (sm:prefixed-with article *category-prefix*)
