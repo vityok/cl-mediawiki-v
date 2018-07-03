@@ -80,7 +80,8 @@ Makes it possible to process multiple projects at once."
   "Given a list of projects dispatch WORKERS-COUNT worker threads to
 handle them all in parallel."
 
-  (let ((jobs-queue (queues:make-queue :simple-cqueue)))
+  (let ((jobs-queue (queues:make-queue :simple-cqueue))
+        (central-lock (bt:make-lock "central lock")))
     ;; here we rely on the thread-safety of the simple-cqueue
     (dolist (proj projects)
       (queues:qpush jobs-queue proj))
@@ -91,13 +92,21 @@ handle them all in parallel."
              (collect
                  (bt:make-thread
                   (lambda ()
+                    ;; a worker thread gets next project name from the
+                    ;; queue and generates report for it. Exits when
+                    ;; there are no projects left
                     (iter
                       (for project-name = (queues:qpop jobs-queue nil))
                       (while project-name)
-                      (format t "Worker {~a} collecting info for: {~a}~%" worker project-name)
+                      (bt:with-lock-held (central-lock)
+                        ;; use central lock to dump thread info to the
+                        ;; stdout to avoid clutter
+                        (format t "Worker {~a} collecting info for: {~a}~%"
+                                worker project-name))
                       (generate-wiki-project-stats project-name))
                     (format t "Worker {~a} done~%" worker))
                   :name (format nil "Worker {~a}" worker))))))
+
       ;; wait for workers to end their jobs
       (dolist (worker workers)
         (bt:join-thread worker)))))

@@ -51,6 +51,9 @@
   "Time in seconds to wait between consequtive requests to the server
   while in the `RUN-PAGE-VIEWS'.")
 
+(defparameter *curl* "/usr/bin/curl"
+  "curl program location.")
+
 ;; --------------------------------------------------------
 
 (defun get-prev-month-start ()
@@ -140,7 +143,9 @@ the total views, minimum, maximum and median views per day in a list.
 Returns NIL when failed to retrieve data for any reason."
 
   (let* ((url (format nil "~a" (get-query-url project article start end)))
-	 (metrics-tmp (format nil "metrics_tmp_~a.json" (random most-positive-fixnum)))
+	 (metrics-tmp (merge-pathnames "/tmp/"
+                                       (format nil "metrics_tmp_~a.json"
+                                               (random most-positive-fixnum))))
          (result nil)
          (default-result (list 0 0 0 0.0)))
 
@@ -149,20 +154,19 @@ Returns NIL when failed to retrieve data for any reason."
     ;; TODO: is it possible to reuse the open socket for querying the
     ;; server? but keep in mind that the implementation must be
     ;; thread-safe
-
     (handler-case
 	;; (multiple-value-bind (data-stream status-code headers uri)
 	;; (drakma:http-request url :external-format-out :UTF-8 :external-format-in :UTF-8 :want-stream T)
 
 	(multiple-value-bind (status code)
-	    (external-program:run "/usr/bin/curl"
-				  (list url "-o" metrics-tmp))
+            (external-program:run *curl*
+                                  (list url "-o" metrics-tmp))
 	  (when (and (eql status :exited))
 	    (cond			; DISPATCH STATUS CODES
 	      ((= code 0)		; HTTP OK
-	       (with-open-file (data-stream metrics-tmp
-					    :direction :input)
-		 (let ((json (cl-json:decode-json data-stream)))
+               (with-open-file (data-stream metrics-tmp
+                                            :direction :input)
+                 (let ((json (cl-json:decode-json data-stream)))
 		   (when (listp json)
 		     (setf result
 			   (cond
@@ -170,13 +174,14 @@ Returns NIL when failed to retrieve data for any reason."
 					   "https://restbase.org/errors/query_error")
 				  (string= (cdr (assoc :type json))
 					   "https://mediawiki.org/wiki/HyperSwitch/errors/not_found"))
-			      (log-for trace "Query error for article {~a}" article)
+			      (log-for error "query error or article not found {~a}" article)
 			      default-result)
 
 			     ((string= (cdr (assoc :type json))
 				       "https://restbase.org/errors/not_found")
 			      ;; very likely this article didn't exist yet in the
 			      ;; specified time period, just report as no views at all
+			      (log-for error "article {~a} not found" article)
 			      default-result)
 
 			     (t
@@ -195,8 +200,11 @@ Returns NIL when failed to retrieve data for any reason."
 	       (log-for error "information for [[~a]] is missing and unlikely to appear. move on" article)
 	       (setf result default-result))
 
-	      (t
+	      (t                        ; all other problems
+               (log-for error "failed request for article [[~a]]; status code: ~a;~%uri: ~a"
+                        article code url)
 	       (format t "status code: ~a;~%uri: ~a~%" code url))))
+
 	  (uiop:delete-file-if-exists metrics-tmp))
       (condition (msg)
         (log-for error "failed request for [[~a]]: ~a~%" article msg)))
@@ -428,8 +436,8 @@ OUT: stream to ouput results to."
 {|
 ! Дата
 ! Кількість статей
-! Переглядів всього 
-! Переглядів топ-100 
+! Переглядів всього
+! Переглядів топ-100
 |-
 |#
         ;; summary information to track project's progress
