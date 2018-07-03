@@ -426,10 +426,10 @@ OUT: stream to ouput results to."
 == Статистика ==
 
 {|
-! 
-! Статей
-! Кількість переглядів
-! Топ-100
+! Дата
+! Кількість статей
+! Переглядів всього 
+! Переглядів топ-100 
 |-
 |#
         ;; summary information to track project's progress
