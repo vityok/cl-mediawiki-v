@@ -143,7 +143,7 @@ the total views, minimum, maximum and median views per day in a list.
 Returns NIL when failed to retrieve data for any reason."
 
   (let* ((url (format nil "~a" (get-query-url project article start end)))
-	 (metrics-tmp (merge-pathnames "/tmp/"
+	 (metrics-tmp (merge-pathnames "/home/victor/tmpfs/"
                                        (format nil "metrics_tmp_~a.json"
                                                (random most-positive-fixnum))))
          (result nil)

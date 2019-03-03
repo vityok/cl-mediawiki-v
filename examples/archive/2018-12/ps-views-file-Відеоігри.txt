@@ -1,0 +1,1834 @@
+.kkrieger	7	0	2	0.0
+Вікіпедія:Проект:Відеоігри/Статистика	4	0	3	0.0
+0 A.D.	187	0	37	4.0
+0x10c	10	0	2	0.0
+1UP.com	16	0	2	0.0
+3DO Interactive Multiplayer	23	0	4	1.0
+4x4 EVO 2	9	0	2	0.0
+007: Quantum of Solace	15	0	2	0.0
+11 bit studios	28	0	5	1.0
+18 Wheels of Steel: Extreme Trucker	12	0	2	1.0
+18 Wheels of Steel: Haulin'	15	0	3	0.0
+18 Wheels of Steel: Pedal to the Metal	10	0	2	0.0
+50 Cent: Blood on the Sand	11	0	2	0.0
+50 Cent: Bulletproof	17	0	2	1.0
+1940-ві у відеоіграх	9	0	3	0.0
+1942 (відеогра)	8	0	1	1.0
+1950-ті у відеоіграх	6	0	3	0.0
+1952 у відеоіграх	8	0	1	0.5
+1959 у відеоіграх	4	0	2	0.0
+1960-ті у відеоіграх	12	0	6	0.0
+1962 у відеоіграх	5	0	1	0.0
+1967 у відеоіграх	5	0	1	0.0
+1970 у відеоіграх	10	0	2	1.0
+1970-ті у відеоіграх	12	0	2	0.0
+1972 у відеоіграх	5	0	2	0.0
+1973 у відеоіграх	3	0	1	0.0
+1974 у відеоіграх	4	0	1	0.0
+1975 у відеоіграх	7	0	1	0.0
+1976 у відеоіграх	13	0	3	0.0
+1977 у відеоіграх	3	0	2	0.0
+1978 у відеоіграх	11	0	2	0.0
+1979 у відеоіграх	11	0	2	0.0
+1980 у відеоіграх	11	0	3	0.0
+1980-ті у відеоіграх	15	0	5	0.0
+1981 у відеоіграх	15	0	2	0.0
+1982 у відеоіграх	12	0	4	0.0
+1984 у відеоіграх	5	0	2	0.0
+1985 у відеоіграх	5	0	1	0.0
+1986 у відеоіграх	6	0	2	0.0
+1987 у відеоіграх	5	0	1	0.0
+1988 у відеоіграх	5	0	1	0.0
+1989 у відеоіграх	7	0	2	0.0
+1990 у відеоіграх	7	0	1	0.0
+1990-ті у відеоіграх	9	0	2	0.0
+1991 у відеоіграх	12	0	1	0.0
+1995 у відеоіграх	7	0	2	0.0
+1996 у відеоіграх	8	0	2	0.0
+1997 у відеоіграх	11	0	2	0.0
+1998 у відеоіграх	9	0	2	0.0
+2000-ні у відеоіграх	14	0	5	0.0
+2005 у відеоіграх	18	0	3	1.0
+2006 у відеоіграх	7	0	1	0.0
+2007 у відеоіграх	18	0	2	1.0
+2008 у відеоіграх	23	0	4	1.0
+2009 у відеоіграх	19	0	3	0.0
+2010 у відеоіграх	16	0	2	1.0
+2011 у відеоіграх	14	0	4	0.0
+2012 у відеоіграх	26	0	7	0.0
+2013 у відеоіграх	15	0	2	0.0
+2014 у відеоіграх	14	0	2	1.0
+2015 у відеоіграх	18	0	3	1.0
+2016 у відеоіграх	26	0	2	1.0
+2017 у відеоіграх	17	0	3	1.0
+2048 (гра)	127	0	8	4.0
+ААА (індустрія відеоігор)	38	0	5	1.0
+Агата Крісті: Вбивство в Східному експресі	37	0	6	1.0
+Адам Скорупа	6	0	3	0.0
+Акелла	30	0	3	1.0
+Альфа: Антитерор	11	0	2	0.0
+Анабіоз: Сон розуму	89	1	9	3.0
+Аркада (гра)	228	2	15	8.0
+Аркадний ігровий автомат	28	0	10	0.5
+Артилерія (жанр відеоігор)	8	0	2	0.0
+Банішед	39	0	5	1.0
+Битва за Запоріжжя: Врятувати мости від мера Карташо	3	0	2	0.0
+Бонусний рівень	3	0	2	0.0
+Бос (відеоігри)	7	0	2	0.0
+Браузерна гра	46	0	5	1.0
+Брок (персонаж «Покемона»)	6	0	1	0.0
+Варгейм	33	0	4	1.0
+Вівісектор: Звір усередині	32	0	4	1.0
+Відеогра	994	4	56	34.0
+Відеоігри в Україні	133	1	14	3.0
+Відкритий світ	62	0	7	2.0
+Відьмак: Кривавий слід	12	0	3	0.0
+Вій. Історія розказана наново (комп'ютерна гра)	45	0	13	1.0
+Війна племен	27	0	7	1.0
+Вільям Райт	34	0	3	1.0
+Віртуальна держава	188	0	14	5.5
+Влада закону (гра)	5	0	1	0.0
+Володар Перснів Онлайн	42	0	6	1.0
+Воррен Спектор	6	0	2	0.0
+Восьме покоління ігрових систем	102	1	7	3.0
+Гаррі Поттер і в'язень Азкабану (гра)	26	0	3	1.0
+Гаррі Поттер і келих вогню (гра)	21	0	2	1.0
+Гаррі Поттер і напівкровний Принц (гра)	20	0	3	1.0
+Гаррі Поттер і Орден фенікса (гра)	28	0	3	1.0
+Гаррі Поттер і філософський камінь (гра)	56	0	6	2.0
+Гаррі Поттер: Чемпіонат світу з квідичу (гра)	30	0	4	1.0
+Гейб Ньюелл	673	9	58	20.0
+Геймпад	265	1	18	8.0
+Герої війни та грошей	63	0	10	1.0
+Герої знищених імперій	53	0	6	1.5
+Глобальна стратегія	71	0	6	2.0
+Головоломка (жанр відеоігор)	54	0	11	1.0
+Гордон Фрімен	76	0	7	2.0
+Гра в бога	22	0	3	1.0
+Гральна консоль	396	5	20	13.0
+Ґеральт з Рівії	119	1	11	3.0
+Далекобійники 3: Підкорення Америки	23	0	4	1.0
+Джойстик	233	3	16	7.0
+Дизайн рівнів	41	0	10	1.5
+Доктор Еггман	12	0	4	0.0
+Доля Еллади	8	0	3	0.0
+Доповнення (відеоігри)	21	0	3	1.0
+Драконіка	5	0	2	0.0
+Друга світова (гра)	22	0	3	1.0
+Друге покоління ігрових систем	15	0	4	0.0
+Дрю Карпишин	49	0	4	1.0
+Еадор	10	0	2	0.0
+Ейдра	7	0	2	0.0
+Екшн (жанр відеоігор)	92	0	9	2.0
+Еллен Маклейн	9	0	2	0.0
+Емі Роуз	25	0	4	1.0
+Ерагон (відеогра)	7	0	2	0.0
+Єхидна Наклз	30	0	4	1.0
+Жанри відеоігор	466	3	30	13.0
+Здоров'я (відеоігри)	31	0	7	1.0
+Зоряні війни (ігри)	154	0	15	4.0
+Зоряні Війни: Сила Нездоланна (гра)	29	0	4	1.0
+Зоряні Війни: Сила Нездоланна II	20	0	3	0.0
+Ігровий дизайнер	5	0	2	0.0
+Ігровий картридж	26	0	6	1.0
+Ігровий контролер	99	0	7	3.0
+Ігровий процес	86	1	12	2.0
+Індустрія відеоігор	102	1	12	2.5
+Інон Зур	8	0	3	0.0
+Інтерактивний фільм	88	0	15	2.0
+Історія відеоігор	487	1	35	15.0
+Їжак Сонік	186	2	14	6.0
+Кодекс війни	5	0	1	0.5
+Козаки (серія ігор)	385	5	21	12.0
+Козаки 2: Битва за Європу	68	0	6	2.0
+Козаки 2: Наполеонівські війни	109	0	10	3.0
+Козаки 3	359	5	27	10.0
+Козаки: Європейські війни	260	2	20	8.0
+Козаки: Знову війна	139	0	10	5.0
+Козаки: Останній довід королів	41	0	4	1.0
+Комп'ютерна миша	1887	8	146	56.0
+Комп'ютерне кермо	30	0	4	1.0
+Консольна гра	14	0	2	0.0
+Корсари (серія ігор)	65	0	5	2.0
+Корсари III	19	0	2	1.0
+Корсари: Кожному своє	36	0	4	1.0
+Корсари: Місто загублених кораблів	29	0	4	1.0
+Корсари: Прокляття дальніх морів	38	0	4	1.0
+Ксена: принцеса-воїн: Талісман долі	6	0	2	0.0
+Кшиштоф Вежинкевич	1	0	1	0.0
+Лінійність (відеоігри)	14	0	2	0.0
+Майлз «Тейлз» Прауер	26	0	5	1.0
+Маріо (персонаж)	166	1	14	5.0
+Меридиан'93	22	0	3	1.0
+Мугл (Final Fantasy)	4	0	1	0.0
+Нескінченне літо	209	3	22	6.0
+Новий Союз	24	0	4	1.0
+Однокористувацька гра	75	0	6	2.0
+Онлайн-гра	146	1	12	4.5
+Очки досвіду (відеоігри)	13	0	3	0.0
+П'яте покоління ігрових систем	28	0	6	1.0
+Павло Блащак	5	0	2	0.0
+Периметр (відеогра)	15	0	3	1.0
+Периметр 2: Нова Земля	7	0	2	0.0
+Перше покоління ігрових систем	30	0	3	1.0
+Пірамідоголовий	39	0	4	1.0
+Пірати Карибського моря (гра)	88	0	8	2.0
+Платформер	171	0	17	4.5
+Покемон	807	9	47	28.0
+Покемон (серія відеоігор)	89	0	7	3.0
+Покрокова стратегія	59	0	8	2.0
+Портативна гральна система	37	0	5	1.0
+Правда о девятой роте	4	0	2	0.0
+Пригоди піонерки Ксені	29	0	4	1.0
+Пригодницька відеогра	166	0	15	5.0
+Проходження гри	5	0	1	0.0
+Ракетний симулятор (електронна гра)	12	0	3	1.0
+Рейндж	2	0	1	0.0
+Респавн	18	0	4	1.0
+Рівень (відеоігри)	27	0	5	1.0
+Рівні складності (відеоігри)	13	0	5	0.0
+Розробка відеогри	349	0	24	11.0
+Рольова відеогра	132	1	10	4.0
+Рольова гра	271	1	17	9.0
+Сайд-скролер	27	0	3	1.0
+Сайлент-Хілл (місто)	55	0	6	1.0
+Світловий пістолет	18	0	3	0.0
+Сем Лейк	23	0	3	1.0
+Серія ігор Europa Universalis	37	0	3	1.0
+Сетинг	84	0	6	3.0
+Симбіонт (відеогра)	12	0	2	0.0
+Симулятор життя	41	0	8	1.0
+Симулятор танка	22	0	3	1.0
+Симуляційна відеогра	61	0	12	1.0
+Сід Меєр	46	0	5	1.0
+Сіті 17	59	0	6	2.0
+Список відеоігор «Bleach»	1	0	1	0.0
+Список гральних консолей	21	0	6	1.0
+Список емуляторів гральних консолей	16	0	5	1.0
+Список ігор серії Final Fantasy	36	0	4	1.0
+Список ігор Data East	2	0	1	0.0
+Список ігор Square Enix	22	0	3	1.0
+Сталін проти марсіан	30	0	4	1.0
+Стратегічна відеогра	75	0	14	2.0
+Стратегія в реальному часі	147	0	13	4.0
+Сьоме покоління ігрових систем	72	0	8	2.0
+Танк (відеогра)	3	0	1	0.0
+Танки Онлайн	201	1	13	6.0
+Танцювальна платформа	98	0	24	1.0
+Текстура (тривимірна графіка)	137	0	10	4.0
+Тетріс	493	4	73	13.0
+Тецуя Номура	3	0	1	0.0
+Тиберій (мінерал)	25	0	3	1.0
+Травіан	70	0	6	2.0
+Третє покоління ігрових систем	23	0	3	1.0
+Трон: Еволюція	24	0	5	1.0
+Тургор (гра)	15	0	3	0.0
+У тилу ворога	54	0	6	2.0
+У тилу ворога 2	38	0	3	1.0
+У тилу ворога 2: Лис пустелі	20	0	2	1.0
+Хаотікс	7	0	2	0.0
+Хедкраб	17	0	4	1.0
+Четверте покоління ігрових систем	31	0	4	1.0
+Чокобо	8	0	2	0.0
+Шамус (відео гра)	3	0	1	0.0
+Шолом віртуальної реальності	254	1	18	7.0
+Шосте покоління ігрових систем	42	0	5	1.0
+Шутер	143	0	10	4.0
+Шутер від першої особи	116	1	10	3.0
+Японська рольова гра	35	0	4	1.0
+A Vampyre Story	8	0	1	1.0
+AaaaaAAaaaAAAaaAAAAaAAAAA!!! - A Reckless Disregard for Gravity	6	0	2	0.0
+Ace Combat: Assault Horizon	10	0	2	0.0
+Action-adventure	68	0	11	2.0
+Activision	138	0	16	3.0
+Admiral Sea Battles	10	0	2	0.0
+Afterfall: Insanity	9	0	2	0.0
+Agar.io	90	0	7	3.0
+Age of Chivalry	6	0	1	0.0
+Age of Conan: Hyborian Adventures	11	0	3	0.0
+Age of Empires	60	0	9	2.0
+Age of Empires (серія ігор)	185	0	15	6.0
+Age of Empires II	151	0	28	4.0
+Age of Empires II: The Conquerors	32	0	5	1.0
+Age of Empires III	98	0	9	3.0
+Age of Empires III: The Asian Dynasties	39	0	6	1.0
+Age of Empires III: The WarChiefs	24	0	6	1.0
+Age of Empires Online	43	0	7	1.0
+Age of Mythology	74	0	8	2.0
+AIKA Online	28	0	6	1.0
+Airline Tycoon	16	0	3	1.0
+Alan Wake	78	0	10	2.0
+Alan Wake's American Nightmare	22	0	4	0.5
+Alexander (гра)	36	0	5	1.0
+Algodoo	16	0	4	0.0
+Alice: Madness Returns	88	0	8	2.0
+Alien Shooter 2	26	0	3	1.0
+Aliens: Colonial Marines	37	0	4	1.0
+Alley Cat (відеогра)	3	0	1	0.0
+Allgame	2	0	1	0.0
+Alone in the Dark (гра, 1992)	15	0	3	1.0
+Alone in the Dark 2	5	0	2	0.0
+Alone in the Dark: The New Nightmare	13	0	3	0.5
+Alpha Protocol	25	0	3	1.0
+American Conquest	111	0	7	3.0
+American McGee's Alice	53	0	6	1.0
+American McGee's Grimm	12	0	4	0.0
+Amerzone	9	0	2	0.0
+Amiga CD32	12	0	2	0.0
+Amiga CDTV	19	0	13	0.0
+Amnesia: The Dark Descent	90	0	8	3.0
+Amstrad GX4000	8	0	2	0.0
+Amusement Vision	2	0	1	0.0
+Anachronox	11	0	2	1.0
+Ancient Conquest	9	0	2	1.0
+Angry Birds	551	2	62	13.0
+Angry Birds 2	57	0	9	2.0
+Angry Birds Star Wars 2	10	0	3	0.0
+Anno (серія ігор)	221	2	16	7.0
+Anno 1404	93	0	13	2.0
+Anno 1602	55	0	17	1.0
+Anno 1701	42	0	4	1.0
+Anno 2070	60	0	6	2.0
+Anno 2205	79	0	8	2.0
+Anomaly: Warzone Earth	14	0	9	0.0
+Anvil	25	0	3	1.0
+Apple Bandai Pippin	8	0	2	0.0
+Aquaria (відеогра)	6	0	2	0.0
+Arcanum: Of Steamworks and Magick Obscura	65	0	6	2.0
+ArcheAge	44	0	5	1.0
+Arma 3	152	0	11	4.0
+Armagetron Advanced	3	0	1	0.0
+Armikrog	8	0	2	0.0
+Armored Core	11	0	2	1.0
+Asphalt 8: Airborne	56	0	4	2.0
+Assassin's Creed	331	3	18	10.0
+Assassin's Creed (серія ігор)	3161	66	152	99.0
+Assassin's Creed II	293	1	18	9.0
+Assassin's Creed II: Discovery	24	0	3	1.0
+Assassin's Creed III	411	5	22	13.0
+Assassin's Creed III: Liberation	66	0	6	2.0
+Assassin's Creed IV: Black Flag	324	4	19	10.0
+Assassin's Creed Origins	408	6	21	13.0
+Assassin's Creed Rogue	318	3	19	10.0
+Assassin's Creed Syndicate	296	3	17	9.5
+Assassin's Creed: Altaïr's Chronicles	38	0	3	1.0
+Assassin's Creed: Bloodlines	44	0	8	1.0
+Assassin's Creed: Brotherhood	207	2	14	6.0
+Assassin's Creed: Project Legacy	10	0	2	1.0
+Assassin's Creed: Revelations	285	4	21	8.0
+Assassin's Creed: Unity	372	4	19	12.0
+Assassin’s Creed Chronicles	33	0	7	1.0
+Atari 7800	16	0	2	0.0
+Atari Jaguar	17	0	3	0.0
+Audiosurf	7	0	2	0.0
+Awesomenauts	5	0	1	0.0
+Axis & Allies	26	0	4	1.0
+Bad Piggies	21	0	4	0.0
+Baldur's Gate	95	0	10	2.0
+Baldur's Gate II: Shadows of Amn	24	0	4	0.5
+Baldur's Gate II: Throne of Bhaal	20	0	3	1.0
+Baldur's Gate: Dark Alliance	9	0	2	0.0
+Baldur's Gate: Tales of the Sword Coast	11	0	3	0.0
+Barnyard (відеогра)	27	0	3	1.0
+Bastion	39	0	4	1.0
+Batman: Arkham Asylum	60	0	5	2.0
+Batman: Arkham City	84	0	7	2.0
+Batman: Arkham Knight	131	1	9	4.0
+Batman: Arkham Origins	77	0	6	2.5
+Battle City	48	0	5	1.0
+Battle.net	76	0	8	2.0
+BattleBlock Theater	5	0	1	0.0
+Battleborn	15	0	4	0.0
+Battlefield 1	226	2	18	7.0
+Battlefield 2	107	0	9	3.0
+Battlefield 3	181	2	12	5.0
+Battlefield 4	254	1	15	8.0
+Battlefield 1942	92	0	7	3.0
+Battlefield 1943	41	0	4	1.0
+Battlefield Hardline	107	0	10	3.0
+Battlefield Heroes	37	0	4	1.0
+Battlefield V	353	5	20	11.0
+Battlefield: Bad Company	61	0	6	2.0
+Battlefield: Bad Company 2	108	0	8	3.0
+Battlefleet Gothic: Armada	55	0	5	2.0
+BattleGoat Studios	3	0	1	0.0
+Battles of Prince of Persia	7	0	1	0.0
+Battlestations: Midway	3	0	1	0.0
+Battletoads	46	0	5	2.0
+Bayonetta	39	0	4	1.0
+Bayonetta 2	25	0	3	1.0
+Bejeweled	20	0	2	1.0
+Besiege	18	0	3	1.0
+Bethesda Softworks	302	1	22	8.0
+Beyond Castle Wolfenstein	29	0	3	1.0
+Beyond: Two Souls	133	0	8	5.0
+Bible Black	80	0	12	2.0
+Bio Menace	6	0	2	0.0
+BioShock	318	3	16	11.0
+BioShock 2	99	0	8	3.0
+BioShock Infinite	214	0	19	7.0
+Black Desert	175	1	12	6.0
+Black Gold Online	7	0	3	0.0
+Black Mesa	90	0	6	3.0
+Blade & Soul	48	0	7	1.0
+Blade Runner (відеогра 1997)	24	0	5	1.0
+Blades of Steel	5	0	1	0.0
+Blizzard Entertainment	330	4	22	10.0
+BlizzCon	22	0	3	0.0
+Blockout	9	0	1	0.0
+Blood Omen 2: Legacy of Kain	6	0	1	0.0
+Blood Omen: Legacy of Kain	9	0	2	0.0
+Bloodborne	158	1	10	5.0
+Bloodline Champions	8	0	2	0.0
+Blue Byte Software	10	0	3	0.0
+Blur (гра)	34	0	5	1.0
+Body Count (гра)	2	0	1	0.0
+Bomberman II	4	0	2	0.0
+Bonk (серія ігор)	3	0	1	0.0
+Borderlands	134	1	10	3.0
+Borderlands: The Pre-Sequel	59	0	4	2.0
+Boulder Dash	15	0	2	0.0
+Bravely Default: Flying Fairy	30	0	3	1.0
+Brink	13	0	2	1.0
+Brothers in Arms: Hell's Highway	15	0	2	1.0
+Brothers in Arms: Road to Hill 30	14	0	3	0.0
+Brütal Legend	20	0	3	0.0
+Bugs Bunny in Double Trouble	1	0	1	0.0
+Bulletstorm	80	0	9	2.0
+Bully	72	0	7	2.0
+Burnout Paradise	76	0	6	2.0
+Bus Driver	8	0	2	0.5
+Caesar III	18	0	4	1.0
+Call of Cthulhu: Dark Corners of the Earth	74	0	6	2.0
+Call of Duty	124	0	10	4.0
+Call of Duty 2	139	1	11	4.0
+Call of Duty 3	135	1	13	4.0
+Call of Duty 4: Modern Warfare	461	2	24	14.0
+Call of Duty: Advanced Warfare	105	0	12	2.0
+Call of Duty: Black Ops	305	1	17	9.0
+Call of Duty: Black Ops II	173	1	12	5.0
+Call of Duty: Black Ops III	135	1	11	4.0
+Call of Duty: Ghosts	149	1	17	4.0
+Call of Duty: Modern Warfare 2	278	3	16	9.0
+Call of Duty: Modern Warfare 3	286	3	20	9.0
+Call of Duty: United Offensive	58	0	6	2.0
+Call of Duty: World at War	243	3	15	7.0
+Call of Duty: WWII	232	2	15	7.5
+Call of Juarez	28	0	5	1.0
+Call of Juarez: Bound in Blood	21	0	3	1.0
+Call of Warhammer: Total War	0	0	0	0.0
+Candy Crush Saga	31	0	4	1.0
+Captain America and the Avengers	9	0	2	1.0
+Captain Toad: Treasure Tracker	4	0	1	0.0
+Carmageddon	28	0	4	1.0
+Carmageddon: Reincarnation	11	0	4	0.0
+Carriers at War (2007)	2	0	1	0.0
+Carriers at War II	2	0	1	0.0
+Casio Loopy	10	0	3	0.0
+Casio PV-1000	10	0	2	0.0
+Castle Wolfenstein	48	0	7	1.0
+Castlevania	15	0	3	0.0
+Cataclysm: Dark Days Ahead	22	0	5	1.0
+Cave Story	14	0	5	1.0
+CD Projekt	83	0	8	2.0
+CD Projekt Investment	7	0	1	0.0
+CD Projekt Localisation Centre	0	0	0	0.0
+CD Projekt RED	149	0	10	5.0
+Champions of Regnum	3	0	1	0.0
+Championship Pool	3	0	1	0.0
+Chariots of War	12	0	3	1.0
+Chasm: The Rift	23	0	4	1.0
+Chessmaster	20	0	4	1.0
+Child of Light	30	0	5	1.0
+Chocobo Racing	4	0	2	0.0
+Cisco Heat	2	0	1	0.0
+Cities: Skylines	126	1	11	3.0
+City Life	5	0	2	0.0
+Civilization	124	0	11	3.0
+Civilization (серія)	240	1	17	7.0
+Civilization II	34	0	5	1.0
+Civilization III	37	0	3	1.0
+Civilization IV	67	0	5	2.0
+Civilization IV: Colonization	12	0	2	0.0
+Civilization V	197	2	18	6.0
+Civilization V: Brave New World	38	0	6	1.0
+Civilization VI	471	6	28	15.0
+Civilization: Beyond Earth	64	0	5	2.0
+Clash of Clans	359	1	20	12.0
+Clash Royale	477	6	27	14.0
+Cleopatra Fortune	2	0	1	0.0
+Clive Barker's Jericho	47	0	5	1.5
+Clock Tower	13	0	2	0.0
+Cloud	6	0	3	0.0
+Club Penguin	21	0	3	1.0
+Cobra Mission: Panic in Cobra City	3	0	1	0.0
+Code of Honor 2: Conspiracy Island	3	0	1	0.0
+Code of Honor 3: Desperate Measures	17	0	5	1.0
+Code of Honor: The French Foreign Legion	11	0	4	0.0
+Codename: Outbreak	31	0	4	1.0
+Colin McRae: Dirt 2	25	0	4	1.0
+Collapse	66	0	6	2.0
+Collapse: The Rage	53	0	6	2.0
+Command & Conquer	275	3	17	8.0
+Command & Conquer 3: Kane's Wrath	44	0	7	1.0
+Command & Conquer 3: Tiberium Wars	102	1	8	3.0
+Command & Conquer 4: Tiberian Twilight	66	0	5	2.0
+Command & Conquer: Generals	270	4	18	8.0
+Command & Conquer: Red Alert	55	0	6	2.0
+Command & Conquer: Red Alert 2	72	0	8	2.0
+Command & Conquer: Red Alert 3	109	1	8	3.0
+Command & Conquer: Renegade	42	0	5	2.0
+Command & Conquer: Tiberian Dawn	35	0	7	1.0
+Command & Conquer: Tiberian Sun	41	0	4	1.0
+Command & Conquer: Tiberium Alliances	28	0	5	1.0
+Command & Conquer: Yuri's Revenge	26	0	3	1.0
+Company of Heroes	131	1	14	4.0
+Company of Heroes 2	150	0	26	2.5
+Computer Bismarck	5	0	1	0.0
+Condemned: Criminal Origins	14	0	2	0.0
+Conker's Bad Fur Day	12	0	2	0.0
+Contra	45	0	6	1.0
+Contra (серія відеоігор)	16	0	3	0.5
+Contra 4	8	0	3	0.0
+Contra Force	16	0	4	1.0
+Contra III: The Alien Wars	9	0	3	0.0
+Contra: Hard Corps	17	0	4	0.0
+Contra: Shattered Soldier	5	0	2	0.0
+Contre Jour	12	0	2	0.0
+Cool Cool Toon	1	0	1	0.0
+Counter-Strike	972	19	52	30.0
+Counter-Strike 1.0	14	0	2	1.0
+Counter-Strike 1.6	466	6	33	13.0
+Counter-Strike Neo	18	0	2	1.0
+Counter-Strike Online	68	0	6	2.0
+Counter-Strike: Condition Zero	122	0	11	4.0
+Counter-Strike: Global Offensive	1489	24	83	44.0
+Counter-Strike: Source	105	1	9	3.0
+Cradle (гра)	71	0	6	2.0
+Crash Bandicoot (відеогра)	49	0	4	2.0
+Crash Bandicoot 2: Cortex Strikes Back	17	0	2	1.0
+Crash Bandicoot 3: Warped	5	0	1	0.0
+Crash Bandicoot Purple: Ripto's Rampage	3	0	1	0.0
+Crash Bandicoot: The Wrath of Cortex	13	0	2	1.0
+Crash Bash	23	0	4	1.0
+Crash of the Titans	7	0	1	0.0
+Crash Tag Team Racing	5	0	1	0.0
+Crash Team Racing	49	0	7	1.0
+Crash: Mind over Mutant	10	0	3	0.5
+Crayon Physics Deluxe	8	0	2	0.0
+Creoteam	92	0	7	3.0
+Crescendo (гра)	9	0	8	0.0
+Crisis Core: Final Fantasy VII	9	0	2	0.0
+Crown of the North	15	0	3	1.0
+Cruise Chaser Blassty	1	0	1	0.0
+Cruise for a Corpse	2	0	1	0.0
+Crusader Kings II	155	1	13	4.0
+Crusader: No Remorse	6	0	2	0.0
+Crysis	398	4	23	13.0
+Crysis (серія ігор)	186	1	14	6.0
+Crysis 2	130	1	9	4.0
+Crysis 3	175	1	13	5.0
+Crysis Warhead	82	0	7	2.5
+Crystal Defenders	5	0	1	0.0
+Culture Shock (Sam & Max)	2	0	1	0.0
+Cut the Rope	21	0	3	0.5
+Cyber Light Game Studio	66	0	7	2.0
+Dark Fall	5	0	2	0.0
+Dark Sector	24	0	5	1.0
+Dark Souls	311	5	18	9.5
+Dark Souls II	80	0	19	2.0
+Dark Souls III	126	0	8	4.0
+Darkest Dungeon	79	0	9	2.0
+DarkOrbit	55	0	5	2.0
+Darkwing Duck (Capcom)	10	0	2	0.0
+Daxter	8	0	2	0.0
+DayZ (гра)	206	1	25	7.0
+DayZ (модифікація)	25	0	3	1.0
+Dead by Daylight	38	0	4	1.0
+Dead Island	88	0	10	2.0
+Dead Island: Riptide	31	0	5	1.0
+Dead Man's Hand	9	0	3	0.0
+Dead Rising	20	0	2	1.0
+Dead Space	261	2	17	9.0
+Dead Space 2	69	0	6	2.0
+Dead Space 3	99	0	8	3.0
+Deadpool (відеогра)	25	0	4	1.0
+Death Track: Відродження	4	0	1	0.0
+Decisive Battles of World War II: Across the Dnepr	2	0	1	0.0
+Decisive Battles of World War II: Korsun Pocket	2	0	1	0.0
+Deep Black	8	0	2	0.0
+DEFCON (гра)	11	0	2	1.0
+Delta Force (гра)	16	0	3	1.0
+Delta Force Mobile	1	0	1	0.0
+Delta Force: Land Warrior	8	0	4	0.0
+Delta Force: Task Force Dagger	7	0	4	0.0
+Demigod (відеогра)	11	0	1	1.0
+Demon's Souls	58	0	6	2.0
+Dendy	218	1	15	7.0
+Destiny	98	1	9	3.0
+Destiny 2	223	1	18	7.0
+Detention	10	0	2	0.0
+Detroit: Become Human	674	9	41	20.0
+Deus Ex	108	0	9	3.0
+Deus Ex (серія відеоігор)	172	1	19	4.0
+Deus Ex: Human Revolution	114	0	8	4.0
+Deus Ex: Invisible War	40	0	7	1.0
+Deus Ex: Mankind Divided	117	1	10	3.0
+Deus Ex: The Fall	35	0	4	1.0
+Devil May Cry	85	1	10	2.0
+Devil May Cry (серія)	192	2	11	6.0
+Devil May Cry 2	15	0	3	1.0
+Devil May Cry 3: Dante's Awakening	48	0	5	2.0
+Devil May Cry 4	82	0	7	2.5
+Diablo	155	1	9	5.0
+Diablo II	163	0	18	5.0
+Diablo II: Lord of Destruction	57	0	5	2.0
+Diablo III	182	1	13	5.0
+Diddy Kong Racing	8	0	3	0.0
+Die by the Sword	8	0	2	0.0
+Digger	11	0	2	0.0
+Dirt 3	22	0	5	0.0
+Disciples II: Dark Prophecy	120	1	12	3.0
+Disciples III: Renaissance	92	0	11	3.0
+Disciples: Sacred Lands	15	0	4	0.0
+Dishonored	251	3	16	7.5
+Dishonored 2	125	0	10	4.0
+Disney Infinity	37	0	6	1.0
+Disney's Aladdin in Nasira's Revenge	23	0	4	1.0
+Dissidia: Final Fantasy	8	0	2	0.0
+Divinity: Original Sin II	102	0	10	3.0
+DmC: Devil May Cry	142	0	9	5.0
+Doki Doki Literature Club!	232	2	18	6.0
+Don't Starve	211	2	18	6.0
+Donkey Kong 64	7	0	2	0.0
+Donkey Kong Country	18	0	6	0.0
+Donkey Kong Country 2: Diddy's Kong Quest	2	0	1	0.0
+Doodle Jump	37	0	4	1.0
+Doom	344	2	41	9.0
+Doom (відеогра 2016)	202	1	15	7.0
+Doom 3	129	1	11	4.0
+Doom II: Hell on Earth	111	0	8	3.5
+DotA	618	7	42	17.0
+Dota 2	962	17	49	30.0
+Dr. Mario	6	0	2	0.0
+Dragomon Hunter	1	0	1	0.0
+Dragon Age II	66	0	6	2.0
+Dragon Age: Inquisition	160	2	13	5.0
+Dragon Age: Origins	110	0	11	3.0
+Dragon Age: Origins – Awakening	25	0	2	1.0
+Dragon Nest	39	0	5	1.0
+Dragon's Lair	23	0	3	1.0
+Dreamcast	130	2	9	4.0
+Driver: San Francisco	60	0	5	2.0
+DualShock	115	0	10	3.0
+DuckTales (відеогра)	7	0	1	0.0
+Duke Nukem 3D	34	0	4	1.0
+Duke Nukem 3D: Reloaded	4	0	1	0.0
+Duke Nukem Forever	21	0	2	1.0
+Dune (відеогра)	66	0	5	3.0
+Dune II	62	0	5	2.0
+Dungeon crawl	24	0	2	1.0
+Dungeon Defenders	6	0	3	0.0
+Dungeon Siege	31	0	4	1.0
+Dungeons	9	0	3	0.0
+Dungeons & Dragons: Dragonshard	14	0	3	0.0
+Dwarf Fortress	83	0	7	3.0
+Dying Light	203	0	13	6.0
+Dying Light: The Following	179	2	14	6.0
+Dynasty Warriors	29	0	4	1.0
+EA Digital Illusions CE	40	0	4	1.0
+Earth 2150	7	0	2	0.0
+Earth 2160	30	0	4	0.5
+EarthBound	22	0	3	1.0
+Earthworm Jim 2	9	0	1	0.0
+Eat Lead: The Return of Matt Hazard	2	0	1	0.0
+Echo of Soul	7	0	2	0.0
+Edge (відеогра)	4	0	1	0.0
+EGO (рушій)	5	0	1	0.0
+Ehrgeiz	8	0	2	0.5
+Elasto Mania	10	0	2	0.0
+Electronic Arts	283	2	18	9.0
+Electronic Entertainment Expo	46	0	3	1.0
+ELEX	47	0	5	2.0
+Elite: Dangerous	79	0	7	3.0
+Empire Earth	29	0	6	1.0
+Empire Earth III	10	0	3	0.0
+Empire: Total War	124	1	13	4.0
+Endless Legend	29	0	5	1.0
+Endless Space	18	0	4	0.0
+Endless Space 2	41	0	5	1.0
+Enslaved: Odyssey to the West	16	0	3	1.0
+Enter the Matrix	28	0	3	1.0
+Entertainment Software Rating Board	110	1	12	3.0
+Epic Games	429	3	26	12.0
+Etherium	7	0	2	0.0
+Eufloria	12	0	4	0.0
+Euro Truck Simulator	44	0	4	1.0
+Euro Truck Simulator 2	358	3	22	11.0
+Europa Universalis	34	0	7	1.0
+Europa Universalis II	7	0	2	0.0
+Europa Universalis III	26	0	5	1.0
+Europa Universalis IV	269	1	22	6.5
+Europa Universalis: Rome	23	0	4	1.0
+EVE Online	181	1	21	5.0
+EverQuest II	9	0	2	0.0
+Evil Dead: Hail to the King	9	0	2	0.0
+Evolve (відеогра)	27	0	4	1.0
+Ex Machina (гра)	27	0	3	1.0
+Ex Machina: Меридіан 113	5	0	1	0.0
+Ex Machina: Arcade	3	0	1	0.0
+Excitebike	6	0	1	0.0
+Eye of the Beholder	12	0	3	1.0
+F.E.A.R.	91	0	8	2.0
+F.E.A.R. 2: Project Origin	29	0	5	1.0
+F.E.A.R. 2: Reborn	6	0	1	0.0
+F.E.A.R. 3	36	0	4	1.0
+F.E.A.R. Files	6	0	1	0.0
+Fable (гра)	106	0	12	3.0
+Fable II	69	0	7	2.0
+Fabula Nova Crystallis Final Fantasy	7	0	3	0.0
+Fahrenheit (комп'ютерна гра)	128	0	17	3.5
+Fallout	390	2	22	13.0
+Fallout (серія)	245	1	17	7.0
+Fallout 2	125	0	12	3.0
+Fallout 3	326	2	21	10.0
+Fallout 4	426	3	31	13.0
+Fallout 76	483	4	33	14.0
+Fallout Shelter	66	0	12	2.0
+Fallout: New Vegas	284	2	16	8.0
+Far Cry	176	1	18	5.0
+Far Cry 2	124	0	12	4.0
+Far Cry 3	295	2	20	9.0
+Far Cry 3: Blood Dragon	45	0	6	1.0
+Far Cry 4	358	3	35	11.0
+Far Cry 5	435	6	28	14.0
+Far Cry Primal	165	1	11	5.0
+Far Cry Vengeance	10	0	2	0.0
+Fate: The Traitor Soul	7	0	2	0.0
+Fate/hollow ataraxia	70	0	7	2.0
+Fate/tiger colosseum	5	0	1	0.0
+Fate/unlimited codes	9	0	2	0.0
+FIFA (серія відеоігор)	179	1	10	6.0
+FIFA 06	14	0	2	1.0
+FIFA 07	74	0	15	2.0
+FIFA 08	18	0	5	0.0
+FIFA 09	16	0	3	0.0
+FIFA 10	18	0	5	0.0
+FIFA 11	185	0	18	5.5
+FIFA 12	56	0	9	1.0
+FIFA 13	23	0	4	1.0
+FIFA 14	65	0	6	2.0
+FIFA 17	34	0	5	1.0
+FIFA 97	6	0	2	0.0
+FIFA Football 2004	12	0	2	1.0
+FIFA Football 2005	22	0	4	1.0
+FIFA International Soccer	8	0	2	0.0
+FIFA Manager 10	10	0	2	0.0
+FIFA Soccer 95	6	0	2	0.0
+FIFA Soccer 96	5	0	1	0.0
+Fight Night	25	0	3	1.0
+Fight Night Round 3	8	0	2	0.0
+Fight Night Round 4	21	0	3	1.0
+Final Fantasy	151	1	12	4.0
+Final Fantasy Adventure	2	0	1	0.0
+Final Fantasy I	65	0	9	1.0
+Final Fantasy II	13	0	2	0.0
+Final Fantasy III	10	0	3	0.0
+Final Fantasy IV	20	0	3	0.0
+Final Fantasy IX	37	0	4	1.0
+Final Fantasy Mystic Quest	4	0	1	0.0
+Final Fantasy Tactics A2: Grimoire of the Rift	2	0	1	0.0
+Final Fantasy Tactics Advance	4	0	1	0.0
+Final Fantasy Type-0	11	0	3	0.0
+Final Fantasy V	12	0	3	0.0
+Final Fantasy VI	21	0	3	1.0
+Final Fantasy VII	55	0	5	2.0
+Final Fantasy VIII	28	0	4	1.0
+Final Fantasy X	59	0	9	1.0
+Final Fantasy X-2	20	0	4	1.0
+Final Fantasy XI	26	0	6	1.0
+Final Fantasy XII	40	0	9	1.0
+Final Fantasy XII: Revenant Wings	6	0	2	0.0
+Final Fantasy XIII	58	0	11	1.0
+Final Fantasy XIII-2	32	0	11	0.5
+Final Fantasy XIV	42	0	5	1.0
+Final Fantasy XV	101	0	9	3.0
+Final Liberation: Warhammer Epic 40,000	7	0	1	0.0
+Finding Bigfoot (відеогра)	40	0	5	1.0
+FireStarter	52	0	7	1.0
+Firewatch	164	1	11	5.0
+Five Nights at Freddy's	318	4	21	10.0
+Five Nights at Freddy's 2	130	0	12	4.0
+Five Nights at Freddy's 4	92	0	13	2.5
+Flappy bird	39	0	5	1.0
+FlatOut 2	60	0	6	2.0
+Flight of the Intruder	12	0	4	0.0
+FM Towns Marty	10	0	3	0.0
+Foldit	15	0	4	0.0
+For Honor	100	0	12	2.0
+Forgotten Realms: Demon Stone	9	0	2	0.0
+Fortnite	1796	29	99	56.0
+Forza Horizon	102	0	11	3.0
+Forza Motorsport 5	13	0	4	0.0
+Forza Motorsport 6	18	0	2	0.5
+Forza Motorsport 7	50	0	8	1.0
+FreeCol	19	0	3	0.5
+Freelancer	51	0	9	1.0
+Frogger	14	0	5	0.5
+Frostbite Engine	85	0	11	2.0
+Frostpunk	240	2	19	6.5
+Frozen Bubble	3	0	1	0.0
+Fruit Ninja	10	0	1	0.0
+FTL: Faster Than Light	37	0	6	1.0
+Fuel (відеогра)	23	0	2	1.0
+Full Throttle (відеогра)	36	0	8	1.0
+Funatics Studio Alpha	8	0	2	0.0
+Gabriel Knight 3: Blood of the Sacred, Blood of the Damned	1	0	1	0.0
+Gabriel Knight: Sins of the Fathers	10	0	3	1.0
+Galactic Civilizations II: Dread Lords	8	0	1	0.0
+Galaga	22	0	4	0.5
+Gamasutra	17	0	3	0.0
+Game Boy Advance	67	0	5	2.0
+Game Dev Tycoon	33	0	3	1.0
+GamePro	25	0	7	1.0
+Games for Windows — Live	25	0	3	0.0
+Gamescom	31	0	4	1.0
+GameStop	16	0	4	0.0
+GameZone	7	0	2	0.0
+Gamigo	9	0	3	0.0
+Garry's Mod	83	0	9	2.0
+Gears of War	108	1	7	3.0
+Geometry Dash	101	0	8	3.0
+Geopolitical Simulator	21	0	3	1.0
+Giants: Citizen Kabuto	5	0	3	0.0
+Gish (відеогра)	13	0	3	0.0
+Glacier engine	5	0	3	0.0
+God of War	71	0	8	2.0
+God of War (франшиза)	369	1	33	10.5
+GOG.com	100	1	8	3.0
+GoldenEye 007	11	0	2	0.0
+Golf (відеогра)	6	0	2	0.0
+Gothic (гра)	98	0	9	3.0
+Gothic 3	98	0	8	3.0
+Gothic II	65	0	7	2.0
+Gothic II: Night of the Raven	23	0	3	1.0
+Gradius	8	0	2	0.0
+Gram.pl	6	0	2	0.0
+Gran Turismo 5	29	0	3	1.0
+Gran Turismo 6	31	0	4	1.0
+Grand Ages: Rome	5	0	2	0.0
+Grand Theft Auto (відеогра)	83	0	8	2.0
+Grand Theft Auto 2	67	0	7	2.0
+Grand Theft Auto Advance	33	0	5	1.0
+Grand Theft Auto III	283	2	18	10.0
+Grand Theft Auto IV	696	11	38	21.0
+Grand Theft Auto V	4091	56	445	81.0
+Grand Theft Auto: Chinatown Wars	79	0	6	2.0
+Grand Theft Auto: Episodes From Liberty City	99	1	10	3.0
+Grand Theft Auto: Liberty City Stories	143	1	11	4.0
+Grand Theft Auto: London, 1961	13	0	3	0.0
+Grand Theft Auto: London, 1969	27	0	4	1.0
+Grand Theft Auto: San Andreas	1523	29	73	45.0
+Grand Theft Auto: The Ballad of Gay Tony	70	0	6	2.0
+Grand Theft Auto: The Lost and Damned	35	0	5	1.0
+Grand Theft Auto: Vice City	479	5	26	14.0
+Grand Theft Auto: Vice City Stories	164	1	13	5.0
+Gravity Defied	32	0	4	1.0
+Gravity Rush 2	21	0	4	1.0
+Grey Goo (відеогра)	13	0	2	0.0
+Grid Autosport	25	0	2	1.0
+Grim Dawn	34	0	4	1.0
+Grim Fandango	25	0	3	1.0
+Guardians of Middle-earth	4	0	1	0.5
+Guild Wars 2	31	0	3	1.0
+H-Craft Championship	2	0	1	0.0
+Halcyon	7	0	1	0.0
+Half-Life	355	7	17	11.0
+Half-Life (серія)	118	0	7	4.0
+Half-Life 2	320	4	19	9.0
+Half-Life 2: Episode One	71	0	5	2.0
+Half-Life 2: Episode Two	59	0	6	1.0
+Half-Life 2: Lost Coast	29	0	4	1.0
+Half-Life: Blue Shift	32	0	5	1.0
+Half-Life: Decay	23	0	3	1.0
+Half-Life: Opposing Force	37	0	5	1.0
+Halo (серія відеоігор)	208	1	15	7.0
+Halo 2	78	0	7	2.0
+Halo 3	38	0	5	1.0
+Halo 3: ODST	15	0	3	0.0
+Halo 4	31	0	5	1.0
+Halo 5: Guardians	49	0	5	1.5
+Halo Wars	45	0	6	1.0
+Halo: Combat Evolved	62	0	6	2.0
+Halo: Reach	25	0	4	1.0
+Hand of Fate (відеогра)	9	0	3	0.0
+Harebrained Schemes	71	0	24	1.0
+Harvest Moon	13	0	2	0.0
+Heart de Roommate	12	0	8	0.0
+Hearthstone	225	2	14	7.0
+Hearthstone: Heroes of Warcraft	12	0	2	0.5
+Hearts of Iron	62	0	6	1.0
+Hearts of Iron II	22	0	2	1.0
+Hearts of Iron IV	315	2	18	9.0
+Heavy Rain	214	1	17	6.0
+Hellgate: London	22	0	3	1.0
+Herc's Adventures	3	0	1	0.0
+Heroes Chronicles	29	0	3	1.0
+Heroes of Might and Magic (серія відеоігор)	508	6	30	16.0
+Heroes of Might and Magic II	46	0	5	2.0
+Heroes of Might and Magic II: The Price of Loyalty	12	0	3	0.5
+Heroes of Might and Magic III	519	7	27	16.0
+Heroes of Might and Magic III: Armageddon's Blade	28	0	3	1.0
+Heroes of Might and Magic III: The Shadow of Death	40	0	4	1.0
+Heroes of Might and Magic IV	94	0	8	3.0
+Heroes of Might and Magic V	270	3	17	9.0
+Heroes of Might and Magic V: Hammers of Fate	17	0	2	1.0
+Heroes of Might and Magic V: Tribes of the East	28	0	4	1.0
+Heroes of Might and Magic: A Strategic Quest	45	0	5	1.0
+Heroes of the Storm	97	0	8	3.0
+Herzog Zwei	18	0	6	0.0
+Hex-a-Hop	2	0	1	0.0
+Hey You, Pikachu!	5	0	1	0.0
+Hidden Folks	10	0	3	0.0
+Higurashi no Naku Koro ni	74	0	11	2.0
+Hitman 2: Silent Assassin	53	0	8	1.0
+Hitman: Absolution	123	1	10	4.0
+Hitman: Blood Money	89	1	9	3.0
+Hitman: Codename 47	61	0	12	1.0
+Hitman: Contracts	58	0	6	2.0
+Homefront	39	0	5	1.0
+Homefront: The Revolution	39	0	6	1.0
+Homeworld	25	0	3	1.0
+Homeworld 2	16	0	3	0.0
+Horizon Zero Dawn	487	9	26	16.0
+House of Caravan	5	0	1	0.0
+Hover Ace	56	0	5	2.0
+I Am Alive	20	0	4	1.0
+Ice Station Santa	1	0	1	0.0
+Icewind Dale	29	0	4	1.0
+Icewind Dale II	10	0	2	0.0
+Icewind Dale: Heart of Winter	3	0	1	0.0
+Iconoclasts	73	1	8	2.0
+IGN	123	0	14	3.0
+Ikaruga	9	0	5	0.0
+Ilomilo	5	0	1	0.0
+Imangi Studios	5	0	2	0.0
+Imperial Glory	6	0	2	0.0
+Impossible Creatures	11	0	2	1.0
+Incoming	8	0	2	0.0
+Incubation: Time is Running Out	4	0	4	0.0
+Indiana Jones and the Emperor's Tomb	12	0	5	0.0
+Indiana Jones and the Infernal Machine	10	0	2	0.0
+Indiana Jones and the Last Crusade: The Graphic Adventure	3	0	1	0.0
+InFamous 2	10	0	1	0.0
+Infinity Blade	30	0	5	1.0
+Ingress	108	0	9	3.0
+Injustice: Gods Among Us	117	1	8	3.0
+Insurgency	39	0	4	1.0
+Iron Man (гра)	15	0	3	1.0
+ISS Pro Evolution	9	0	3	0.0
+Jackal (гра)	10	0	4	0.0
+Jagged Alliance	18	0	4	1.0
+Jagged Alliance 2	23	0	2	1.0
+Jagged Alliance 3	4	0	1	0.0
+Jak and Daxter: The Precursor Legacy	8	0	2	0.0
+James Cameron's Avatar: The Game	28	0	3	1.0
+Jetpack Joyride	32	0	4	1.0
+Journey (гра, 2012)	61	0	8	2.0
+Just Cause 3	96	0	11	3.0
+Just Dance (гра)	69	0	7	2.0
+Just Dance 2018	47	0	4	2.0
+Kalypso Media	13	0	4	1.0
+Kane & Lynch 2: Dog Days	15	0	3	0.0
+Kane & Lynch: Dead Men	26	0	4	0.0
+Karos Online	11	0	3	1.0
+KartRider	6	0	1	0.0
+Katawa Shoujo	59	0	9	1.0
+Kerbal Space Program	81	0	6	3.0
+Kessen 3	1	0	1	0.0
+Killing Floor	34	0	3	1.0
+Killing Floor 2	21	0	3	1.0
+Killzone	17	0	3	0.0
+Killzone 2	4	0	1	0.0
+Killzone 3	13	0	4	0.0
+Killzone: Liberation	5	0	1	0.0
+Killzone: Mercenary	2	0	1	0.0
+Kinect	187	0	20	5.0
+King's Bounty 2	9	0	1	0.0
+King's Bounty: Перехрестя світів	8	0	2	0.0
+King's Bounty: Темна сторона	43	0	4	1.0
+King's Bounty: Armored Princess	14	0	3	0.0
+King's Bounty: The Legend	43	0	5	2.0
+Kingdom Come: Deliverance	331	2	21	10.0
+Kingdom Hearts	74	0	7	2.0
+KingsAge	5	0	1	0.0
+Kirby's Adventure	4	0	1	0.0
+KKnD 2: Krossfire	8	0	1	0.5
+Knights of Honor	22	0	3	1.0
+Knights of the Temple 2	25	0	3	1.0
+Kung Fu Panda (відеогра)	7	0	1	0.0
+KURSK	42	0	14	1.0
+L.A. Noire	136	0	15	4.0
+Land of the Dead: Road to Fiddler's Green	11	0	1	1.0
+Lara Croft and the Guardian of Light	41	0	6	1.0
+Last Chaos	22	0	4	1.0
+League of Legends	613	8	62	17.0
+Left 4 Dead	111	0	9	3.0
+Left 4 Dead 2	87	0	7	2.0
+Legacy of Kain: Soul Reaver	23	0	2	1.0
+Legacy of Kain: Soul Reaver 2	5	0	2	0.0
+Legend of Grimrock	15	0	3	1.0
+Lego Гаррі Поттер: роки 1—4	29	0	4	1.0
+Lego Creator: Гаррі Поттер	8	0	2	0.0
+LHX Attack Chopper	13	0	3	1.0
+Life is Strange	200	0	18	5.0
+Lightning Returns: Final Fantasy XIII	24	0	5	0.5
+Limbo (відеогра)	71	0	6	2.0
+Lineage II	322	4	16	9.0
+Lionheart: Kings' Crusade	11	0	2	0.0
+LittleBigPlanet 2	9	0	2	0.0
+LittleBigPlanet 3	11	0	3	0.5
+Lode Runner	16	0	3	1.0
+London 2012 (відеогра)	9	0	1	1.0
+Lord of Ultima	4	0	1	0.0
+Lost: Via Domus	14	0	3	0.0
+M.U.D. TV	2	0	1	0.0
+Machinarium	95	0	6	3.0
+Mad Max (відеогра)	56	0	5	1.0
+Madagascar (відеогра)	26	0	5	1.0
+Mafia (серія відеоігор)	129	0	12	3.5
+Mafia II	588	12	32	19.0
+Mafia III	283	5	17	9.0
+Mafia: The City of Lost Heaven	562	4	43	15.0
+Magicka	37	0	5	1.0
+Magnavox Odyssey	30	0	4	1.0
+Majesty 2: The Fantasy Kingdom Sim	16	0	3	0.0
+Majin and the Forsaken Kingdom	9	0	2	0.5
+Mana Khemia: Alchemists of Al-Revis	2	0	1	0.0
+Manhunt	77	0	6	2.0
+Manhunt 2	36	0	5	1.0
+Mario & Sonic at the Olympic Games	3	0	1	0.0
+Mario Kart 7	5	0	2	0.0
+Mario Kart 8	15	0	2	1.0
+Mario Kart 64	6	0	1	0.0
+Mario Kart Wii	13	0	2	0.5
+Mario Sports Superstars	1	0	1	0.0
+Mario Strikers Charged Football	3	0	1	0.0
+Mass Effect	235	1	16	8.0
+Mass Effect (серія)	155	0	13	5.0
+Mass Effect 2	73	0	7	2.0
+Mass Effect 3	106	0	9	3.0
+Mass Effect Galaxy	13	0	2	1.0
+Mass Effect: Andromeda	159	0	13	4.0
+Master of The World: Geo-Political Simulator 3	17	0	3	1.0
+Max Payne	127	0	8	4.0
+Max Payne 2: The Fall of Max Payne	82	0	7	3.0
+Max Payne 3	120	1	10	4.0
+Maxis	50	0	5	1.5
+MDK2	12	0	2	0.0
+MechCommander 2	5	0	1	0.0
+Medal of Honor (2010)	82	0	7	3.0
+Medal of Honor (серія ігор)	461	5	25	14.0
+Medal of Honor: Airborne	62	0	6	2.0
+Medal of Honor: Allied Assault	90	0	7	3.0
+Medal of Honor: Pacific Assault	57	0	6	2.0
+Medal of Honor: Underground	26	0	3	1.0
+Medal of Honor: Warfighter	108	0	9	3.0
+Medieval: Total War	67	0	6	3.0
+Mega Man 2	18	0	5	0.0
+Megaman (гра)	70	0	19	1.0
+Message Quest	13	0	3	0.0
+Metal Gear Solid V: The Phantom Pain	130	0	9	4.0
+Metal Slug	20	0	4	1.0
+Metro 2033 (відеогра)	1008	16	45	33.0
+Metro: Last Light	416	3	25	12.0
+Metroid Prime	15	0	3	0.5
+Metropolis Software	7	0	2	0.0
+Microsoft Flight Simulator X	27	0	5	1.0
+Middle-earth: Shadow of Mordor	161	0	14	5.0
+Middle-earth: Shadow of War	169	1	12	5.0
+Midnight Club: Los Angeles	37	0	8	1.0
+Midway Games	28	0	4	1.0
+Might & Magic Heroes VII	255	3	15	8.0
+Might & Magic: Heroes VI	163	0	11	5.0
+Might and Magic	72	0	8	2.0
+Might and Magic Book One: The Secret of the Inner Sanctum	15	0	3	1.0
+Minecraft	5365	125	233	170.0
+Minecraft: Story Mode	278	2	23	9.0
+Mini Metro	12	0	2	0.0
+Mini Ninjas	20	0	3	1.0
+Mirror's Edge	101	0	9	2.5
+MOBA	151	1	12	4.0
+Monster Hunter Freedom	9	0	2	0.0
+Monster Strike	6	0	1	0.0
+Monument Valley	24	0	4	1.0
+Monument Valley 2	6	0	1	0.0
+Moria (відеогра)	10	0	2	1.0
+Mortal Kombat	688	5	48	20.0
+Mortal Kombat (гра, 1992)	47	0	7	1.0
+Mortal Kombat (гра, 2011)	172	1	14	4.0
+Mortal Kombat 3	54	0	7	1.0
+Mortal Kombat 4	42	0	5	1.0
+Mortal Kombat Gold	13	0	3	1.0
+Mortal Kombat II	31	0	4	1.0
+Mortal Kombat vs. DC Universe	40	0	5	1.5
+Mortal Kombat X	429	5	26	14.0
+Mortal Kombat: Armageddon	60	0	5	2.0
+Mortal Kombat: Deadly Alliance	38	0	4	1.0
+Mortal Kombat: Deception	34	0	4	2.0
+Mortal Kombat: Shaolin Monks	13	0	3	0.0
+MotoGP '08	6	0	2	0.0
+MotorM4X	12	0	2	1.0
+MotorStorm: Apocalypse	4	0	1	0.0
+Mount & Blade	366	6	21	12.0
+Mount & Blade II: Bannerlord	465	7	32	14.0
+Mount & Blade. Вогнем і мечем	156	0	13	5.0
+MUD	47	0	4	2.0
+My lands	18	0	4	0.0
+My Talking Tom	42	0	5	1.0
+MySims	14	0	2	1.0
+Myst	23	0	4	1.0
+Myst IV: Revelation	7	0	2	0.0
+Myst V: End of Ages	5	0	1	0.0
+Mytheon	2	0	1	0.0
+Napoleon: Total War	71	0	18	2.0
+Naruto Shippuden: Ultimate Ninja Storm 4	106	0	11	3.0
+Naruto Shippuden: Ultimate Ninja Storm Revolution	43	0	7	1.0
+Naval Action	47	0	6	1.5
+Need for Speed (серія ігор)	2140	45	101	65.0
+Need for Speed II	36	0	5	1.0
+Need for Speed III: Hot Pursuit	46	0	13	1.0
+Need for Speed: Carbon	147	1	11	4.5
+Need for Speed: Carbon Own The City	32	0	5	1.0
+Need for Speed: Most Wanted	610	7	31	20.0
+Need for Speed: Most Wanted (2012)	193	0	11	6.0
+Need for Speed: Nitro	21	0	3	1.0
+Need for Speed: No Limits	121	0	10	3.0
+Need for Speed: Porsche Unleashed	67	0	6	2.0
+Need for Speed: ProStreet	81	1	7	2.0
+Need for Speed: Rivals	169	1	12	5.0
+Need for Speed: Shift	70	0	8	2.0
+Need for Speed: The Run	159	0	15	5.0
+Need for Speed: Undercover	96	0	14	3.0
+Need for Speed: Underground	161	1	10	5.0
+Need for Speed: Underground 2	213	1	15	6.0
+Need For Speed: World	110	0	10	3.0
+Neighbours from Hell	98	0	8	3.0
+Neo Contra	4	0	1	0.0
+Neo-Geo	17	0	2	0.0
+Neon Genesis Evangelion: Ayanami Raising Project	3	0	1	0.0
+NES Open Tournament Golf	6	0	2	0.0
+Never Alone (відеогра)	74	1	8	2.0
+Neverwinter (MMORPG)	44	0	4	1.0
+Neverwinter Nights	162	1	10	4.5
+Neverwinter Nights 2	34	0	3	1.0
+Neverwinter Nights 2: Mask of the Betrayer	12	0	2	0.0
+Neverwinter Nights 2: Mysteries of Westgate	1	0	1	0.0
+Neverwinter Nights 2: Storm of Zehir	4	0	2	0.0
+New Super Mario Bros.	22	0	3	1.0
+New Super Mario Bros. Wii	15	0	2	0.5
+Nexuiz	15	0	2	0.0
+Nexus: The Jupiter Incident	8	0	2	1.0
+NHL 08	13	0	4	0.0
+NHL 09	11	0	2	0.0
+NHL 14	2	0	1	0.0
+NHL 15	2	0	1	0.0
+Night in the Woods	43	0	10	1.0
+NightSky	1	0	1	0.0
+Nintendo 3DS	99	0	8	3.0
+Nintendo 64	100	0	23	2.0
+Nintendo DS	124	0	10	4.0
+Nintendo Entertainment System	142	0	11	4.0
+Nintendo GameCube	96	0	9	3.0
+Nintendo Switch	320	5	17	10.0
+No Man's Land	13	0	2	0.0
+No Man's Sky	84	0	8	2.0
+Nox (комп'ютерна гра)	16	0	3	1.0
+Oddworld: Abe's Exoddus	10	0	2	0.0
+Oddworld: Abe's Oddysee	10	0	2	0.0
+Oddworld: Stranger's Wrath	7	0	2	0.0
+OGame	16	0	2	0.0
+Omerta – City of Gangsters	8	0	1	0.0
+OpenArena	5	0	1	0.0
+Opengamer	48	0	4	1.0
+Operation C	4	0	2	0.0
+OUYA	12	0	2	0.0
+Overwatch	363	3	24	10.0
+OXO	7	0	1	0.0
+Pac-Man	226	0	20	6.0
+Pandemic Studios	16	0	2	1.0
+Panzer General	24	0	3	1.0
+Paradise (гра)	15	0	2	0.0
+Paradox Entertainment	11	0	4	0.0
+Paradox Interactive	175	1	18	5.0
+Paragon	121	0	9	4.0
+ParaWorld	14	0	2	1.0
+Payday 2	123	0	15	4.0
+Payday: The Heist	32	0	4	1.0
+PC Engine	15	0	3	0.0
+PC-FX	12	0	2	0.0
+Pengo (відеогра)	1	0	1	0.0
+Penumbra: Black Plague	8	0	2	0.0
+Penumbra: Overture	16	0	3	0.0
+Pharaoh	49	0	10	1.0
+Philips CD-i	15	0	2	0.0
+Pillars of Eternity	57	0	5	1.0
+Planescape: Torment	39	0	6	1.0
+Planetary Annihilation	12	0	3	0.0
+Plants vs. Zombies	88	0	9	3.0
+Playdia	19	0	9	0.0
+PlayerUnknown's Battlegrounds	1877	26	86	57.0
+PlayStation	1186	19	157	32.0
+PlayStation 2	557	11	31	18.0
+PlayStation 3	1084	23	54	31.5
+PlayStation 4	1917	44	94	61.0
+PlayStation Move	35	0	5	1.0
+PlayStation Network	77	0	9	2.0
+PlayStation Portable	422	5	21	13.0
+PlayStation Vita	242	2	22	8.0
+PlayUA	99	0	7	3.0
+Pocket Kingdom: 0wn the W0rld	4	0	3	0.0
+Point Blank	41	0	4	1.0
+Pokémon Crystal	3	0	1	0.0
+Pokémon Emerald	7	0	1	0.0
+Pokémon FireRed і LeafGreen	13	0	3	1.0
+Pokémon Go	245	2	17	7.0
+Pokémon Gold і Silver	9	0	2	0.0
+Pokémon HeartGold і SoulSilver	8	0	2	0.0
+Pokémon Pinball	8	0	2	0.0
+Pokémon Red і Blue	30	0	4	1.0
+Pokémon Ruby і Sapphire	21	0	3	1.0
+Pokémon Snap	4	0	1	0.0
+Pokémon Sun і Moon	27	0	3	1.0
+Pokémon Yellow	10	0	1	0.0
+Pong	51	0	6	1.0
+Portal	144	0	15	4.0
+Portal 2	174	0	10	6.0
+Portal Stories: Mel	8	0	3	0.0
+Post Apocalyptic Mayhem	2	0	1	0.0
+Postal	42	0	4	1.0
+Postal 2	56	0	6	2.0
+Prime World	45	0	5	1.0
+Prince of Persia (1989)	48	0	6	1.0
+Prince of Persia (2008)	25	0	4	1.0
+Prince of Persia 2: The Shadow and The Flame	6	0	1	0.0
+Prince of Persia Classic	9	0	3	0.0
+Prince of Persia: The Sands of Time	41	0	5	1.0
+Prince of Persia: The Two Thrones	28	0	4	1.0
+Princess Lover!	54	0	10	1.0
+Pro Evolution Soccer (відеогра)	19	0	3	1.0
+Pro Evolution Soccer 2	5	0	2	0.0
+Pro Evolution Soccer 3	5	0	1	0.0
+Pro Evolution Soccer 4	7	0	1	0.0
+Pro Evolution Soccer 5	6	0	1	0.0
+Pro Evolution Soccer 6	11	0	4	0.0
+Pro Evolution Soccer 2008	8	0	1	0.0
+Pro Evolution Soccer 2009	12	0	2	1.0
+Pro Evolution Soccer 2010	13	0	3	1.0
+Pro Evolution Soccer 2011	26	0	4	1.0
+Pro Evolution Soccer 2012	19	0	4	1.0
+Pro Evolution Soccer 2013	24	0	3	1.0
+Pro Evolution Soccer 2014	16	0	3	1.0
+Pro Evolution Soccer 2015	20	0	3	1.0
+Pro Evolution Soccer 2017	33	0	6	1.0
+Pro Evolution Soccer 2018	52	0	5	2.0
+Psychonauts	35	0	6	1.0
+Qix	9	0	2	0.0
+Quake	176	0	17	5.0
+Quake 4	72	0	7	2.0
+Quake Champions	40	0	7	1.0
+Quake II	44	0	4	2.0
+Quake III Arena	111	0	10	3.0
+Quake Live	18	0	3	1.0
+Quantic Dream	114	1	8	4.0
+Quantum Break	81	0	7	2.0
+Quest for Glory: So You Want to Be a Hero	10	0	3	0.0
+R-Type	13	0	2	0.0
+R.U.S.E.	24	0	7	0.0
+R4: Ridge Racer Type 4	20	0	4	1.0
+Race Driver: GRID	24	0	5	1.0
+Race Driver: GRID 2	21	0	3	1.0
+Radiant Silvergun	9	0	2	0.0
+Rage (відеогра)	62	0	7	1.5
+Ragnarok Online	29	0	3	1.0
+Ragnarok Online 2	3	0	1	0.0
+Rakuen (відеогра)	7	0	2	0.0
+Raven Software	18	0	3	1.0
+Rayman Origins	14	0	2	1.0
+Rayman Raving Rabbids	13	0	2	1.0
+RCA Studio II	8	0	1	0.0
+Reach for the Stars	3	0	1	0.0
+Reality 2.0	1	0	1	0.0
+ReBoot (відеогра)	2	0	1	0.0
+Red Dead Redemption	726	13	40	20.5
+Red Orchestra 2: Heroes of Stalingrad	35	0	3	1.0
+Red Orchestra: Ostfront 41–45	31	0	3	1.0
+Remedy Entertainment	31	0	4	1.0
+Remember Me	25	0	4	1.0
+Reprobates. Вторая жизнь	6	0	2	0.0
+Resident Evil	140	0	9	4.5
+Resident Evil (серія ігор)	367	4	19	11.0
+Resident Evil 2	97	0	8	3.0
+Resident Evil 3: Nemesis	54	0	9	1.0
+Resident Evil 4	72	1	8	2.0
+Resident Evil 6	62	0	6	2.0
+Resident Evil 7: Biohazard	186	1	15	5.0
+Resident Evil Code: Veronica	25	0	2	1.0
+Resident Evil Zero	30	0	5	1.0
+Resident Evil: Survivor	15	0	3	0.0
+Resistance 3	10	0	1	0.0
+Return to Castle Wolfenstein	111	1	9	3.0
+Rewrite	9	0	2	0.0
+RIFT	12	0	2	0.5
+Rise of Nations	69	0	6	2.0
+Rise of the Tomb Raider	247	3	24	6.0
+Risen	74	0	6	2.0
+Risen 2: Dark Waters	22	0	3	1.0
+Risen 3: Titan Lords	32	0	5	1.0
+Rising Kingdoms	8	0	3	0.0
+Riven: The Sequel to Myst	6	0	3	0.0
+Robin Hood: The Legend of Sherwood	62	0	16	1.0
+Robin of the Wood	5	0	1	0.0
+Rocket League	55	0	6	2.0
+Rogue Legacy	8	0	2	0.0
+Roguelike	123	0	8	4.0
+Rome: Total War	149	1	10	4.0
+Rome: Total War: Barbarian Invasion	30	0	5	1.0
+Rovio	24	0	4	0.0
+Royal Quest	33	0	4	1.0
+RPG Maker	21	0	3	1.0
+Rulers of Nations: Geo-Political Simulator 2	2	0	1	0.0
+Runaway 3: A Twist of Fate	2	0	1	0.0
+Rune	15	0	2	1.0
+RuneScape	17	0	3	0.5
+Russia: The Great War in the East	5	0	1	0.0
+Rust (відеогра)	135	0	13	4.0
+S.T.A.L.K.E.R. (серія відеоігор)	710	8	35	21.5
+S.T.A.L.K.E.R. 2	895	16	43	27.5
+S.T.A.L.K.E.R.: Поклик Прип'яті	481	7	23	15.0
+S.T.A.L.K.E.R.: Тінь Чорнобиля	708	11	44	22.0
+S.T.A.L.K.E.R.: Чисте небо	305	2	24	9.0
+Sacred 2: Fallen Angel	25	0	4	1.0
+Sacrifice	13	0	3	0.0
+Saints Row: The Third	44	0	5	1.0
+Sam & Max Hit the Road	8	0	2	0.0
+Sam & Max: Season Two	4	0	1	0.0
+Samorost 2	10	0	2	0.0
+San Andreas Multiplayer	340	3	21	10.0
+San Francisco Rush 2049	8	0	2	0.0
+Savage 2: A Tortured Soul	5	0	2	0.0
+Scorched Earth (відеогра)	7	0	2	0.0
+Sea Legends	5	0	1	0.5
+Second Life	117	0	8	4.0
+Sega Master System (Mark III)	27	0	3	1.0
+Sega Mega Drive	161	1	13	5.0
+Sega Saturn	57	0	6	2.0
+Serious Sam 3: BFE	45	0	9	1.5
+Serious Sam II	32	0	3	1.0
+Serious Sam: The First Encounter	77	0	14	2.0
+Shade: Wrath of Angels	15	0	2	1.0
+Shadow of the Tomb Raider	211	3	18	6.0
+Shadow the Hedgehog (гра)	18	0	3	1.0
+Shadow Warrior 2	23	0	3	1.0
+Shadowrun Returns	43	0	5	2.0
+Shelter (гра)	21	0	3	1.0
+Sherlock Holmes vs. Jack the Ripper	27	0	6	1.0
+Sherlock Holmes: Mystery of the Mummy	23	0	3	1.0
+Sherlock Holmes: Secret of the Silver Earring	8	0	2	0.0
+Sherlock Holmes: The Awakened	15	0	3	0.0
+Shift 2: Unleashed	31	0	3	1.0
+Shining force	7	0	1	0.0
+Shining force II	2	0	1	0.0
+Shoot 'em up	38	0	3	1.0
+Shrek 2: Team Action	18	0	3	1.0
+Sid Meier's Civilization IV: Beyond the Sword	17	0	2	1.0
+Sid Meier's SimGolf	2	0	1	0.0
+Sid Meier's Starships	10	0	2	0.0
+Silent Hill (гра)	73	0	8	2.0
+Silent Hill (серія ігор)	159	0	13	5.0
+Silent Hill 2	156	0	18	4.0
+Silent Hill 3	139	0	13	3.0
+Silent Hill 4: The Room	41	0	4	1.0
+Silent Hill: Downpour	33	0	6	1.0
+Silent Hill: Play Novel	4	0	2	0.0
+Silent Hill: Shattered Memories	22	0	3	1.0
+Silent Hunter II	3	0	1	0.0
+Silent Hunter III	10	0	2	0.0
+Silent Hunter IV	21	0	7	1.0
+Silent Hunter V: Battle of the Atlantic	19	0	3	1.0
+SimAnimals	4	0	1	0.0
+SimAnt	14	0	5	0.0
+SimCity	95	0	11	3.0
+SimCity (відеогра 2013)	75	0	10	1.0
+SimCity 4	59	0	14	1.0
+SimCity 4: Rush Hour	12	0	3	1.0
+SimCity 64	4	0	1	0.0
+SimCity 2000	14	0	4	0.0
+SimCity Creator	5	0	1	0.0
+SimCity Societies: Destinations	2	0	2	0.0
+SimCopter	5	0	1	0.0
+SimEarth	12	0	2	1.0
+SimFarm	6	0	2	0.0
+SimGolf	8	0	2	0.0
+SimHealth	4	0	2	0.0
+SimIsle: Missions in the Rainforest	1	0	1	0.0
+SimLife	7	0	1	0.0
+Simon the Sorcerer 4: Chaos Happens	2	0	1	0.0
+SimPark	4	0	2	0.0
+SimRefinery	1	0	1	0.0
+SimSafari	3	0	1	0.0
+SimTower	5	0	3	0.0
+SimTown	1	0	1	0.0
+SimTunes	2	0	1	0.0
+Sine Mora	14	0	5	0.0
+Sinking Island	6	0	1	0.0
+Sins of a Dark Age	7	0	1	0.0
+Sixaxis	42	0	8	1.0
+Sketch Tales	18	0	4	0.0
+Sleeping Dogs (відеогра)	70	0	6	2.0
+Slender: The Arrival	13	0	2	0.0
+Slope (відеогра)	1	0	1	0.0
+Smilebit	3	0	1	0.0
+Sniper Elite	27	0	4	1.0
+Sniper Elite (серія відеоігор)	96	1	6	3.0
+Sniper Elite 4	49	0	4	1.0
+Sniper: Ghost Warrior	33	0	5	1.0
+SOCOM 4	10	0	2	0.0
+Sokoban	25	0	4	1.0
+Soldier of Fortune	31	0	4	1.0
+SOMA	273	1	43	6.5
+Sonic & Knuckles	27	0	4	1.0
+Sonic 3D	8	0	1	0.0
+Sonic Advance	4	0	2	0.0
+Sonic Advance 2	4	0	1	0.0
+Sonic Advance 3	7	0	1	0.0
+Sonic Adventure	41	0	7	2.0
+Sonic Adventure 2	16	0	2	0.0
+Sonic Blast	2	0	1	0.0
+Sonic Heroes	18	0	3	1.0
+Sonic Jam	4	0	1	0.0
+Sonic Jump	4	0	2	0.0
+Sonic the Fighters	8	0	2	0.5
+Sonic the Hedgehog (8 біт)	4	0	1	0.0
+Sonic the Hedgehog (16 біт)	54	0	5	2.0
+Sonic the Hedgehog (гра, 2006)	20	0	4	1.0
+Sonic the Hedgehog 2 (16 біт)	28	0	6	1.0
+Sonic the Hedgehog 3	34	0	5	1.0
+Sonic the Hedgehog CD	34	0	5	1.0
+Sonic Triple Trouble	2	0	1	0.0
+Sopwith (відеогра)	5	0	1	0.0
+South Park: The Fractured But Whole	21	0	3	1.0
+Space Crusade	11	0	1	1.0
+Space Hulk (відеогра 1993)	10	0	2	0.0
+Space Hulk (відеогра 2013)	7	0	2	0.0
+Space Hulk: Vengeance of the Blood Angels	6	0	2	0.0
+Space Invaders	59	0	10	2.0
+Spartan: Total Warrior	12	0	2	0.0
+Special Force (відеогра)	3	0	1	0.0
+Spectre (відеогра)	4	0	2	0.0
+Spider-Man (відеогра)	38	0	5	1.0
+Spider-Man (гра, 2018)	490	5	28	16.0
+Spider-Man 2: Enter Electro	10	0	2	0.0
+Spider-Man: Edge of Time	32	0	4	1.0
+Spider-Man: Friend or Foe	7	0	2	0.0
+Spider-Man: Web of Shadows	20	0	3	0.0
+Spiral Knights	8	0	3	0.0
+Splatterhouse	7	0	1	0.0
+Splinter Cell: Chaos Theory	9	0	5	0.0
+Spore	156	1	10	5.0
+Spyro 2: Gateway to Glimmer	3	0	1	0.0
+Spyro the Dragon (відеогра)	8	0	1	0.0
+Spyro the Dragon (серія)	40	0	4	1.0
+Spyro: Ripto Quest	3	0	2	0.0
+Spyro: Year of the Dragon	3	0	1	0.0
+Square Enix	67	0	7	2.0
+Star Citizen	272	1	18	9.0
+Star Fox 64	8	0	3	0.0
+Star Trek: Armada	6	0	1	0.0
+Star Trek: Armada II	3	0	1	0.0
+Star Wars Episode I: Jedi Power Battles	18	0	3	1.0
+Star Wars Jedi Knight: Jedi Academy	47	0	5	1.0
+Star Wars: Battlefront	30	0	6	1.0
+Star Wars: Battlefront II	128	0	10	4.0
+Star Wars: Jedi Knight II: Jedi Outcast	26	0	3	1.0
+Star Wars: Knights of the Old Republic	109	0	12	3.0
+Star Wars: Knights of the Old Republic II — The Sith Lords	48	0	8	1.0
+Star Wars: Republic Commando	24	0	4	1.0
+Star Wars: The Force Unleashed - Ultimate Sith Edition	11	0	2	1.0
+Star Wars: The Old Republic	105	1	8	3.0
+Starbound	29	0	3	1.0
+StarCraft	221	1	23	6.0
+StarCraft II: Heart of the Swarm	65	0	5	2.0
+StarCraft II: Legacy of the Void	52	0	5	1.0
+StarCraft II: Wings of Liberty	158	1	14	4.5
+StarCraft: Brood War	36	0	4	1.0
+StarCraft: Remastered	51	0	6	1.0
+Stardew Valley	90	0	8	3.0
+Starlancer	24	0	4	1.0
+State of Decay	47	0	4	1.0
+Steam	1312	29	60	42.0
+Steam Machine	17	0	2	1.0
+Steins;Gate	241	1	37	6.0
+Stellaris	214	1	18	7.0
+Still Life (гра)	9	0	2	1.0
+Streets of SimCity	2	0	1	0.0
+Strife (2015 відеогра)	11	0	2	0.0
+Stronghold	76	0	8	2.0
+Stronghold 2	49	0	6	2.0
+Stronghold 3	116	1	16	3.0
+Stronghold Crusader	110	0	14	2.0
+Stronghold Crusader 2	56	0	7	1.0
+Stronghold Legends	39	0	5	1.0
+Subway Surfers	262	2	18	9.0
+Sudden Strike	16	0	3	0.0
+Super Contra	12	0	3	0.0
+Super Mario 64	31	0	6	1.0
+Super Mario Bros.	244	1	20	8.0
+Super Mario Bros. 2	6	0	1	0.0
+Super Mario Bros. 3	15	0	3	0.5
+Super Mario Galaxy	15	0	2	1.0
+Super Mario Galaxy 2	12	0	3	0.0
+Super Mario Kart	2	0	1	0.0
+Super Mario Odyssey	61	0	8	2.0
+Super Mario World	20	0	3	1.0
+Super Mario World 2: Yoshi's Island	8	0	1	0.0
+Super Meat Boy	50	0	5	1.0
+Super Monkey Ball 3D	2	0	1	0.0
+Super Monkey Ball Touch & Roll	3	0	1	0.0
+Super Nintendo Entertainment System	88	0	7	2.5
+Super Princess Peach	6	0	2	0.0
+Super Smash Bros.	35	0	4	1.0
+Super Smash Bros. Brawl	10	0	2	0.0
+Super Smash Bros. for Nintendo 3DS and Wii U	22	0	3	1.0
+Supercell	255	2	18	6.0
+Superhot	23	0	5	1.0
+SuperTux	7	0	1	0.0
+SuperTuxKart	8	0	1	0.0
+Supremacy 1914	11	0	3	0.0
+Supreme Commander	40	0	5	1.0
+Supreme Commander 2	15	0	2	1.0
+Supreme Commander: Forged Alliance	21	0	3	1.0
+Survarium	287	2	17	9.0
+Survival horror	102	0	9	3.0
+SWAT 4	17	0	3	0.0
+Swordigo	16	0	2	0.0
+Swordsman Online	11	0	3	0.0
+Syberia	79	0	7	2.0
+Syberia II	29	0	5	1.0
+Syberia III	55	0	5	2.0
+Tails Adventure	6	0	3	0.0
+Tajemnica Statuetki	6	0	2	0.0
+Tales of Zestiria	7	0	2	0.0
+Talking Angela (гра)	80	0	9	3.0
+Team Fortress	19	0	3	0.5
+Team Fortress 2	110	1	15	3.0
+Team Fortress Classic	19	0	3	0.5
+Techland	24	0	3	1.0
+Teeworlds	11	0	3	0.0
+Tekken X Street Fighter	10	0	2	0.5
+Temple Run	24	0	3	1.0
+Temple Run 2	21	0	3	1.0
+Tennis (відеогра)	5	0	1	0.0
+Tennis for Two	23	0	3	1.0
+Terraria	264	2	15	9.0
+Thandor: The Invasion	4	0	1	0.0
+Thatgamecompany	9	0	2	0.0
+The Battle for Wesnoth	15	0	3	0.0
+The Beginner's Guide	16	0	3	0.5
+The Black Mirror	24	0	4	1.0
+The Black Mirror 2	7	0	3	0.0
+The Cave	17	0	4	1.0
+The Chronicles of Riddick: Assault on Dark Athena	14	0	2	1.0
+The Chronicles of Riddick: Escape from Butcher Bay	24	0	4	1.0
+The City of Metronome	2	0	1	0.0
+The Contra Adventure	4	0	2	0.0
+The Crew	33	0	5	1.0
+The Crossing	6	0	2	0.0
+The Elder Scrolls	261	1	16	8.0
+The Elder Scrolls ІІІ: Bloodmoon	23	0	4	1.0
+The Elder Scrolls II: Daggerfall	67	0	11	2.0
+The Elder Scrolls III: Morrowind	151	1	15	4.0
+The Elder Scrolls III: Tribunal	22	0	3	1.0
+The Elder Scrolls IV: Knights of the Nine	19	0	3	1.0
+The Elder Scrolls IV: Oblivion	263	2	18	8.0
+The Elder Scrolls IV: Shivering Isles	15	0	3	1.0
+The Elder Scrolls Online	110	0	8	3.0
+The Elder Scrolls V: Skyrim	895	15	44	28.0
+The Elder Scrolls: Arena	71	0	10	2.0
+The Elder Scrolls: Blades	202	2	13	7.0
+The Evil Within	85	0	6	2.0
+The Evil Within 2	50	0	8	1.0
+The Fifth Element (гра)	10	0	2	0.0
+The Forest	124	1	9	4.0
+The Forest Song	163	1	10	5.0
+The House of the Dead	6	0	1	0.0
+The House of the Dead 2	7	0	2	0.0
+The Last of Us	462	5	32	14.5
+The Legend of Zelda (відеогра)	19	0	4	0.5
+The Legend of Zelda (серія відеоігор)	168	1	11	6.0
+The Legend of Zelda: A Link to the Past	14	0	2	0.5
+The Legend of Zelda: Breath of the Wild	101	0	13	3.0
+The Legend of Zelda: Four Swords Adventures	4	0	1	0.0
+The Legend of Zelda: Majora's Mask	16	0	2	0.0
+The Legend of Zelda: Ocarina of Time	36	0	4	1.5
+The Legend of Zelda: Phantom Hourglass	9	0	3	0.0
+The Legend of Zelda: Spirit Tracks	15	0	5	0.0
+The Legend of Zelda: The Minish Cap	72	0	7	2.0
+The Legend of Zelda: The Wind Waker	12	0	2	0.0
+The Legend of Zelda: Twilight Princess	16	0	2	1.0
+The Long Dark	175	0	13	6.0
+The Lord of the Rings: The Battle for Middle-earth	54	0	9	1.0
+The Lord of the Rings: The Battle for Middle-earth II	30	0	5	1.0
+The Lord of the Rings: The Battle for Middle-earth II: The Rise of the Witch-king	40	0	6	1.5
+The Matrix: Path of Neo	14	0	2	1.0
+The Movies	14	0	3	1.0
+The Nomad Soul	22	0	5	1.0
+The Operative: No One Lives Forever	12	0	3	0.0
+The Orange Box	34	0	3	1.0
+The Order: 1886	60	0	5	2.0
+The Patrician IV	13	0	2	1.0
+The Saboteur	92	0	7	3.0
+The Settlers	19	0	3	1.0
+The Settlers (серія ігор)	81	0	9	3.0
+The Settlers 7: Paths to a Kingdom	18	0	3	1.0
+The Settlers II	13	0	3	1.0
+The Settlers II 10th Anniversary	7	0	2	1.0
+The Settlers III	19	0	15	0.0
+The Settlers IV	10	0	2	0.0
+The Settlers: Heritage of Kings	13	0	3	1.0
+The Settlers: Rise of an Empire	19	0	3	1.0
+The Simpsons Game	26	0	4	1.0
+The Simpsons: Hit & Run	36	0	5	1.0
+The Sims	196	2	19	6.0
+The Sims (серія)	253	1	20	7.0
+The Sims 2	76	0	8	2.0
+The Sims 2 Stuff packs	8	0	1	0.0
+The Sims 2: Apartment Life	1	0	1	0.0
+The Sims 2: Bon Voyage	8	0	3	0.0
+The Sims 2: FreeTime	5	0	1	0.0
+The Sims 2: Nightlife	6	0	1	0.0
+The Sims 2: Open for Business	4	0	1	0.0
+The Sims 2: Pets	7	0	2	0.0
+The Sims 2: Seasons	10	0	2	0.0
+The Sims 2: University	8	0	1	0.0
+The Sims 3	281	3	17	8.0
+The Sims 3 Stuff packs	5	0	1	0.0
+The Sims 3: Ambitions	15	0	2	1.0
+The Sims 3: Generations	5	0	1	0.0
+The Sims 3: Into the Future	12	0	3	0.0
+The Sims 3: Island Paradise	16	0	4	0.5
+The Sims 3: Late Night	14	0	3	0.0
+The Sims 3: Pets	43	0	5	1.0
+The Sims 3: Seasons	17	0	4	0.5
+The Sims 3: Showtime	12	0	2	0.0
+The Sims 3: Supernatural	13	0	2	0.0
+The Sims 3: University Life	9	0	1	0.0
+The Sims 3: World Adventures	12	0	3	0.0
+The Sims 4	572	7	27	19.0
+The Sims 4: Cats & Dogs	21	0	5	1.0
+The Sims 4: City Living	13	0	2	0.0
+The Sims 4: Dine Out	3	0	1	0.0
+The Sims 4: Get Famous	44	0	6	1.0
+The Sims 4: Get to Work	6	0	2	0.0
+The Sims 4: Get Together	8	0	2	0.0
+The Sims 4: Jungle Adventure	5	0	1	0.0
+The Sims 4: Outdoor Retreat	1	0	1	0.0
+The Sims 4: Parenthood	6	0	2	0.0
+The Sims 4: Seasons	15	0	3	0.0
+The Sims 4: Spa Day	1	0	1	0.0
+The Sims 4: Vampires	10	0	4	0.0
+The Sims Castaway Stories	12	0	3	0.0
+The Sims Life Stories	20	0	9	0.0
+The Sims Pet Stories	3	0	1	0.0
+The Sims: Hot Date	12	0	2	0.0
+The Sims: Livin' Large	9	0	1	0.0
+The Stanley Parable	49	0	6	2.0
+The Talos Principle	31	0	4	1.0
+The Temple of Elemental Evil	16	0	2	1.0
+The Testament of Sherlock Holmes	27	0	5	1.0
+The Vanishing of Ethan Carter	38	0	4	1.0
+The Walking Dead (гра)	148	0	10	4.0
+The Witcher	519	10	25	16.0
+The Witcher 2: Assassins of Kings	202	2	14	6.0
+The Witcher 3: Wild Hunt	804	13	41	25.0
+The Witcher: Versus	9	0	2	0.0
+The Witness	20	0	3	1.0
+TimeShift	30	0	4	1.0
+Titan Quest	104	0	8	3.0
+To the Moon	68	0	5	2.0
+Tokyo 42	4	0	2	0.0
+Tom Clancy's EndWar	17	0	2	1.0
+Tom Clancy's Ghost Recon Advanced Warfighter	9	0	2	0.0
+Tom Clancy's Ghost Recon Advanced Warfighter 2	6	0	1	0.0
+Tom Clancy's H.A.W.X.	4	0	1	0.0
+Tom Clancy's HAWX	26	0	4	1.0
+Tom Clancy's Rainbow Six: Lockdown	6	0	2	0.0
+Tom Clancy's Rainbow Six: Vegas	15	0	2	1.0
+Tom Clancy's Rainbow Six: Vegas 2	36	0	3	1.0
+Tom Clancy's Splinter Cell	65	0	11	2.0
+Tom Clancy's Splinter Cell: Blacklist	53	0	5	2.0
+Tom Clancy's Splinter Cell: Chaos Theory	13	0	3	1.0
+Tom Clancy's Splinter Cell: Conviction	30	0	4	1.0
+Tom Clancy's Splinter Cell: Pandora Tomorrow	15	0	2	0.0
+Tom Clancy's The Division	97	0	13	3.0
+Tomb Raider (відеогра, 1996)	41	0	5	1.0
+Tomb Raider (відеогра, 2013)	224	1	13	7.0
+Tomb Raider II	14	0	2	0.0
+Tomb Raider III	12	0	1	1.0
+Tomb Raider: Anniversary	33	0	6	1.0
+Tomb Raider: Chronicles	10	0	1	0.0
+Tomb Raider: Legend	38	0	5	2.0
+Tomb Raider: The Angel of Darkness	24	0	2	1.0
+Tomb Raider: The Last Revelation	8	0	2	0.0
+Tomb Raider: The Nightmare Stone	5	0	1	0.0
+Tomb Raider: The Prophecy	6	0	2	0.0
+Tomb Raider: Underworld	57	0	7	2.0
+Tony Hawk's Pro Skater	11	0	3	0.0
+Tony Hawk's Pro Skater 2	6	0	2	0.0
+Total Annihilation	14	0	2	0.0
+Total War (серія ігор)	635	8	33	18.0
+Total War: Attila	169	0	11	5.0
+Total War: Rome II	213	2	16	6.0
+Total War: Warhammer	142	0	17	4.0
+Touhou Project	72	0	7	2.0
+Tower Defense	35	0	4	1.0
+TrackMania Sunrise	3	0	1	0.0
+Transformers: War for Cybertron	90	0	11	3.0
+Transformice	36	0	5	1.0
+Transport Tycoon	16	0	3	0.0
+Traxion (відеогра)	5	0	3	0.0
+Trine	33	0	5	1.0
+Trine 2	14	0	2	0.0
+Tron 2.0	6	0	1	0.0
+Tropico	48	0	9	1.0
+Tropico 2: Pirate Cove	8	0	1	0.0
+Tropico 3	9	0	3	0.0
+Tropico 4	11	0	2	0.0
+Tropico 5	55	0	5	2.0
+True Crime: New York City	16	0	3	0.5
+True Love	7	0	1	0.0
+Tux Racer	17	0	2	1.0
+Two Thrones	12	0	4	0.5
+Tyranny	67	0	7	2.0
+Tyrian	12	0	2	0.0
+Ubisoft	442	5	26	14.5
+Ubisoft Massive	8	0	2	0.0
+UEFA Euro 2000 (відеогра)	10	0	4	0.0
+UEFA Euro 2004 (відеогра)	6	0	3	0.0
+UEFA Euro 2008 (відеогра)	9	0	2	0.0
+UEFA Euro 2012 (відеогра)	10	0	2	0.0
+Ultimate Mortal Kombat 3	33	0	5	1.0
+Ultimate Spider-Man (гра)	20	0	2	1.0
+Uncharted 2: Among Thieves	40	0	4	1.0
+Uncharted 3: Drake's Deception	50	0	7	2.0
+Uncharted: Drake's Fortune	47	0	5	1.0
+Undertale	401	6	26	12.0
+Unravel (відеогра)	42	0	4	1.0
+Unreal	50	0	3	2.0
+Unreal (серія ігор)	30	0	4	1.0
+Unreal Gold	6	0	2	0.0
+Unreal Tournament	121	1	11	4.0
+Unreal Tournament 3	38	0	6	1.0
+Unreal Tournament 2003	15	0	4	0.0
+Unreal Tournament 2004	45	0	4	1.0
+Urban Reign	4	0	2	0.0
+V-Rally	9	0	2	0.0
+V-Rally 2	4	0	1	0.0
+V-Rally 3	21	0	3	1.0
+Vagrant Story	12	0	3	0.0
+Vainglory	18	0	3	1.0
+Valiant Hearts The Great War	100	0	7	3.0
+Vampire: The Masquerade – Bloodlines	64	0	10	2.0
+Vampire: The Masquerade – Redemption	11	0	1	1.0
+Velvet Assassin	31	0	5	1.0
+Venetica	7	0	2	0.0
+Victoria II	67	0	7	2.0
+Victoria: An Empire Under the Sun	17	0	6	0.0
+Vietcong	9	0	2	0.0
+Vigilante 8	20	0	3	1.0
+Virtua Fighter	8	0	2	0.0
+VVVVVV	16	0	5	0.0
+WALL·E (відеогра)	12	0	3	0.5
+War of the Roses	17	0	3	1.0
+War Thunder	298	3	18	9.0
+Warcraft II: Beyond the Dark Portal	47	0	4	1.5
+Warcraft II: Tides of Darkness	89	0	12	2.5
+Warcraft III: Reign of Chaos	221	1	15	6.0
+Warcraft III: The Frozen Throne	200	2	11	7.0
+Warcraft: Orcs & Humans	92	0	7	2.5
+Warhammer 40,000: Carnage	7	0	3	0.0
+Warhammer 40,000: Chaos Gate	7	0	1	0.0
+Warhammer 40,000: Dark Millennium	3	0	1	0.0
+Warhammer 40,000: Dawn of War	106	0	9	3.0
+Warhammer 40,000: Dawn of War - Dark Crusade	46	0	4	1.0
+Warhammer 40,000: Dawn of War - Soulstorm	81	0	8	2.0
+Warhammer 40,000: Dawn of War - Winter Assault	32	0	5	1.0
+Warhammer 40,000: Dawn of War II	65	0	9	2.0
+Warhammer 40,000: Dawn of War II - Chaos Rising	29	0	10	1.0
+Warhammer 40,000: Dawn of War II - Retribution	36	0	3	1.0
+Warhammer 40,000: Dawn of War III	54	0	4	2.0
+Warhammer 40,000: Eternal Crusade	51	0	6	1.0
+Warhammer 40,000: Fire Warrior	5	0	1	0.0
+Warhammer 40,000: Kill Team	19	0	2	1.0
+Warhammer 40,000: Rites of War	5	0	2	0.0
+Warhammer 40,000: Space Marine	27	0	3	1.0
+Warhammer 40,000: Squad Command	6	0	1	0.0
+Warhammer Online: Age of Reckoning	28	0	4	1.0
+Warhammer: Dark Omen	6	0	2	0.0
+Warhammer: Mark of Chaos	18	0	2	1.0
+Warhammer: Shadow of the Horned Rat	6	0	1	0.0
+Warlock (гра)	10	0	2	0.0
+Warlords DS	1	0	1	0.0
+Warlords III: Reign of Heroes	4	0	1	0.0
+Warsow	8	0	2	0.0
+Warzone 2100	17	0	2	1.0
+Wasteland	17	0	3	0.0
+Watch Dogs	138	1	12	4.0
+Watch Dogs 2	141	1	9	4.0
+We Are The Dwarves	56	0	6	2.0
+Where's My Water?	10	0	2	1.0
+Wii	240	3	16	7.0
+Wii U	125	0	15	4.0
+WildStar	13	0	2	1.0
+Wolfenstein	186	2	15	5.0
+Wolfenstein 3D	91	0	11	3.0
+Wolfenstein II: The New Colossus	281	5	14	9.0
+Wolfenstein RPG	22	0	4	0.5
+Wolfenstein: The New Order	258	3	19	7.0
+Wolfenstein: The Old Blood	135	1	9	4.0
+World in Conflict	42	0	6	1.0
+World of Goo	34	0	6	1.0
+World of Tanks	4336	32	305	123.5
+World of Tanks Blitz	143	1	10	4.0
+World of Tanks: Xbox 360 Edition	2	0	1	0.0
+World of Warcraft	560	6	28	18.0
+World of Warcraft: Cataclysm	55	0	7	1.0
+World of Warcraft: Legion	70	0	5	2.0
+World of Warcraft: Mists of Pandaria	34	0	3	1.0
+World of Warcraft: The Burning Crusade	40	0	3	1.0
+World of Warcraft: Warlords of Draenor	44	0	6	1.0
+World of Warcraft: Wrath of the Lich King	69	0	7	2.0
+World of Warplanes	72	0	4	3.0
+World of Warships	96	1	9	3.0
+Worms World Party	9	0	2	1.0
+X-Com: UFO Defense	23	0	2	1.0
+Xbox	415	6	23	13.0
+Xbox 360	850	19	35	27.0
+Xbox Live	66	0	8	2.0
+Xbox One	593	6	32	20.0
+XCOM: Enemy Unknown	82	0	7	2.0
+Xenoblade Chronicles	22	0	3	1.0
+Xenoblade Chronicles X	13	0	2	1.0
+Xenogears	10	0	2	0.0
+Xenosaga	19	0	2	1.0
+Xenosaga Episode I: Der Wille zur Macht	3	0	1	0.0
+Xenosaga Episode II: Jenseits von Gut und Böse	3	0	1	0.0
+Xenosaga Episode III: Also sprach Zarathustra	8	0	2	0.0
+Xenus 2: Біле золото	30	0	4	1.0
+Xenus. Точка кипіння	32	0	3	1.0
+Xonotic	6	0	1	0.0
+Yoshi's Cookie	7	0	2	0.5
+You Are Empty	69	0	7	2.0
+Zeebo	23	0	4	0.0
+Zelda II: The Adventure of Link	9	0	2	0.0
+Zero Tolerance	9	0	2	0.0
