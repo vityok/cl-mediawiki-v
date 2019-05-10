@@ -40,6 +40,9 @@ before giving up.")
 
 ;; --------------------------------------------------------
 
+;; (defparameter *errors-log-file* "errors.log")
+(defparameter *errors-log-file* *standard-output*)
+
 (log5:defcategory :debug)
 (log5:start-sender 'dribble-and-worse
  		   (log5:stream-sender :location *standard-output*)
@@ -47,7 +50,7 @@ before giving up.")
  		   :output-spec '(log5:time log5:message log5:context))
 
 (log5:start-sender 'error-and-worse
-                   (log5:stream-sender :location "errors.log")
+                   (log5:stream-sender :location *errors-log-file*)
                    :category-spec '(error)
                    :output-spec '(log5:time log5:message))
 

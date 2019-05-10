@@ -142,10 +142,9 @@ the total views, minimum, maximum and median views per day in a list.
 
 Returns NIL when failed to retrieve data for any reason."
 
+  ;; mount -t tmpfs -o size=20M /dev/shm /home/victor/tmpfs/
+
   (let* ((url (format nil "~a" (get-query-url project article start end)))
-	 (metrics-tmp (merge-pathnames "/home/victor/tmpfs/"
-                                       (format nil "metrics_tmp_~a.json"
-                                               (random most-positive-fixnum))))
          (result nil)
          (default-result (list 0 0 0 0.0)))
 
@@ -156,56 +155,64 @@ Returns NIL when failed to retrieve data for any reason."
     ;; thread-safe
     (handler-case
 	;; (multiple-value-bind (data-stream status-code headers uri)
-	;; (drakma:http-request url :external-format-out :UTF-8 :external-format-in :UTF-8 :want-stream T)
 
-	(multiple-value-bind (status code)
-            (external-program:run *curl*
-                                  (list url "-o" metrics-tmp))
-	  (when (and (eql status :exited))
-	    (cond			; DISPATCH STATUS CODES
-	      ((= code 0)		; HTTP OK
-               (with-open-file (data-stream metrics-tmp
-                                            :direction :input)
-                 (let ((json (cl-json:decode-json data-stream)))
-		   (when (listp json)
-		     (setf result
-			   (cond
-			     ((or (string= (cdr (assoc :type json))
-					   "https://restbase.org/errors/query_error")
-				  (string= (cdr (assoc :type json))
-					   "https://mediawiki.org/wiki/HyperSwitch/errors/not_found"))
-			      (log-for error "query error or article not found {~a}" article)
-			      default-result)
+	(let ((proc (sb-ext:run-program "/usr/bin/curl"
+					`("--retry" "5" ,url)
+					:output :stream
+					:error nil
+					:wait nil))
+	      (status-code 0))
+	  ;;   (drakma:http-request url
+	  ;; 			 :external-format-out :UTF-8
+	  ;; 			 :external-format-in :UTF-8
+	  ;; 			 :want-stream T
+	  ;; 			 :close T)
+	  ;; (declare (ignore headers)
+	  ;; 	   (ignore uri))
 
-			     ((string= (cdr (assoc :type json))
-				       "https://restbase.org/errors/not_found")
-			      ;; very likely this article didn't exist yet in the
-			      ;; specified time period, just report as no views at all
-			      (log-for error "article {~a} not found" article)
-			      default-result)
+	  (cond			      ; DISPATCH STATUS CODES
+	    (proc		      ;; (= status-code 200)	; HTTP OK
 
-			     (t
-			      ;; article data is present, do the math
-			      (let* ((items (cdar json))
-				     (daily-views (map 'list
-						       #'(lambda (item)
-							   (cdr (find :views item :key #'car)))
-						       items)))
-				;; collect and then calculate sum and median
-				(list (reduce #'+ daily-views)
-				      (apply #'min daily-views)
-				      (apply #'max daily-views)
-				      (float (alexandria:median daily-views)))))))))))
-	      ((= code 22)		; HTTP NOT FOUND
-	       (log-for error "information for [[~a]] is missing and unlikely to appear. move on" article)
-	       (setf result default-result))
+             (let ((json (cl-json:decode-json (sb-ext:process-output proc))))
+	       (when (listp json)
+		 (setf result
+		       (cond
+			 ((or (string= (cdr (assoc :type json))
+				       "https://restbase.org/errors/query_error")
+			      (string= (cdr (assoc :type json))
+				       "https://mediawiki.org/wiki/HyperSwitch/errors/not_found"))
+			  (log-for error "query error or article not found {~a}" article)
+			  default-result)
 
-	      (t                        ; all other problems
-               (log-for error "failed request for article [[~a]]; status code: ~a;~%uri: ~a"
-                        article code url)
-	       (format t "status code: ~a;~%uri: ~a~%" code url))))
+			 ((string= (cdr (assoc :type json))
+				   "https://restbase.org/errors/not_found")
+			  ;; very likely this article didn't exist yet in the
+			  ;; specified time period, just report as no views at all
+			  (log-for error "article {~a} not found" article)
+			  default-result)
 
-	  (uiop:delete-file-if-exists metrics-tmp))
+			 (t
+			  ;; article data is present, do the math
+			  (let* ((items (cdar json))
+				 (daily-views (map 'list
+						   #'(lambda (item)
+						       (cdr (find :views item :key #'car)))
+						   items)))
+			    ;; collect and then calculate sum and median
+			    (list (reduce #'+ daily-views)
+				  (apply #'min daily-views)
+				  (apply #'max daily-views)
+				  (float (alexandria:median daily-views))))))))))
+	    ((= status-code 404)	; HTTP NOT FOUND
+	     (log-for error "information for [[~a]] is missing and unlikely to appear. move on" article)
+	     (setf result default-result))
+
+	    (t				; all other problems
+             (log-for error "failed request for article [[~a]]; status code: ~a;~%uri: ~a"
+                      article status-code url)
+	     (format t "status code: ~a;~%uri: ~a~%" status-code url)))
+	  (sb-ext:process-wait proc)
+	  (sb-ext:process-close proc))
       (condition (msg)
         (log-for error "failed request for [[~a]]: ~a~%" article msg)))
     result))
@@ -248,30 +255,48 @@ In order to obtain articles for a given category use
 Call `REPORT-PAGE-VIEWS' to get the summary table."
 
   (log-for trace "Downloading page views data for start:~a end:~a file:~a" start end articles-file)
-  (with-open-file (in articles-file
-                      :direction :input)
-    (with-open-file (out views-file
-                         :direction :output
-                         :if-exists :supersede)
-      (iter
-        (with article-no = 1)
-        (for article = (read-line in nil))
-        (while article)
-        ;; (log-for trace "~a " article-no)
 
-        ;; categories can be present, but ignore them
-        (unless (sm:prefixed-with article *category-prefix*)
-          (let* ((article-name (if (sm:prefixed-with article *discussion-prefix*)
-                                   (subseq article (length *discussion-prefix*))
-                                   article))
-                 (article-views (get-article-page-views article-name :start start :end end)))
+  (let ((processed-articles 0))
 
-            (format out "~a~{	~a~}~%"
-                    article-name
-                    article-views)
-            (force-output out)
-            (incf article-no)
-            (sleep *page-views-query-interval*)))))))
+    (when (probe-file views-file)
+      (with-open-file (views views-file :direction :input)
+	(iter 
+	  (for line = (read-line views nil))
+	  (while line)
+	  (for (num-str) = (split-sequence:split-sequence #\Tab line))
+	  (setf processed-articles (parse-integer num-str))))
+      (log-for trace "resuming work from article number ~a" processed-articles))
+
+    (with-open-file (in articles-file
+			:direction :input)
+      (with-open-file (out views-file
+                           :direction :output
+			   :if-does-not-exist :create
+                           :if-exists :append)
+	(iter
+          (with article-no = 1)
+	  (with line-no = 0)
+          (for article = (read-line in nil))
+          (while article)
+          ;; (log-for trace "~a " article-no)
+	  
+          ;; categories can be present, but ignore them
+	  (when (> line-no processed-articles)
+            (unless (sm:prefixed-with article *category-prefix*)
+              (let* ((article-name (if (sm:prefixed-with article *discussion-prefix*)
+                                       (subseq article (length *discussion-prefix*))
+                                       article))
+                     (article-views (get-article-page-views article-name
+							    :start start :end end)))
+
+		(format out "~a	~a~{	~a~}~%"
+			line-no
+			article-name
+			article-views)
+		(force-output out)
+		(incf article-no)
+		(sleep *page-views-query-interval*))))
+	  (incf line-no))))))
 
 ;; --------------------------------------------------------
 
@@ -377,7 +402,8 @@ OUT: stream to ouput results to."
               (iter
                 (for line = (read-line in nil))
                 (while line)
-                (for (name sum-str min-str max-str med-str) = (split-sequence:split-sequence #\Tab line))
+                (for (num name sum-str min-str max-str med-str) = (split-sequence:split-sequence #\Tab line))
+		(declare (ignore num))
                 (when sum-str
                   (for sum-val = (parse-integer sum-str))
                   (for min-val = (parse-integer min-str))
